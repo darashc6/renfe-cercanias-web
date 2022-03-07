@@ -1,0 +1,10 @@
+#navigation-bar {
+  background: linear-gradient(90deg, var(--color-primary) 42%, rgba(255, 60, 60, 0) 52%, var(--color-primary) 62%);
+}
+
+#navigation-bar li {
+  font-size: 1.4em;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}

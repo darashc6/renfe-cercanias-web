@@ -1,0 +1,24 @@
+<section id="search-train-timings-section">
+    <div>
+        <div class="input-field">
+            <label for="starting-station">Origen:</label>
+            <input type="text" name="starting-station" id="starting-station"
+                placeholder="Escriba aqui su estación de origen" pInputText>
+        </div>
+        <div class="input-field">
+            <label for="destination-station">Destino:</label>
+            <input type="text" name="destination-station" id="destination-station"
+                placeholder="Escriba aquí su estación de destino" pInputText>
+        </div>
+        <div class="field">
+            <label for="date-selected">Fecha:</label>
+            <p-calendar inputId="date-selected" [(ngModel)]="date"></p-calendar>
+        </div>
+        <div class="input-field">
+            <label for="hour-selected">Hora:</label>
+            <p-calendar inputId="hour-selected" [(ngModel)]="date2" [timeOnly]="true"></p-calendar>
+        </div>
+
+        <button pButton pRipple label="Ver horarios" class="p-button-raised"></button>
+    </div>
+</section>

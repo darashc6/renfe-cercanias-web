@@ -1,67 +1,28 @@
 <section id="new-app-section">
   <div class="grid">
     <div class="col-6 flex justify-content-center">
-      <img
-        src="../../../assets/Google Pixel 2 XL Black and White 1.png"
-        alt=""
-        srcset=""
-      />
+      <img src="../../../assets/phone-cercanias-logo.png" alt="" srcset="" />
     </div>
     <div class="col-6 flex flex-column justify-content-evenly">
       <div>
-        <h2 class="text-4xl">Ahora con una nueva aplicación</h2>
+        <h2 class="text-5xl">Ahora una nueva aplicación</h2>
         <p class="text-xl">
           Puedes descargar la nueva aplicación de Cercanias, para obtener una
           experiencia con la que pueda contar y viajar con confianza.
         </p>
 
         <div class="grid mt-4">
-          <div class="col-6 flex align-items-center">
-            <ic-icon
-              icon="customer-service"
-              class="flex align-items-center text-3xl"
-              >Atencion al cliente</ic-icon
-            >
-            <p>Atencion al cliente</p>
-          </div>
-          <div class="col-6 flex align-items-center">
-            <ic-icon
-              icon="qr-code"
-              class="flex align-items-center text-3xl"
-            ></ic-icon>
-            <p>Billetes en tu teléfono</p>
-          </div>
-          <div class="col-6 flex align-items-center">
-            <ic-icon
-              icon="heart-pulse"
-              class="flex align-items-center text-3xl"
-            ></ic-icon>
-            <p>Información COVID-19</p>
-          </div>
-          <div class="col-6 flex align-items-center">
-            <ic-icon
-              icon="notifications"
-              class="flex algin-items-center text-3xl"
-            ></ic-icon>
-            <p>Actualización y notificaciones</p>
+          <div class="col-6" *ngFor="let info of newAppInfo">
+            <app-new-app-info-item [icon]="info.icon" [title]="info.title">
+            </app-new-app-info-item>
           </div>
         </div>
       </div>
 
       <div class="grid">
         <div class="col-10 col-offset-1 flex justify-content-evenly">
-          <img
-            src="../../../assets/android-badge-en 1.png"
-            width="200"
-            alt=""
-            srcset=""
-          />
-          <img
-            src="../../../assets/ios-badge-en 1.png"
-            width="200"
-            alt=""
-            srcset=""
-          />
+          <img src="../../../assets/android-badge-en 1.png" width="200" alt="" srcset="" />
+          <img src="../../../assets/ios-badge-en 1.png" width="200" alt="" srcset="" />
         </div>
       </div>
     </div>
