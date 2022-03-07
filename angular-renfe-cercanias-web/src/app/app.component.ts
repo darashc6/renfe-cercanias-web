@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { IconService } from '@visurel/iconify-angular';
+import { appIcons } from './icons';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-renfe-cercanias-web';
+
+  constructor(iconService: IconService) {
+    iconService.registerAll(appIcons);
+  }
+
 }
