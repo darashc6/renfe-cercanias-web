@@ -1,57 +1,29 @@
 <section id="search-train-timings-section">
-  <div class="flex justify-content-center">
+  <div class="flex justify-content-center p-6">
     <div class="search-form grid">
-      <div class="input-field col-6">
-        <label for="starting-station" class="label-text">Origen</label>
-        <input
-          class="py-2 border-noround"
-          type="text"
-          name="starting-station"
-          id="starting-station"
-          placeholder="Escriba aqui su estación de origen"
-          pInputText
-        />
+      <div class="input-field col-6 grid grid-nogutter justify-content-end">
+        <label for="starting-station" class="label-text col-2">Origen</label>
+        <input class="form-input p-2 col-8" type="text" name="starting-station" id="starting-station"
+          placeholder="Escriba aqui su estación de origen" pInputText />
       </div>
-      <div class="input-field col-6">
-        <label for="destination-station">Destino:</label>
-        <input
-          class="py-2"
-          type="text"
-          name="destination-station"
-          id="destination-station"
-          placeholder="Escriba aquí su estación de destino"
-          pInputText
-        />
+      <div class="input-field col-6 grid grid-nogutter justify-content-start">
+        <label for="destination-station" class="label-text col-2">Destino</label>
+        <input class="p-2 form-input col-8" type="text" name="destination-station" id="destination-station"
+          placeholder="Escriba aquí su estación de destino" pInputText />
       </div>
-      <div class="field col-6">
-        <label for="date-selected">Fecha:</label>
-        <p-calendar
-          inputStyleClass="py-2"
-          inputId="date-selected"
-          [dateFormat]="'dd/mm/yy'"
-          [(ngModel)]="date"
-          [showIcon]="true"
-        ></p-calendar>
+      <div class="input-field col-6 grid grid-nogutter justify-content-end">
+        <label for="date-selected" class="label-text col-2">Fecha</label>
+        <p-calendar class="col-8" inputStyleClass="p-2" inputId="date-selected" [dateFormat]="'dd/mm/yy'"
+          [(ngModel)]="date" [showIcon]="true"></p-calendar>
       </div>
-      <div class="field col-6">
-        <label for="hour-selected">Hora:</label>
-        <p-calendar
-          inputStyleClass="py-2"
-          inputId="hour-selected"
-          [(ngModel)]="date2"
-          [timeOnly]="true"
-          [showIcon]="true"
-          icon="pi pi-clock"
-        ></p-calendar>
+      <div class="input-field col-6 grid grid-nogutter justify-content-start">
+        <label for="hour-selected" class="label-text col-2">Hora</label>
+        <p-calendar class="col-8" inputStyleClass="p-2" inputId="hour-selected" [(ngModel)]="date2" [timeOnly]="true"
+          [showIcon]="true" icon="pi pi-clock"></p-calendar>
       </div>
 
       <div class="col-12 flex justify-content-center">
-        <button
-          pButton
-          pRipple
-          label="Ver horarios"
-          class="p-button-raised"
-        ></button>
+        <button pButton pRipple label="Ver horarios" class="p-button-lg p-button-raised search-btn"></button>
       </div>
     </div>
   </div>

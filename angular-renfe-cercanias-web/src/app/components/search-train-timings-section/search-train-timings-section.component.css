@@ -1,3 +1,26 @@
 #search-train-timings-section {
   background-color: white;
 }
+
+#search-train-timings-section .search-form {
+  width: max-content;
+  background-color: gray;
+}
+
+#search-train-timings-section .label-text {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.5rem;
+  border: 1px solid var(--color-primary);
+  text-align: center;
+}
+
+#search-train-timings-section .form-input {
+  border-radius: 0;
+  border: 1px solid black;
+}
+
+#search-train-timings-section .search-btn {
+  background-color: var(--color-primary);
+  width: 20%;
+}

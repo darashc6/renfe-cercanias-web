@@ -39,3 +39,17 @@ body {
   margin: 0;
   overflow-x: hidden;
 }
+
+.p-button-icon-only {
+  padding: 0.5rem !important;
+}
+
+.p-button-icon {
+  color: var(--color-primary) !important;
+}
+
+.p-calendar-w-btn {
+  border-radius: 0 !important;
+  border: 1px solid black !important;
+  width: 100%;
+}

@@ -48,3 +48,9 @@ body {
 .p-button-icon {
   color: var(--color-primary) !important;
 }
+
+.p-calendar-w-btn {
+  border-radius: 0 !important;
+  border: 1px solid black !important;
+  width: 100%;
+}
