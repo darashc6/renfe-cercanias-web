@@ -1,9 +1,17 @@
 <nav id="navigation-bar">
-    <ul class="list-none flex align-items-center justify-content-around py-3 m-0">
-        <li>Núcleos</li>
-        <li>Noticias</li>
-        <img src="../../../assets/cercanias-logo.png" width="45" alt="cercanias-logo">
-        <li>Avisos</li>
-        <li>Cuenta</li>
-    </ul>
+  <ul class="list-none grid py-3 m-0 px-0 justify-content-around">
+    <li class="col-2"><a routerLink="/nucleos">Núcleos</a></li>
+    <li class="col-2"><a routerLink="/noticias">Noticias</a></li>
+    <li class="col-2">
+      <a routerLink="/">
+        <img
+          src="../../../assets/cercanias-logo.png"
+          width="45"
+          alt="cercanias-logo"
+        />
+      </a>
+    </li>
+    <li class="col-2"><a routerLink="/avisos">Avisos</a></li>
+    <li class="col-2"><a routerLink="/cuenta">Cuenta</a></li>
+  </ul>
 </nav>

@@ -1,0 +1,25 @@
+#intro-section {
+  .title {
+    margin-top: 20px;
+    font-size: 2em;
+  }
+
+  .subtitle {
+    font-size: 1.5em;
+  }
+}
+
+#new-app-section {
+  background-color: white;
+}
+
+#station-carousel-section {
+  .station-item {
+    display: flex;
+    justify-content: center;
+  }
+
+  .station-description {
+    width: 375px;
+  }
+}

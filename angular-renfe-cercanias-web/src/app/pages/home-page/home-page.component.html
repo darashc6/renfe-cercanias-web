@@ -1,0 +1,96 @@
+<!-- Search form section -->
+<app-search-train-timings-section></app-search-train-timings-section>
+
+<!-- Intro Section -->
+<section id="intro-section">
+  <div class="py-4">
+    <h2 class="text-center mb-5 mt-0 text-4xl">
+      ¿Por qué viajar en Cercanías?
+    </h2>
+
+    <div class="grid justify-content-evenly">
+      <div class="col-3" *ngFor="let introInfo of introInfos">
+        <app-intro-ilustration-info
+          [infoTitle]="introInfo.title"
+          [infoSubtitle]="introInfo.subtitle"
+          [infoImgSrc]="introInfo.imgSrc"
+        ></app-intro-ilustration-info>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- New App section -->
+<section id="new-app-section">
+  <div class="grid">
+    <div class="col-6 flex justify-content-center">
+      <img src="../../../assets/phone-cercanias-logo.png" alt="" srcset="" />
+    </div>
+    <div class="col-6 flex flex-column justify-content-evenly">
+      <div>
+        <h2 class="text-5xl">Ahora una nueva aplicación</h2>
+        <p class="text-xl">
+          Puedes descargar la nueva aplicación de Cercanias, para obtener una
+          experiencia con la que pueda contar y viajar con confianza.
+        </p>
+
+        <div class="grid mt-4">
+          <div class="col-6" *ngFor="let info of newAppInfo">
+            <app-new-app-info-item [icon]="info.icon" [title]="info.title">
+            </app-new-app-info-item>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="col-10 col-offset-1 flex justify-content-evenly">
+          <img
+            src="../../../assets/android-badge-en 1.png"
+            width="200"
+            alt=""
+            srcset=""
+          />
+          <img
+            src="../../../assets/ios-badge-en 1.png"
+            width="200"
+            alt=""
+            srcset=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Carousel showcasing the main stations -->
+<section id="station-carousel-section">
+  <div class="py-4">
+    <h2 class="text-center mb-2 mt-0 text-4xl">Núcleos de Cercanías</h2>
+  </div>
+
+  <p-carousel
+    [value]="stations"
+    [showIndicators]="false"
+    [numVisible]="3"
+    [numScroll]="1"
+    [autoplayInterval]="5000"
+    [circular]="true"
+  >
+    <ng-template let-station pTemplate="item">
+      <div class="station-item">
+        <div class="station-item-content">
+          <img
+            src="../../../assets/cercanias-{{ station.imgName }}-img.png"
+            width="375"
+            alt=""
+            srcset=""
+          />
+          <h5 class="text-4xl my-3">{{ station.name }}</h5>
+          <p class="text-3xl mt-0 station-description">
+            {{ station.description }}
+          </p>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>
