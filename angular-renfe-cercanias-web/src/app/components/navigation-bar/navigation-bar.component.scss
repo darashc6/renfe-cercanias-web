@@ -16,7 +16,33 @@
     justify-content: center;
   }
 
-  li a {
-    cursor: pointer;
+  li {
+    .navbar-item {
+      position: relative;
+      cursor: pointer;
+      text-decoration: none;
+      color: white;
+    }
+
+    .navbar-item::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      border-top: 3px solid white;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s;
+    }
+
+    .navbar-item:hover {
+      color: var(--color-white-hover);
+    }
+
+    .navbar-item:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
   }
 }

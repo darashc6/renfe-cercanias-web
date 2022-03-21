@@ -1,6 +1,6 @@
 <section id="news-section">
   <div class="header">
-    <h1 class="text-2xl text-center m-0 py-5">Noticias de última hora</h1>
+    <h1 class="text-3xl text-center m-0 py-5">Noticias de última hora</h1>
   </div>
 
   <div class="content py-4">
@@ -8,18 +8,14 @@
       <div class="col-4 py-4 px-7" *ngFor="let newsInfo of news">
         <p-card subheader="{{ newsInfo.date }}">
           <ng-template pTemplate="header">
-            <img
-              src="../../../assets/news-header-img-example.png"
-              alt="Card Image"
-              class="border-round-top"
-            />
+            <img src="../../../assets/news-header-img-example.png" alt="Card Image" class="border-round-top" />
           </ng-template>
           <p class="h-8rem m-0 text-xl font-bold">
             {{ newsInfo.title }}
           </p>
           <ng-template pTemplate="footer">
             <div class="flex justify-content-center mb-2">
-              <a class="news-info-link" href="#">Ver más</a>
+              <a class="news-info-link" [routerLink]="['/noticias', newsInfo.id]">Ver más</a>
             </div>
           </ng-template>
         </p-card>

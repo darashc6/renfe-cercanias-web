@@ -1,0 +1,11 @@
+#announcements-section .header {
+  background-color: white;
+}
+
+#announcements-section .station-item img {
+  width: 25px;
+}
+
+#announcements-section ::ng-deep .p-dropdown {
+  width: 20rem;
+}

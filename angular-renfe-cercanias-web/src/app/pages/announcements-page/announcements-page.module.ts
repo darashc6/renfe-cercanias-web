@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AnnouncementsPageComponent } from './announcements-page.component';
+import { FormsModule } from '@angular/forms';
+import { DropdownModule } from "primeng/dropdown";
+import { CardModule } from 'primeng/card';
 
+
+import { AnnouncementsPageComponent } from './announcements-page.component';
 
 
 @NgModule({
@@ -9,7 +13,10 @@ import { AnnouncementsPageComponent } from './announcements-page.component';
     AnnouncementsPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DropdownModule,
+    FormsModule,
+    CardModule
   ]
 })
 export class AnnouncementsPageModule { }

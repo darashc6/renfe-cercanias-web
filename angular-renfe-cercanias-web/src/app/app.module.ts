@@ -6,7 +6,6 @@ import { IconModule } from '@visurel/iconify-angular';
 import { ButtonModule } from "primeng/button";
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from "primeng/inputtext";
-
 import { HomePageModule } from './pages/home-page/home-page.module';
 import { NewsPageModule } from './pages/news-page/news-page.module';
 
@@ -18,6 +17,8 @@ import { NewAppInfoItemComponent } from './components/new-app-info-item/new-app-
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from './pages/home-page/home-page.component'
+import { NewsInfoPageModule } from './pages/news-info-page/news-info-page.module';
+import { AnnouncementsPageModule } from './pages/announcements-page/announcements-page.module';
 
 
 @NgModule({
@@ -38,7 +39,6 @@ import { HomePageComponent } from './pages/home-page/home-page.component'
     IconModule,
     AppRoutingModule,
     HomePageModule,
-    NewsPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

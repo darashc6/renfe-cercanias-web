@@ -1,1 +1,33 @@
-<p>announcements-page works!</p>
+<section id="announcements-section">
+    <div id="header" class="bg-white">
+        <h1 class="text-3xl text-center m-0 py-5">Avisos</h1>
+    </div>
+
+    <div id="content" class="py-4">
+        <div id="dropdown-select" class="flex justify-content-center">
+            <p-dropdown [options]="stations" [(ngModel)]="selectedStation" optionLabel="name" [filter]="true"
+                filterBy="name">
+                <ng-template pTemplate="selectedItem">
+                    <div class="station-item station-item-value flex align-items-center" *ngIf="selectedStation">
+                        <img src="../../../assets/cercanias-logo.png" alt="cercanias-logo">
+                        <div class="ml-3 font-bold">{{ selectedStation.name }}</div>
+                    </div>
+                </ng-template>
+                <ng-template let-station pTemplate="item">
+                    <div class="station-item flex align-items-center">
+                        <img src="../../../assets/cercanias-logo.png" alt="cercanias-logo">
+                        <div class="ml-3">{{ station.name }}</div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </div>
+
+        <div id="announcements-cards" class="grid py-4 px-2">
+            <div class="col-4 px-4" *ngFor="let announcement of announcements">
+                <p-card header="{{ announcement.title }}" subheader="{{ announcement.date }}">
+                    <p class="m-0 h-8rem">{{ announcement.message }}</p>
+                </p-card>
+            </div>
+        </div>
+    </div>
+</section>

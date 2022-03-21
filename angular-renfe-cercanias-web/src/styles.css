@@ -19,15 +19,11 @@
   src: url("./assets/fonts/Fredoka-SemiBold.ttf");
 }
 
-/* @font-face {
-  font-family: "Fredoka";
-  font-weight: 700;
-  font-style: normal;
-  src: url("./assets/fonts/Fredoka-Bold.ttf");
-} */
 :root {
   --background-color: #eff3f6;
   --color-primary: #ff3c3c;
+  --color-primary-hover: #ff6666;
+  --color-white-hover: #eeecec;
 }
 
 * {
@@ -52,4 +48,8 @@ body {
   border-radius: 0 !important;
   border: 1px solid black !important;
   width: 100%;
+}
+
+.p-card-subtitle {
+  color: black !important;
 }

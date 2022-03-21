@@ -1,0 +1,5 @@
+#news-info-page .news-page-link {
+  color: var(--color-primary);
+  font-weight: bold;
+  cursor: pointer;
+}

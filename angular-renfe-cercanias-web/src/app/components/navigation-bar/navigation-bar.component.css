@@ -1,10 +1,40 @@
 #navigation-bar {
-  background: linear-gradient(90deg, var(--color-primary) 42%, rgba(255, 60, 60, 0) 52%, var(--color-primary) 62%);
+  background: linear-gradient(90deg, var(--color-primary) 40%, rgba(255, 60, 60, 0) 50%, var(--color-primary) 60%);
 }
 
 #navigation-bar li {
   font-size: 1.4em;
   color: white;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#navigation-bar li .navbar-item {
+  position: relative;
   cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+#navigation-bar li .navbar-item::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border-top: 3px solid white;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s;
+}
+
+#navigation-bar li .navbar-item:hover {
+  color: var(--color-white-hover);
+}
+
+#navigation-bar li .navbar-item:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }

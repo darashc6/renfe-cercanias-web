@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 import { NewsInfoPageComponent } from './news-info-page.component';
 
 
@@ -9,7 +11,8 @@ import { NewsInfoPageComponent } from './news-info-page.component';
     NewsInfoPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class NewsInfoPageModule { }
