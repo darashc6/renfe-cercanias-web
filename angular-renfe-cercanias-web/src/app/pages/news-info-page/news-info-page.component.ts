@@ -20,6 +20,8 @@ export class NewsInfoPageComponent implements OnInit {
       this.id = params['id']
     })
 
+    console.log(this.id);
+
     this.getNewsInfo();
     console.log(this.newsInfo);
   }

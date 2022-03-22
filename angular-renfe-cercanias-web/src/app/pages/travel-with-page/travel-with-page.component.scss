@@ -1,0 +1,56 @@
+#travel-with-page {
+  min-height: 75.5vh; /* TODO - Fix bug */
+
+  #header {
+    position: relative;
+
+    #route-history {
+      position: absolute;
+      top: 0;
+    }
+
+    #home-page-link {
+      color: var(--color-primary);
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  #content {
+    .accordion-tab {
+      padding: 8px;
+    }
+
+    #bycicle-accordion-content-list {
+      li:not(:last-child) {
+        padding-bottom: 15px;
+      }
+    }
+
+    #more-info-links {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        font-size: 1.25rem;
+        padding-bottom: 10px;
+        font-weight: bold;
+
+        a {
+          color: var(--color-primary);
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .p-accordion {
+    .p-accordion-header {
+      .p-accordion-header-link {
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

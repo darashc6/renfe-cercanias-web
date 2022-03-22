@@ -1,0 +1,90 @@
+<section id="travel-with-page">
+  <div id="header" class="bg-white py-5">
+    <p id="route-history" class="ml-4 text-lg">
+      <a id="home-page-link" routerLink="/nucleos">Málaga</a> / Viajar con
+    </p>
+    <h1 id="station-name" class="text-3xl text-center m-0">Viajar con</h1>
+  </div>
+
+  <div id="content" class="py-2">
+    <div class="grid">
+      <div class="col-9">
+        <p-accordion [styleClass]="'px-5'">
+          <p-accordionTab header="Bicicletas" class="accordion-tab">
+            <ng-template pTemplate="content">
+              <p class="text-2xl">
+                Tu bicicleta <b>viaja gratis</b> contigo en todos nuestros
+                trenes de Cercanías. Solo tienes que tener en cuenta lo
+                siguiente:
+              </p>
+              <ul class="text-2xl" id="bycicle-accordion-content-list">
+                <li>
+                  Puedes viajar con una bicicleta como máximo por persona.
+                </li>
+                <li>
+                  La bicicleta debe situarse en los espacios destinados para
+                  ello. Si en el tren no hubiera ningún área señalizada, sitúala
+                  en la plataforma de acceso, sin invadir pasillos ni zonas de
+                  asientos no abatibles.
+                </li>
+                <li>
+                  Si la ocupación del tren es elevada y no es posible que viajes
+                  con tu bicicleta, puedes optar por viajar en otro tren o por
+                  la devolución del importe de tu billete.
+                </li>
+                <li>
+                  Tu bicicleta es tu responsabilidad. Ocúpate de su subida,
+                  custodia y bajada del tren para evitar posibles desperfectos o
+                  pérdidas.
+                </li>
+              </ul>
+            </ng-template>
+          </p-accordionTab>
+          <p-accordionTab header="Mascotas" class="accordion-tab">
+            <ng-template pTemplate="content">
+              <p class="text-2xl">
+                Tu mascota <b>viaja gratis</b> contigo en todos nuestros trenes
+                de Cercanías. Solo tienes que tener en cuenta lo siguiente:
+              </p>
+              <ul class="text-2xl" id="pets-accordion-content-list">
+                <li>
+                  Se admiten animales domésticos (perros, gatos y aves) sin
+                  límite de peso y sujetos con una correa.
+                </li>
+                <li>Viajan gratis contigo y no necesitan billete.</li>
+                <li>No es necesario que viajen en su jaula o transportín.</li>
+                <li>Los perros deben viajar con bozal.</li>
+                <li>Puedes viajar con una mascota como máximo por persona.</li>
+              </ul>
+            </ng-template>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div class="col-3">
+        <p class="text-xl font-bold">Te puede interesar</p>
+        <ul id="more-info-links">
+            <li>
+                <a routerLink="/nucleos/lineas">
+                    Estaciones y líneas
+                </a>
+            </li>
+            <li>
+                <a routerLink="/nucleos/tarifas">
+                    Tarifas
+                </a>
+            </li>
+            <li>
+                <a routerLink="/nucleos/atencion-cliente">
+                    Atencion al Cliente
+                </a>
+            </li>
+            <li>
+                <a routerLink="/avisos">
+                    Avisos
+                </a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

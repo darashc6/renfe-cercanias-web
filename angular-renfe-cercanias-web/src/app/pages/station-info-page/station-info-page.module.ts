@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StationInfoPageComponent } from './station-info-page.component';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -9,7 +12,10 @@ import { StationInfoPageComponent } from './station-info-page.component';
     StationInfoPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CardModule,
+    ButtonModule,
+    RouterModule
   ]
 })
 export class StationInfoPageModule { }

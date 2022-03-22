@@ -17,6 +17,11 @@
   .station-item {
     display: flex;
     justify-content: center;
+
+    img {
+      height: 225px;
+      object-fit: cover;
+    }
   }
 
   .station-description {

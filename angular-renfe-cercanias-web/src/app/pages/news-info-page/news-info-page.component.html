@@ -9,7 +9,7 @@
 
     <p id="news-title" class="text-4xl font-bold my-4">{{ newsInfo?.title }}</p>
 
-    <div id="news-content">
-        <p *ngFor="let content of newsInfo?.content" class="text-2xl my-6">{{ content }}</p>
+    <div id="news-content" *ngIf="newsInfo">
+        <p *ngFor="let content of newsInfo.content" class="text-2xl my-6">{{ content }}</p>
     </div>
 </section>
