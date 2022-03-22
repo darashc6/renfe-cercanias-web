@@ -1,0 +1,41 @@
+#customer-service-page {
+  min-height: 75.5vh;
+}
+
+#customer-service-page #header {
+  position: relative;
+}
+
+#customer-service-page #header #route-history {
+  position: absolute;
+  top: 0;
+}
+
+#customer-service-page #header #home-page-link {
+  color: var(--color-primary);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#customer-service-page #content #customer-service-form-btn {
+  background-color: var(--color-primary);
+}
+
+#customer-service-page #content #customer-service-phone-numbers-list li:not(:last-child) {
+  padding-bottom: 10px;
+}
+
+#customer-service-page #content #more-info-links {
+  list-style-type: none;
+  padding: 0;
+}
+
+#customer-service-page #content #more-info-links li {
+  font-size: 1.25rem;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+#customer-service-page #content #more-info-links li a {
+  color: var(--color-primary);
+}

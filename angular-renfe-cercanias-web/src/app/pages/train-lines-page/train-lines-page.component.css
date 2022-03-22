@@ -1,0 +1,14 @@
+#train-lines-page #header {
+  position: relative;
+}
+
+#train-lines-page #header #route-history {
+  position: absolute;
+  top: 0;
+}
+
+#train-lines-page #header #route-history .page-link {
+  color: var(--color-primary);
+  font-weight: bold;
+  cursor: pointer;
+}

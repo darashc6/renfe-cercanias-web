@@ -1,0 +1,18 @@
+#customer-service-form-page {
+  min-height: 75.5vh;
+}
+
+#customer-service-form-page #header {
+  position: relative;
+}
+
+#customer-service-form-page #header #route-history {
+  position: absolute;
+  top: 0;
+}
+
+#customer-service-form-page #header #route-history .page-link {
+  color: var(--color-primary);
+  font-weight: bold;
+  cursor: pointer;
+}

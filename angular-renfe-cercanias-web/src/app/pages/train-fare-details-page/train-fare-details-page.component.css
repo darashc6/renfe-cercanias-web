@@ -1,0 +1,47 @@
+#train-fare-details-page {
+  min-height: 75.5vh;
+}
+
+#train-fare-details-page #header {
+  position: relative;
+}
+
+#train-fare-details-page #header #route-history {
+  position: absolute;
+  top: 0;
+}
+
+#train-fare-details-page #header #route-history .page-link {
+  color: var(--color-primary);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#train-fare-details-page #content #fare-content-list li:not(:last-child),
+#train-fare-details-page #content #fare-prices-list li:not(:last-child) {
+  padding-bottom: 15px;
+}
+
+#train-fare-details-page #content .accordion-tab {
+  padding: 8px;
+}
+
+#train-fare-details-page #content #more-info-links {
+  list-style-type: none;
+  padding: 0;
+}
+
+#train-fare-details-page #content #more-info-links li {
+  font-size: 1.25rem;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+#train-fare-details-page #content #more-info-links li a {
+  color: var(--color-primary);
+}
+
+::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
+  font-weight: bold;
+  font-size: 1.5rem;
+}

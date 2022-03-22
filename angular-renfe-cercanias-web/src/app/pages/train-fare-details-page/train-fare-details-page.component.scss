@@ -1,4 +1,4 @@
-#customer-service-page {
+#train-fare-details-page {
   min-height: 75.5vh;
 
   #header {
@@ -7,24 +7,25 @@
     #route-history {
       position: absolute;
       top: 0;
-    }
 
-    #home-page-link {
-      color: var(--color-primary);
-      font-weight: bold;
-      cursor: pointer;
+      .page-link {
+        color: var(--color-primary);
+        font-weight: bold;
+        cursor: pointer;
+      }
     }
   }
 
   #content {
-    #customer-service-form-btn {
-      background-color: var(--color-primary);
+    #fare-content-list,
+    #fare-prices-list {
+      li:not(:last-child) {
+        padding-bottom: 15px;
+      }
     }
 
-    #customer-service-phone-numbers-list {
-      li:not(:last-child) {
-        padding-bottom: 10px;
-      }
+    .accordion-tab {
+      padding: 8px;
     }
 
     #more-info-links {
@@ -39,6 +40,17 @@
         a {
           color: var(--color-primary);
         }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .p-accordion {
+    .p-accordion-header {
+      .p-accordion-header-link {
+        font-weight: bold;
+        font-size: 1.5rem;
       }
     }
   }

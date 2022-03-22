@@ -1,0 +1,51 @@
+#train-fares-page {
+  min-height: 75.5vh;
+
+  #header {
+    position: relative;
+
+    #route-history {
+      position: absolute;
+      top: 0;
+    }
+
+    #home-page-link {
+      color: var(--color-primary);
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  #content {
+    #fare-content-list {
+      li:not(:last-child) {
+        padding-bottom: 15px;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .p-tabview {
+    .p-tabview-panels {
+      background-color: var(--background-color);
+    }
+
+    .p-tabview-nav-content {
+      li,
+      li.p-highlight {
+        width: 50%;
+
+        .p-tabview-nav-link {
+          color: black;
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+      .p-tabview-ink-bar {
+        background-color: var(--color-primary);
+      }
+    }
+  }
+}

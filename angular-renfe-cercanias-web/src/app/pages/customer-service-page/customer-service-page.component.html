@@ -1,1 +1,75 @@
-<p>customer-service-page works!</p>
+<section id="customer-service-page">
+    <div id="header" class="bg-white py-6">
+        <p id="route-history" class="ml-4 text-lg">
+            <a id="home-page-link" routerLink="/nucleos">Málaga</a> / Atencion al Cliente
+        </p>
+        <h1 id="page-title" class="text-3xl text-center m-0">Atencion al Cliente</h1>
+    </div>
+    <div id="content" class="p-4">
+        <div class="grid">
+            <div class="col-8 px-6 grid">
+                <div class="col-12">
+                    <p-card header="Contactar con Cercanías">
+                        <p class="text-xl m-0">Haznos llegar cualquier sugerencia, queja o información sobre nuestros
+                            servicios de Cercanías en
+                            Málaga a través de este formulario.</p>
+                        <ng-template pTemplate="footer">
+                            <div class="flex justify-content-end">
+                                <a routerLink="/nucleos/atencion-cliente/contactar-con-cercanias" class="no-underline">
+                                    <button pButton pRipple label="¡Danos tu opinión!"
+                                        id="customer-service-form-btn"></button>
+                                </a>
+                            </div>
+                        </ng-template>
+                    </p-card>
+                </div>
+                <div class="col-12">
+                    <p-card header="Teléfonos de contacto">
+                        <p class="text-xl m-0">Contacta con nosotros via telefónica en los siguentes números:</p>
+                        <ul class="text-xl" id="customer-service-phone-numbers-list">
+                            <li><b>Oficina de Atención al Cliente</b>: 912 320 320</li>
+                            <li><b>Información de Cercanías Málaga</b>: 912 128 079</li>
+                            <li><b>Coordinación Grupos</b>: 952 128 079</li>
+                        </ul>
+                    </p-card>
+                </div>
+                <div class="col-12">
+                    <p-card header="Contacto">
+                        <p class="text-xl mt-0">
+                            Si lo prefieres, puedes escribirnos a:
+                        </p>
+                        <p class="text-xl m-0"><b>Renfe Cercanías Malaga</b></p>
+                        <p class="text-xl m-0">C/ Explanada de la Estación</p>
+                        <p class="text-xl m-0">Edificio Múltiple 2 - 1º planta</p>
+                        <p class="text-xl m-0">29002, Málaga</p>
+                    </p-card>
+                </div>
+            </div>
+            <div class="col-offset-1 col-3">
+                <p class="text-xl font-bold m-0">Te puede interesar</p>
+                <ul id="more-info-links">
+                    <li>
+                        <a routerLink="/nucleos/viajar-con">
+                            Viajar con
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/nucleos/lineas">
+                            Estaciones y líneas
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/nucleos/tarifas">
+                            Tarifas
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/avisos">
+                            Avisos
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

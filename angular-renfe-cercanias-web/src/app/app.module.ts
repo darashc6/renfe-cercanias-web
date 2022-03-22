@@ -6,8 +6,18 @@ import { IconModule } from '@visurel/iconify-angular';
 import { ButtonModule } from "primeng/button";
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from "primeng/inputtext";
+
 import { HomePageModule } from './pages/home-page/home-page.module';
 import { NewsPageModule } from './pages/news-page/news-page.module';
+import { NewsInfoPageModule } from './pages/news-info-page/news-info-page.module';
+import { StationInfoPageModule } from './pages/station-info-page/station-info-page.module';
+import { AnnouncementsPageModule } from './pages/announcements-page/announcements-page.module';
+import { TravelWithPageModule } from './pages/travel-with-page/travel-with-page.module';
+import { TrainFaresPageModule } from './pages/train-fares-page/train-fares-page.module';
+import { TrainFareDetailsPageModule } from './pages/train-fare-details-page/train-fare-details-page.module';
+import { CustomerServicePageModule } from './pages/customer-service-page/customer-service-page.module';
+import { CustomerServiceFormPageModule } from './pages/customer-service-form-page/customer-service-form-page.module';
+import { TrainLinesPageModule } from './pages/train-lines-page/train-lines-page.module';
 
 
 
@@ -17,11 +27,6 @@ import { NewAppInfoItemComponent } from './components/new-app-info-item/new-app-
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-
-import { NewsInfoPageModule } from './pages/news-info-page/news-info-page.module';
-import { StationInfoPageModule } from './pages/station-info-page/station-info-page.module';
-import { AnnouncementsPageModule } from './pages/announcements-page/announcements-page.module';
-import { TravelWithPageModule } from './pages/travel-with-page/travel-with-page.module';
 
 @NgModule({
   declarations: [
@@ -41,8 +46,6 @@ import { TravelWithPageModule } from './pages/travel-with-page/travel-with-page.
     IconModule,
     AppRoutingModule,
     HomePageModule,
-    StationInfoPageModule,
-    AnnouncementsPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

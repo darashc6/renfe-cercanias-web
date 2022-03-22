@@ -1,0 +1,59 @@
+<section id="train-fare-details-page" *ngIf="fare">
+    <div id="header" class="bg-white py-6">
+        <p id="route-history" class="ml-4 text-lg">
+            <a class="page-link" routerLink="/nucleos">Málaga</a> / <a class="page-link"
+                routerLink="/nucleos/tarifas">Tarifas</a> / {{ fare.title }}
+        </p>
+        <h1 id="page-title" class="text-3xl text-center m-0">{{ fare.title }}</h1>
+    </div>
+
+    <div id="content" class="py-2">
+        <div class="grid">
+            <div class="col-9">
+                <p-accordion [styleClass]="'px-5'">
+                    <p-accordionTab header="¿Que te ofrece?" class="accordion-tab" [selected]="true">
+                        <ng-template pTemplate="content">
+                            <ul class="text-xl mt-0" id="fare-content-list">
+                                <li *ngFor="let text of fare.content">{{ text }}</li>
+                            </ul>
+                        </ng-template>
+                    </p-accordionTab>
+                    <p-accordionTab header="Nuestras tarifas" class="accordion-tab" *ngIf="fare.prices">
+                        <ng-template pTemplate="content">
+                            <ul class="text-xl mt-0" id="fare-prices-list">
+                                <li *ngFor="let priceInfo of fare.prices">
+                                    {{ priceInfo.zone }} - {{ priceInfo.price | number: '0.2-2' }} &euro;
+                                </li>
+                            </ul>
+                        </ng-template>
+                    </p-accordionTab>
+                </p-accordion>
+            </div>
+            <div class="col-3">
+                <p class="text-xl font-bold">Te puede interesar</p>
+                <ul id="more-info-links">
+                    <li>
+                        <a routerLink="/nucleos/viajar-con">
+                            Viajar con
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/nucleos/lineas">
+                            Estaciones y líneas
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/nucleos/atencion-cliente">
+                            Atencion al Cliente
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/avisos">
+                            Avisos
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

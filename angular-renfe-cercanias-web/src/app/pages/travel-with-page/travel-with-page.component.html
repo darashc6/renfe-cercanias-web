@@ -1,23 +1,23 @@
 <section id="travel-with-page">
-  <div id="header" class="bg-white py-5">
+  <div id="header" class="bg-white py-6">
     <p id="route-history" class="ml-4 text-lg">
       <a id="home-page-link" routerLink="/nucleos">Málaga</a> / Viajar con
     </p>
-    <h1 id="station-name" class="text-3xl text-center m-0">Viajar con</h1>
+    <h1 id="page-title" class="text-3xl text-center m-0">Viajar con</h1>
   </div>
 
   <div id="content" class="py-2">
     <div class="grid">
       <div class="col-9">
         <p-accordion [styleClass]="'px-5'">
-          <p-accordionTab header="Bicicletas" class="accordion-tab">
+          <p-accordionTab header="Bicicletas" class="accordion-tab" [selected]="true">
             <ng-template pTemplate="content">
-              <p class="text-2xl">
+              <p class="text-xl">
                 Tu bicicleta <b>viaja gratis</b> contigo en todos nuestros
                 trenes de Cercanías. Solo tienes que tener en cuenta lo
                 siguiente:
               </p>
-              <ul class="text-2xl" id="bycicle-accordion-content-list">
+              <ul class="text-xl" id="bycicle-accordion-content-list">
                 <li>
                   Puedes viajar con una bicicleta como máximo por persona.
                 </li>
@@ -42,11 +42,11 @@
           </p-accordionTab>
           <p-accordionTab header="Mascotas" class="accordion-tab">
             <ng-template pTemplate="content">
-              <p class="text-2xl">
+              <p class="text-xl">
                 Tu mascota <b>viaja gratis</b> contigo en todos nuestros trenes
                 de Cercanías. Solo tienes que tener en cuenta lo siguiente:
               </p>
-              <ul class="text-2xl" id="pets-accordion-content-list">
+              <ul class="text-xl" id="pets-accordion-content-list">
                 <li>
                   Se admiten animales domésticos (perros, gatos y aves) sin
                   límite de peso y sujetos con una correa.
@@ -63,26 +63,26 @@
       <div class="col-3">
         <p class="text-xl font-bold">Te puede interesar</p>
         <ul id="more-info-links">
-            <li>
-                <a routerLink="/nucleos/lineas">
-                    Estaciones y líneas
-                </a>
-            </li>
-            <li>
-                <a routerLink="/nucleos/tarifas">
-                    Tarifas
-                </a>
-            </li>
-            <li>
-                <a routerLink="/nucleos/atencion-cliente">
-                    Atencion al Cliente
-                </a>
-            </li>
-            <li>
-                <a routerLink="/avisos">
-                    Avisos
-                </a>
-            </li>
+          <li>
+            <a routerLink="/nucleos/lineas">
+              Estaciones y líneas
+            </a>
+          </li>
+          <li>
+            <a routerLink="/nucleos/tarifas">
+              Tarifas
+            </a>
+          </li>
+          <li>
+            <a routerLink="/nucleos/atencion-cliente">
+              Atencion al Cliente
+            </a>
+          </li>
+          <li>
+            <a routerLink="/avisos">
+              Avisos
+            </a>
+          </li>
         </ul>
       </div>
     </div>

@@ -1,10 +1,6 @@
 <section id="station-info-page">
   <div id="header" class="bg-white">
-    <img
-      src="../../../assets/cercanias-malaga-img.png"
-      alt="cercanias-station-img"
-      class="cercanias-img"
-    />
+    <img src="../../../assets/cercanias-malaga-img.png" alt="cercanias-station-img" class="cercanias-img" />
     <h1 id="station-name" class="text-3xl text-center m-0 py-5">
       Cercanias Málaga
     </h1>
@@ -17,25 +13,14 @@
         <div class="col-5 py-4 px-7" *ngFor="let info of stationInfo">
           <p-card header="{{ info.title }}">
             <ng-template pTemplate="header">
-              <img
-                src="{{ info.headerImg }}"
-                alt="header-img"
-                class="border-round-top"
-              />
+              <img src="{{ info.headerImg }}" alt="header-img" class="border-round-top" />
             </ng-template>
-            <p class="m-0 text-base">{{ info.subtitle }}</p>
+            <p class="m-0 text-sm">{{ info.subtitle }}</p>
             <ng-template pTemplate="footer">
               <div class="flex justify-content-end">
                 <a routerLink="{{ info.nextPageUrl }}" class="no-underline">
-                  <button
-                    pButton
-                    pRipple
-                    label="Mas detalles"
-                    icon="pi pi-eye"
-                    class="p-button-text"
-                    styleClass="p-button-sm"
-                    iconPos="right"
-                  ></button>
+                  <button pButton label="Mas detalles" icon="pi pi-eye" class="p-button-text" styleClass="p-button-sm"
+                    iconPos="right"></button>
                 </a>
               </div>
             </ng-template>
