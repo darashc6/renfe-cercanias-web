@@ -1,28 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { CardModule } from 'primeng/card';
-import { IconModule } from '@visurel/iconify-angular';
 import { InputTextModule } from 'primeng/inputtext';
+import { CardModule } from 'primeng/card';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 
-import { AccountPageComponent } from './account-page.component';
+import { AccountRegistrationPageComponent } from './account-registration-page.component';
 
 
 
 @NgModule({
   declarations: [
-    AccountPageComponent
+    AccountRegistrationPageComponent
   ],
   imports: [
     CommonModule,
-    CardModule,
-    IconModule,
     InputTextModule,
+    ReactiveFormsModule,
+    CardModule,
     ButtonModule,
-    RippleModule,
-    RouterModule
+    RippleModule
   ]
 })
-export class AccountPageModule { }
+export class AccountRegistrationPageModule { }

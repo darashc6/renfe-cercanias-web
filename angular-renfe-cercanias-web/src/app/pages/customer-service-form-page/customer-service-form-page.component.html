@@ -12,7 +12,10 @@
                 <p-card header="Contactar con Cercanias"
                     subheader="Utiliza este formulario para comunicar a Renfe cualquier duda o sugerencia que consideres.">
                     <ng-template pTemplate="content">
-                        <form [formGroup]="customerServiceForm" id="customer-service-btn" class="grid">
+                        <form [formGroup]="customerServiceForm" id="customer-service-form" class="grid">
+                            <div class="col-12">
+                                <p-dropdown [options]="petitionTypes" placeholder="Seleccione petición"></p-dropdown>
+                            </div>
                             <div class="col-4">
                                 <span class="p-float-label">
                                     <input pInputText type="text" id="first_name" name="first_name"

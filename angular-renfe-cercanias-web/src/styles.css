@@ -36,6 +36,34 @@ body {
   overflow-x: hidden;
 }
 
+.bg-color-primary {
+  background-color: var(--color-primary) !important;
+}
+
+.text-color-primary {
+  color: var(--color-primary) !important;
+}
+
+.icon-3xl {
+  font-size: 30px;
+  height: 30px;
+}
+
+.icon-4xl {
+  font-size: 40px;
+  height: 40px;
+}
+
+.icon-5xl {
+  font-size: 50px;
+  height: 50px;
+}
+
+.icon-6xl {
+  font-size: 60px;
+  height: 60px;
+}
+
 .p-button-icon-only {
   padding: 0.5rem !important;
 }

@@ -7,6 +7,7 @@ import { InputTextareaModule } from "primeng/inputtextarea";
 import { KeyFilterModule } from "primeng/keyfilter";
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
+import { DropdownModule } from 'primeng/dropdown';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { CustomerServiceFormPageComponent } from './customer-service-form-page.component';
@@ -26,7 +27,8 @@ import { CustomerServiceFormPageComponent } from './customer-service-form-page.c
     ButtonModule,
     RippleModule,
     ReactiveFormsModule,
-    KeyFilterModule
+    KeyFilterModule,
+    DropdownModule
   ]
 })
 export class CustomerServiceFormPageModule { }

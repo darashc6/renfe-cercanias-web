@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
+import { AccountRegistrationPageComponent } from './pages/account-registration-page/account-registration-page.component';
 import { AnnouncementsPageComponent } from './pages/announcements-page/announcements-page.component';
 import { CustomerServiceFormPageComponent } from './pages/customer-service-form-page/customer-service-form-page.component';
 import { CustomerServicePageComponent } from './pages/customer-service-page/customer-service-page.component';
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'cuenta',
     component: AccountPageComponent
+  },
+  {
+    path: 'registro',
+    component: AccountRegistrationPageComponent
   },
   {
     path: 'nucleos',

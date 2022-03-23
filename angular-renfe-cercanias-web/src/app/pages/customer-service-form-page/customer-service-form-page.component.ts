@@ -7,6 +7,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./customer-service-form-page.component.scss']
 })
 export class CustomerServiceFormPageComponent implements OnInit {
+  petitionTypes: string[] = [
+    'INFORMACIÓN',
+    'SUGERENCIA',
+    'QUEJA',
+  ]
+
   customerServiceForm: FormGroup = new FormGroup({
     firstNameControl: new FormControl('', [Validators.required]),
     firstSurnameControl: new FormControl('', [Validators.required]),

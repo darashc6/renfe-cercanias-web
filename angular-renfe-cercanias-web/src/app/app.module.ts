@@ -18,6 +18,8 @@ import { TrainFareDetailsPageModule } from './pages/train-fare-details-page/trai
 import { CustomerServicePageModule } from './pages/customer-service-page/customer-service-page.module';
 import { CustomerServiceFormPageModule } from './pages/customer-service-form-page/customer-service-form-page.module';
 import { TrainLinesPageModule } from './pages/train-lines-page/train-lines-page.module';
+import { AccountPageModule } from './pages/account-page/account-page.module';
+import { AccountRegistrationPageModule } from './pages/account-registration-page/account-registration-page.module';
 
 
 
