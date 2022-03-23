@@ -6,5 +6,45 @@
         <h1 id="page-title" class="text-3xl text-center m-0">Estaciones y líneas</h1>
     </div>
 
-    <div id="content" class="py-2"></div>
+    <div id="content" class="py-4 px-5">
+        <div class="grid">
+            <div class="col-8 col-offset-2">
+                <div id="caption-card" class="bg-white pt-4 pb-2 px-6 border-round">
+                    <div class="grid">
+                        <div class="col-4 flex align-items-center justify-content-center">
+                            <ic-icon icon="accesible" class="text-3xl"></ic-icon>
+                            <p class="text-xl mt-0 mb-2 ml-3">Accesible</p>
+                        </div>
+                        <div class="col-4 flex align-items-center justify-content-center">
+                            <ic-icon icon="bus-stop" class="text-3xl"></ic-icon>
+                            <p class="text-xl mt-0 mb-2 ml-3">Autobuses</p>
+                        </div>
+                        <div class="col-4 flex align-items-center justify-content-center">
+                            <img src="../../../assets/Logotipo_de_Renfe_Operadora.svg" alt="renfe-logo" width="40">
+                            <p class="text-xl my-0 ml-3">AVE-Reg.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 grid mt-3">
+                <div class="col-3">
+                    <p class="text-xl mt-0 mb-2 font-bold">Lineas</p>
+                    <app-train-line-info-card *ngFor="let trainLine of trainLines" [trainLine]="trainLine">
+                    </app-train-line-info-card>
+                </div>
+                <div class="col-7 col-offset-1">
+                    <p class="text-xl mt-0 mb-2 font-bold">Linea C2</p>
+                    <p-timeline [value]="stationsToShow">
+                        <ng-template pTemplate="content" let-station>
+                            <app-train-line-station-info-card [station]="station"></app-train-line-station-info-card>
+                        </ng-template>
+                        <ng-template pTemplate="opposite" let-station>
+                            <p class="m-0" *ngIf="station.travelTimeToNextStation">{{ station.travelTimeToNextStation }}
+                                mins</p>
+                        </ng-template>
+                    </p-timeline>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

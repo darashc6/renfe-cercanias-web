@@ -15,4 +15,35 @@
       }
     }
   }
+
+  #content {
+    #customer-service-btn {
+      input,
+      textarea {
+        width: 100%;
+      }
+
+      #send-form-btn {
+        width: 15%;
+        background-color: var(--color-primary);
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .p-inputtext:enabled:focus {
+    border-color: var(--color-primary);
+    box-shadow: inset 0 0 0 1px var(--color-primary),
+      inset 0 0 0 1px var(--color-primary), inset 0 0 0 1px var(--color-primary),
+      inset 0 0 0 1px var(--color-primary);
+  }
+
+  .p-float-label {
+    input:focus ~ label,
+    textarea:focus ~ label {
+      color: black;
+    }
+  }
 }

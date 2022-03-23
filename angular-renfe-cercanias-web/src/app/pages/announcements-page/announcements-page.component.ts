@@ -8,7 +8,7 @@ import { Station } from 'src/app/models/Station';
   styleUrls: ['./announcements-page.component.scss']
 })
 export class AnnouncementsPageComponent implements OnInit {
-  stations: Station[] = [
+  stations: any[] = [
     {
       id: 'cercanias-malaga',
       name: 'Málaga'

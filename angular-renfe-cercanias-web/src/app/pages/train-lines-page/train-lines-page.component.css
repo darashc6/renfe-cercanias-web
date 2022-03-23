@@ -12,3 +12,33 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+#train-lines-page #content #caption-card {
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+::ng-deep .p-timeline-event {
+  /* .p-timeline-event-separator {
+      --margin: 4px;
+      margin-top: var(--margin);
+
+      .p-timeline-event-connector {
+        margin-top: calc(0.5rem + var(--margin));
+      }
+    } */
+}
+
+::ng-deep .p-timeline-event .p-timeline-event-opposite {
+  max-width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+::ng-deep .p-timeline-event .p-timeline-event-marker {
+  background-color: var(--color-primary);
+}
+
+::ng-deep .p-timeline-event .p-timeline-event-connector {
+  background-color: var(--color-primary);
+}

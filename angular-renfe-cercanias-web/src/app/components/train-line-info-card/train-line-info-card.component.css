@@ -1,0 +1,18 @@
+#train-line-info-card #train-line {
+  padding: 0.5rem 0.7rem;
+  color: white;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+#train-line-info-card .light-blue {
+  background-color: #4285f4;
+}
+
+#train-line-info-card .darker-green {
+  background-color: #34a853;
+}
+
+::ng-deep .p-card .p-card-content {
+  padding: 0;
+}

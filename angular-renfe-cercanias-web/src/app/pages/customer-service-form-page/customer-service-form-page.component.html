@@ -1,7 +1,73 @@
 <section id="customer-service-form-page">
     <div id="header" class="bg-white py-6">
-        <p id="route-history" class="ml-4 text-lg"><a class="page-link" routerLink="/nucleos">Málaga</a> / <a class="page-link" routerLink="/nucleos/atencion-cliente"> Atención al Cliente</a> /
+        <p id="route-history" class="ml-4 text-lg"><a class="page-link" routerLink="/nucleos">Málaga</a> / <a
+                class="page-link" routerLink="/nucleos/atencion-cliente"> Atención al Cliente</a> /
             Contactar con Cercanías</p>
         <h1 id="page-title" class="text-3xl text-center m-0">Formulario</h1>
+    </div>
+
+    <div id="content" class="py-4">
+        <div class="grid">
+            <div class="col-offset-1 col-10">
+                <p-card header="Contactar con Cercanias"
+                    subheader="Utiliza este formulario para comunicar a Renfe cualquier duda o sugerencia que consideres.">
+                    <ng-template pTemplate="content">
+                        <form [formGroup]="customerServiceForm" id="customer-service-btn" class="grid">
+                            <div class="col-4">
+                                <span class="p-float-label">
+                                    <input pInputText type="text" id="first_name" name="first_name"
+                                        formControlName="firstNameControl" pKeyFilter="alpha">
+                                    <label for="first_name">Nombre (*)</label>
+                                </span>
+                            </div>
+                            <div class="col-4">
+                                <span class="p-float-label">
+                                    <input pInputText type="text" id="first_surname" name="first_surname"
+                                        formControlName="firstSurnameControl" pKeyFilter="alpha">
+                                    <label for="first_surname"> Primer Apellido (*) </label>
+                                </span>
+                            </div>
+                            <div class="col-4">
+                                <span class="p-float-label">
+                                    <input pInputText type="text" id="second_surname" name="second_surname"
+                                        formControlName="secondSurnameControl" pKeyFilter="alpha">
+                                    <label for="second_surname">Segundo Apellido</label>
+                                </span>
+                            </div>
+                            <div class="col-8">
+                                <span class="p-float-label">
+                                    <input pInputText type="email" id="email" name="email"
+                                        formControlName="emailControl" pKeyFilter="email">
+                                    <label for="email">Correo electrónico (*)</label>
+                                </span>
+                            </div>
+                            <div class="col-4">
+                                <span class="p-float-label">
+                                    <input pInputText type="tel" id="phone_number" name="phone_number"
+                                        formControlName="phoneNumberControl" pKeyFilter="pnum" maxlength="9">
+                                    <label for="phone_number">Teléfono</label>
+                                </span>
+                            </div>
+                            <div class="col-12">
+                                <span class="p-float-label">
+                                    <textarea pInputTextarea id="comment" name="comment" rows="8" [autoResize]="true"
+                                        formControlName="commentControl"></textarea>
+                                    <label for="comment">Comentarios (**)</label>
+                                </span>
+                            </div>
+                            <div class="col-12 flex justify-content-center">
+                                <button pButton pRipple id="send-form-btn" type="submit" label="Enviar"
+                                    class="p-button-raised" [disabled]="!customerServiceForm.valid"></button>
+                            </div>
+                        </form>
+                    </ng-template>
+                </p-card>
+            </div>
+            <div class="col-offset-1 col-10">
+                <p class="text-xl my-2">(*) Estos datos son obligatorios</p>
+                <p class="text-xl my-2">(**) No introduzca en el espacio destinado a comentarios datos personales o
+                    comprometidos (ej. números de tarjetas, claves, etc.)</p>
+            </div>
+        </div>
     </div>
 </section>
