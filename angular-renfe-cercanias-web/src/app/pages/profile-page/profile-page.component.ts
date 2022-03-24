@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-account-registration-page',
-  templateUrl: './account-registration-page.component.html',
-  styleUrls: ['./account-registration-page.component.scss']
+  selector: 'app-profile-page',
+  templateUrl: './profile-page.component.html',
+  styleUrls: ['./profile-page.component.scss']
 })
-export class AccountRegistrationPageComponent implements OnInit {
-  accountRegistrationForm: FormGroup = new FormGroup({
+export class ProfilePageComponent implements OnInit {
+  editProfileForm: FormGroup = new FormGroup({
     firstNameControl: new FormControl('', [Validators.required]),
     firstSurnameControl: new FormControl('', [Validators.required]),
     secondSurnameControl: new FormControl(''),
@@ -26,6 +26,21 @@ export class AccountRegistrationPageComponent implements OnInit {
     cardHolderNameControl: new FormControl(''),
     cardNumberControl: new FormControl('')
   });
+
+  stations: string[] = [
+    'Málaga',
+    'Bilbao',
+    'Cádiz',
+    'Madrid',
+    'Málaga',
+    'Murcia/Alicante',
+    'Santander',
+    'San Sebastián',
+    'Sevilla',
+    'Valencia',
+    'Zaragoza',
+    'Cercanias AM'
+  ]
 
   constructor() { }
 

@@ -20,6 +20,7 @@ import { CustomerServiceFormPageModule } from './pages/customer-service-form-pag
 import { TrainLinesPageModule } from './pages/train-lines-page/train-lines-page.module';
 import { AccountPageModule } from './pages/account-page/account-page.module';
 import { AccountRegistrationPageModule } from './pages/account-registration-page/account-registration-page.module';
+import { ProfilePageModule } from './pages/profile-page/profile-page.module';
 
 
 

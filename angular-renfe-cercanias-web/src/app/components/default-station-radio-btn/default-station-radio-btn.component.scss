@@ -1,0 +1,21 @@
+::ng-deep {
+  #default-station-radio-btn {
+    .p-card {
+      .p-card-body {
+        padding: 0;
+      }
+    }
+
+    .p-radiobutton {
+      .p-radiobutton-box.p-highlight {
+        border-color: var(--color-primary);
+      }
+
+      .p-radiobutton-box {
+        .p-radiobutton-icon {
+          background-color: var(--color-primary);
+        }
+      }
+    }
+  }
+}

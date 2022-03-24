@@ -1,0 +1,17 @@
+<div id="default-station-radio-btn">
+  <p-card>
+    <ng-template pTemplate="content">
+      <div class="flex align-items-center justify-content-between px-4">
+        <div class="flex align-items-center">
+          <img
+            src="../../../assets/cercanias-logo.png"
+            alt="cercanias-logo"
+            width="30"
+          />
+          <p class="text-lg m-0 ml-2">{{ name }}</p>
+        </div>
+        <p-radioButton name="city" value="{{ name }}" [(ngModel)]="city"></p-radioButton>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

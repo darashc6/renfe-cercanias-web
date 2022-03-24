@@ -1,134 +1,263 @@
 <section id="account-registration-page">
-    <div id="content" class="py-4 px-6">
-        <h1 class="m-0 text-4xl">Registro</h1>
-        <p class="text-xl my-2">¡Registra y disfruta de todas las ventajas!</p>
-        <form id="account-registration-form" class="mt-4">
-            <p-card header="1. Datos Personales" [styleClass]="'my-4'">
-                <ng-template pTemplate="content">
-                    <div class="grid">
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="text" id="first_name" name="first_name">
-                                <label for="first_name">Nombre*</label>
-                            </span>
-                        </div>
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="text" id="first_surname" name="first_surname">
-                                <label for="first_surname">Primer Apellido*</label>
-                            </span>
-                        </div>
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="text" id="second_surname" name="second_surname">
-                                <label for="second_surname">Segundo Apellido</label>
-                            </span>
-                        </div>
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="tel" id="phone_number" name="phone_number">
-                                <label for="phone_number">Telefono Móvil*</label>
-                            </span>
-                        </div>
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="text" id="nationality" name="nationality">
-                                <label for="nationality">Nacionalidad*</label>
-                            </span>
-                        </div>
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="text" id="id_number" name="id_number">
-                                <label for="id_number">DNI*</label>
-                            </span>
-                        </div>
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="text" id="birth-date" name="birth-date">
-                                <label for="birth-date">Fecha de nacimiento*</label>
-                            </span>
-                        </div>
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="email" id="email" name="email">
-                                <label for="email">Email*</label>
-                            </span>
-                        </div>
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="password" id="password" name="password">
-                                <label for="password">Password*</label>
-                            </span>
-                        </div>
-                    </div>
-                </ng-template>
-            </p-card>
-
-            <p-card header="2. Dirección Postal" [styleClass]="'my-4'">
-                <ng-template pTemplate="content">
-                    <div class="grid">
-                        <div class="col-8">
-                            <span class="p-float-label">
-                                <input pInputText type="text" id="address_name" name="address_name">
-                                <label for="address_name">Nombre de la calle*</label>
-                            </span>
-                        </div>
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="number" id="address_number" name="address_number">
-                                <label for="address_number">Numero*</label>
-                            </span>
-                        </div>
-                        <div class="col-8">
-                            <span class="p-float-label">
-                                <input pInputText type="text" id="address_extras" name="address_extras">
-                                <label for="address_extras">Edificio, Piso, Portal, Bloque, Puerta, etc..</label>
-                            </span>
-                        </div>
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="text" id="province" name="province">
-                                <label for="province">Provincia*</label>
-                            </span>
-                        </div>
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="text" id="municipality" name="municipality">
-                                <label for="municipality">Localidad*</label>
-                            </span>
-                        </div>
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="number" maxlength="5" id="postal_code" name="postal_code">
-                                <label for="postal_code">Código Postal</label>
-                            </span>
-                        </div>
-                    </div>
-                </ng-template>
-            </p-card>
-
-            <p-card header="3. Vincular tarjeta '+Renfe' (Opcional)">
-                <ng-template pTemplate="content">
-                    <div class="grid">
-                        <div class="col-8">
-                            <span class="p-float-label">
-                                <input pInputText type="text" id="card_holder_name" name="card_holder_name">
-                                <label for="card_holder_name">Nombre titular*</label>
-                            </span>
-                        </div>
-                        <div class="col-4">
-                            <span class="p-float-label">
-                                <input pInputText type="number" maxlength="11" id="card_number" name="card_number">
-                                <label for="card_number">Numero*</label>
-                            </span>
-                        </div>
-                    </div>
-                </ng-template>
-            </p-card>
-
-            <div class="flex justify-content-center">
-                <button pButton pRipple type="submit" label="COMPLETAR REGISTRO" class="p-button-raised bg-color-primary mt-4"></button>
+  <div id="content" class="py-4 px-6">
+    <h1 class="m-0 text-4xl">Registro</h1>
+    <p class="text-xl my-2">¡Registra y disfruta de todas las ventajas!</p>
+    <form
+      id="account-registration-form"
+      class="mt-4"
+      [formGroup]="accountRegistrationForm"
+    >
+      <p-card header="1. Datos Personales" [styleClass]="'my-4'">
+        <ng-template pTemplate="content">
+          <div class="grid">
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  required
+                  pInputText
+                  type="text"
+                  id="first_name"
+                  name="first_name"
+                  formControlName="firstNameControl"
+                />
+                <label for="first_name">Nombre*</label>
+              </span>
             </div>
-        </form>
-    </div>
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  required
+                  pInputText
+                  type="text"
+                  id="first_surname"
+                  name="first_surname"
+                  formControlName="firstSurnameControl"
+                />
+                <label for="first_surname">Primer Apellido*</label>
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  type="text"
+                  id="second_surname"
+                  name="second_surname"
+                  formControlName="secondSurnameControl"
+                />
+                <label for="second_surname">Segundo Apellido</label>
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  required
+                  pInputText
+                  type="tel"
+                  id="phone_number"
+                  name="phone_number"
+                  formControlName="phoneNumberControl"
+                />
+                <label for="phone_number">Telefono Móvil*</label>
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  required
+                  pInputText
+                  type="text"
+                  id="nationality"
+                  name="nationality"
+                  formControlName="nationalityControl"
+                />
+                <label for="nationality">Nacionalidad*</label>
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  required
+                  pInputText
+                  type="text"
+                  id="id_number"
+                  name="id_number"
+                  formControlName="idNumberControl"
+                />
+                <label for="id_number">DNI*</label>
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  required
+                  pInputText
+                  type="text"
+                  id="birth-date"
+                  name="birth-date"
+                  formControlName="birthDateControl"
+                />
+                <label for="birth-date">Fecha de nacimiento*</label>
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  required
+                  pInputText
+                  type="email"
+                  id="email"
+                  name="email"
+                  formControlName="emailControl"
+                />
+                <label for="email">Email*</label>
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  required
+                  pInputText
+                  type="password"
+                  id="password"
+                  name="password"
+                  formControlName="passwordControl"
+                />
+                <label for="password">Password*</label>
+              </span>
+            </div>
+          </div>
+        </ng-template>
+      </p-card>
+
+      <p-card header="2. Dirección Postal" [styleClass]="'my-4'">
+        <ng-template pTemplate="content">
+          <div class="grid">
+            <div class="col-8">
+              <span class="p-float-label">
+                <input
+                  required
+                  pInputText
+                  type="text"
+                  id="address_name"
+                  name="address_name"
+                  formControlName="addressNameControl"
+                />
+                <label for="address_name">Nombre de la calle*</label>
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  type="number"
+                  id="address_number"
+                  name="address_number"
+                  formControlName="addressNumberControl"
+                />
+                <label for="address_number">Numero*</label>
+              </span>
+            </div>
+            <div class="col-8">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  type="text"
+                  id="address_extras"
+                  name="address_extras"
+                  formControlName="addressExtrasControl"
+                />
+                <label for="address_extras"
+                  >Edificio, Piso, Portal, Bloque, Puerta, etc..</label
+                >
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  required
+                  type="text"
+                  id="province"
+                  name="province"
+                  formControlName="provinceControl"
+                />
+                <label for="province">Provincia*</label>
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  required
+                  type="text"
+                  id="municipality"
+                  name="municipality"
+                  formControlName="municipalityControl"
+                />
+                <label for="municipality">Localidad*</label>
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  required
+                  type="number"
+                  maxlength="5"
+                  id="postal_code"
+                  name="postal_code"
+                  formControlName="postalCodeControl"
+                />
+                <label for="postal_code">Código Postal*</label>
+              </span>
+            </div>
+          </div>
+        </ng-template>
+      </p-card>
+
+      <p-card header="3. Vincular tarjeta '+Renfe' (Opcional)">
+        <ng-template pTemplate="content">
+          <div class="grid">
+            <div class="col-8">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  type="text"
+                  id="card_holder_name"
+                  name="card_holder_name"
+                  formControlName="cardHolderNameControl"
+                />
+                <label for="card_holder_name">Nombre titular</label>
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  type="number"
+                  maxlength="11"
+                  id="card_number"
+                  name="card_number"
+                  formControlName="cardNumberControl"
+                />
+                <label for="card_number">Numero</label>
+              </span>
+            </div>
+          </div>
+        </ng-template>
+      </p-card>
+
+      <div class="flex justify-content-center">
+        <button
+          pButton
+          pRipple
+          type="submit"
+          label="COMPLETAR REGISTRO"
+          class="p-button-raised bg-color-primary mt-4"
+          [disabled]="!accountRegistrationForm.valid"
+        ></button>
+      </div>
+    </form>
+  </div>
 </section>

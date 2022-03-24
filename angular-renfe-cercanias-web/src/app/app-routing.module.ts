@@ -8,6 +8,7 @@ import { CustomerServicePageComponent } from './pages/customer-service-page/cust
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NewsInfoPageComponent } from './pages/news-info-page/news-info-page.component';
 import { NewsPageComponent } from './pages/news-page/news-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { StationInfoPageComponent } from './pages/station-info-page/station-info-page.component';
 import { TrainFareDetailsPageComponent } from './pages/train-fare-details-page/train-fare-details-page.component';
 import { TrainFaresPageComponent } from './pages/train-fares-page/train-fares-page.component';
@@ -85,8 +86,12 @@ const routes: Routes = [
             component: CustomerServiceFormPageComponent
           }
         ]
-      }
+      },
     ]
+  },
+  {
+    path: 'perfil',
+    component: ProfilePageComponent
   }
 ]
 
