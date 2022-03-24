@@ -1,0 +1,26 @@
+#profile-page {
+  min-height: 75.5vh;
+}
+
+#profile-page #content #edit-profile-form input {
+  width: 100%;
+}
+
+::ng-deep #edit-profile .p-inputtext:enabled:focus {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary), inset 0 0 0 1px var(--color-primary), inset 0 0 0 1px var(--color-primary), inset 0 0 0 1px var(--color-primary);
+}
+
+::ng-deep #edit-profile .p-float-label input:focus ~ label,
+::ng-deep #edit-profile .p-float-label textarea:focus ~ label {
+  color: black;
+}
+
+::ng-deep #user-details .p-card {
+  background-color: var(--color-primary);
+}
+
+::ng-deep #user-details .p-divider-solid.p-divider-horizontal:before {
+  border-color: white;
+  border-width: 2px;
+}

@@ -14,6 +14,10 @@ import baselineShoppingCart from "@iconify/icons-ic/baseline-shopping-cart";
 import roundDiscount from "@iconify/icons-ic/round-discount";
 import outlineSmartphone from "@iconify/icons-ic/outline-smartphone";
 import roundMore from "@iconify/icons-ic/round-more";
+import cardAccountDetails from "@iconify/icons-mdi/card-account-details";
+import trainVariant from "@iconify/icons-mdi/train-variant";
+import baselineAccountBox from "@iconify/icons-ic/baseline-account-box";
+import trainTicket from "@iconify/icons-carbon/train-ticket";
 
 export const appIcons = {
     'customer-service': headsetIcon,
@@ -31,5 +35,9 @@ export const appIcons = {
     'shopping-cart': baselineShoppingCart,
     'discount': roundDiscount,
     'smartphone': outlineSmartphone,
-    'more': roundMore
+    'more': roundMore,
+    'edit-profile': baselineAccountBox,
+    'user-tickets': trainTicket,
+    'recharge-card': cardAccountDetails,
+    'default-station': trainVariant
 }

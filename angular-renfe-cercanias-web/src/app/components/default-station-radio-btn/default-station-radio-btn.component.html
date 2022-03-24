@@ -1,4 +1,4 @@
-<div id="default-station-radio-btn">
+<div id="default-station-radio-btn" class="cursor-pointer">
   <p-card>
     <ng-template pTemplate="content">
       <div class="flex align-items-center justify-content-between px-4">
@@ -8,9 +8,9 @@
             alt="cercanias-logo"
             width="30"
           />
-          <p class="text-lg m-0 ml-2">{{ name }}</p>
+          <p class="text-sm m-0 ml-2">{{ name }}</p>
         </div>
-        <p-radioButton name="city" value="{{ name }}" [(ngModel)]="city"></p-radioButton>
+        <p-radioButton name="{{ groupName }}" value="{{ name }}" [(ngModel)]="selectedStation"></p-radioButton>
       </div>
     </ng-template>
   </p-card>

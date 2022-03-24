@@ -1,11 +1,41 @@
 #profile-page {
-    min-height: 75.5vh;
+  min-height: 75.5vh;
 
-    #content {
-        #edit-profile-form {
-            input {
-                width: 100%;
-            }
-        }
+  #content {
+    #edit-profile-form {
+      input {
+        width: 100%;
+      }
     }
+  }
+}
+
+::ng-deep {
+  #edit-profile {
+    .p-inputtext:enabled:focus {
+      border-color: var(--color-primary);
+      box-shadow: inset 0 0 0 1px var(--color-primary),
+        inset 0 0 0 1px var(--color-primary),
+        inset 0 0 0 1px var(--color-primary),
+        inset 0 0 0 1px var(--color-primary);
+    }
+
+    .p-float-label {
+      input:focus ~ label,
+      textarea:focus ~ label {
+        color: black;
+      }
+    }
+  }
+
+  #user-details {
+    .p-card {
+      background-color: var(--color-primary);
+    }
+
+    .p-divider-solid.p-divider-horizontal:before {
+        border-color: white;
+        border-width: 2px;
+    }
+  }
 }

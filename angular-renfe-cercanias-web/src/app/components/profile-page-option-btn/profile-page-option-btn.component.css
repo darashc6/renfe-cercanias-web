@@ -1,0 +1,13 @@
+.profile-page-option-btn ic-icon {
+  color: var(--color-primary);
+}
+
+.profile-page-option-btn :hover {
+  background-color: var(--color-primary);
+  border-radius: var(--border-radius);
+}
+
+.profile-page-option-btn :hover p,
+.profile-page-option-btn :hover ic-icon {
+  color: white;
+}

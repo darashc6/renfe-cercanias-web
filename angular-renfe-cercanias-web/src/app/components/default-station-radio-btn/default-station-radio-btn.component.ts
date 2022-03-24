@@ -7,6 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DefaultStationRadioBtnComponent implements OnInit {
   @Input() name: string = '';
+  @Input() groupName: string = '';
+  @Input() selectedStation: string = '';
   city: string = '';
 
   constructor() { }

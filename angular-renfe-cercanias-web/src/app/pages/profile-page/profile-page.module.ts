@@ -13,6 +13,7 @@ import { IconModule } from '@visurel/iconify-angular';
 import { ProfilePageComponent } from './profile-page.component';
 import { UserTicketCardComponent } from 'src/app/components/user-ticket-card/user-ticket-card.component';
 import { DefaultStationRadioBtnComponent } from 'src/app/components/default-station-radio-btn/default-station-radio-btn.component';
+import { ProfilePageOptionBtnComponent } from 'src/app/components/profile-page-option-btn/profile-page-option-btn.component';
 
 
 
@@ -20,7 +21,8 @@ import { DefaultStationRadioBtnComponent } from 'src/app/components/default-stat
   declarations: [
     ProfilePageComponent,
     UserTicketCardComponent,
-    DefaultStationRadioBtnComponent
+    DefaultStationRadioBtnComponent,
+    ProfilePageOptionBtnComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,13 @@
+#user-ticket-card {
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+#user-ticket-card .download-btn {
+  background-color: white;
+  border-radius: 100%;
+  padding: 12px;
+}
+
+::ng-deep #user-ticket-card .p-divider.p-divider-horizontal:before {
+  border-color: white;
+}

@@ -28,23 +28,21 @@ export class ProfilePageComponent implements OnInit {
   });
 
   stations: string[] = [
-    'Málaga',
     'Bilbao',
     'Cádiz',
-    'Madrid',
     'Málaga',
-    'Murcia/Alicante',
     'Santander',
     'San Sebastián',
-    'Sevilla',
-    'Valencia',
     'Zaragoza',
-    'Cercanias AM'
   ]
+  selectedStation: string = 'Málaga'
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  selectDefaultStation(stationSelected: string) {
+    this.selectedStation = stationSelected;
+  }
 }

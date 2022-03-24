@@ -1,0 +1,15 @@
+.profile-page-option-btn {
+  ic-icon {
+    color: var(--color-primary);
+  }
+
+  :hover {
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius);
+
+    p,
+    ic-icon {
+      color: white;
+    }
+  }
+}
