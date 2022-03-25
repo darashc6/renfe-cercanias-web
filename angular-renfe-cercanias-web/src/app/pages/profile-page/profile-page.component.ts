@@ -37,6 +37,10 @@ export class ProfilePageComponent implements OnInit {
   ]
   selectedStation: string = 'Málaga'
 
+  selectedFare: string = '';
+
+  selectedOption: string = 'edit-profile'
+
   constructor() { }
 
   ngOnInit(): void {
@@ -44,5 +48,9 @@ export class ProfilePageComponent implements OnInit {
 
   selectDefaultStation(stationSelected: string) {
     this.selectedStation = stationSelected;
+  }
+
+  selectOption(optionSelected: string) {
+    this.selectedOption = optionSelected;
   }
 }

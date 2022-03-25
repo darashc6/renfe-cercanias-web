@@ -26,9 +26,9 @@ export class HomePageComponent implements OnInit {
 
   stations: any[] = [
     {
-      name: 'Málaga',
-      description: 'Un privilegiado enclave natural.',
-      imgName: 'malaga'
+      name: 'Bilbao',
+      description: 'Te acercamos a la oferta cultural bilbaína, sin agobios, sin atascos.',
+      imgName: 'bilbao'
     },
     {
       name: 'Cádiz',
@@ -36,40 +36,25 @@ export class HomePageComponent implements OnInit {
       imgName: 'cadiz'
     },
     {
-      name: 'Sevilla',
-      description: 'Descubre Sevilla y su provincia en Cercanías.',
-      imgName: 'sevilla'
-    },
-    {
       name: 'Málaga',
       description: 'Un privilegiado enclave natural.',
       imgName: 'malaga'
     },
     {
-      name: 'Cádiz',
-      description: 'Conoce la arquitectura de Cádiz.',
-      imgName: 'cadiz'
+      name: 'Santander',
+      description: 'Recorre el mejor tramo de Calzada Romana conocida en Cantabria.',
+      imgName: 'santander'
     },
     {
-      name: 'Sevilla',
-      description: 'Descubre Sevilla y su provincia en Cercanias',
-      imgName: 'sevilla'
+      name: 'San Sebastián',
+      description: 'Vive la fiestas patronales, siempre hay un tren de Cercanías para llevarte.',
+      imgName: 'san-sebastian'
     },
     {
-      name: 'Málaga',
-      description: 'Un privilegiado enclave natural.',
-      imgName: 'malaga'
-    },
-    {
-      name: 'Cádiz',
-      description: 'Conoce la arquitectura de Cádiz.',
-      imgName: 'cadiz'
-    },
-    {
-      name: 'Sevilla',
-      description: 'Descubre Sevilla y su provincia en Cercanías',
-      imgName: 'sevilla'
-    },
+      name: 'Zaragoza',
+      description: 'Descubre Zaragoza y su provincia en Cercanías.',
+      imgName: 'zaragoza'
+    }
   ]
 
   newAppInfo: any[] = [

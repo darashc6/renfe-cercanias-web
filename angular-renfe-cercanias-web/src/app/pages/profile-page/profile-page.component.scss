@@ -2,7 +2,7 @@
   min-height: 75.5vh;
 
   #content {
-    #edit-profile-form {
+    #edit-profile-form, #recharge-card {
       input {
         width: 100%;
       }
@@ -11,7 +11,7 @@
 }
 
 ::ng-deep {
-  #edit-profile {
+  #edit-profile, #recharge-card {
     .p-inputtext:enabled:focus {
       border-color: var(--color-primary);
       box-shadow: inset 0 0 0 1px var(--color-primary),
@@ -36,6 +36,14 @@
     .p-divider-solid.p-divider-horizontal:before {
         border-color: white;
         border-width: 2px;
+    }
+  }
+
+  #recharge-card {
+    .p-card {
+      .p-card-content {
+        padding: 0;
+      }
     }
   }
 }

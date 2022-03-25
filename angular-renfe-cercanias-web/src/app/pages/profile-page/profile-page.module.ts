@@ -14,7 +14,8 @@ import { ProfilePageComponent } from './profile-page.component';
 import { UserTicketCardComponent } from 'src/app/components/user-ticket-card/user-ticket-card.component';
 import { DefaultStationRadioBtnComponent } from 'src/app/components/default-station-radio-btn/default-station-radio-btn.component';
 import { ProfilePageOptionBtnComponent } from 'src/app/components/profile-page-option-btn/profile-page-option-btn.component';
-
+import { TicketFareInfoCardComponent } from 'src/app/components/ticket-fare-info-card/ticket-fare-info-card.component';
+import { PaymentMethodBtnComponent } from 'src/app/components/payment-method-btn/payment-method-btn.component';
 
 
 @NgModule({
@@ -22,7 +23,9 @@ import { ProfilePageOptionBtnComponent } from 'src/app/components/profile-page-o
     ProfilePageComponent,
     UserTicketCardComponent,
     DefaultStationRadioBtnComponent,
-    ProfilePageOptionBtnComponent
+    ProfilePageOptionBtnComponent,
+    TicketFareInfoCardComponent,
+    PaymentMethodBtnComponent
   ],
   imports: [
     CommonModule,

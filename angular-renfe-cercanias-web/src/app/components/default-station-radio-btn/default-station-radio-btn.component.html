@@ -10,7 +10,11 @@
           />
           <p class="text-sm m-0 ml-2">{{ name }}</p>
         </div>
-        <p-radioButton name="{{ groupName }}" value="{{ name }}" [(ngModel)]="selectedStation"></p-radioButton>
+        <p-radioButton
+          name="{{ groupName }}"
+          value="{{ name }}"
+          [(ngModel)]="selectedStation"
+        ></p-radioButton>
       </div>
     </ng-template>
   </p-card>

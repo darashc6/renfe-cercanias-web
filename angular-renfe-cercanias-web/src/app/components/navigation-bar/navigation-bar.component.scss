@@ -16,6 +16,14 @@
     justify-content: center;
   }
 
+  #station-list::after {
+    content: "\02EC";
+    color: white;
+    font-size: 2rem;
+    margin-left: 6px;
+    margin-top: -25px;
+  }
+
   li {
     .navbar-item {
       position: relative;

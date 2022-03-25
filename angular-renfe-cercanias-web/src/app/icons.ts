@@ -18,6 +18,10 @@ import cardAccountDetails from "@iconify/icons-mdi/card-account-details";
 import trainVariant from "@iconify/icons-mdi/train-variant";
 import baselineAccountBox from "@iconify/icons-ic/baseline-account-box";
 import trainTicket from "@iconify/icons-carbon/train-ticket";
+import visaIcon from "@iconify/icons-logos/visa";
+import mastercardIcon from "@iconify/icons-logos/mastercard";
+import googlePayIcon from "@iconify/icons-logos/google-pay-icon";
+import paypalIcon from "@iconify/icons-logos/paypal";
 
 export const appIcons = {
     'customer-service': headsetIcon,
@@ -39,5 +43,9 @@ export const appIcons = {
     'edit-profile': baselineAccountBox,
     'user-tickets': trainTicket,
     'recharge-card': cardAccountDetails,
-    'default-station': trainVariant
+    'default-station': trainVariant,
+    'visa': visaIcon,
+    'mastercard': mastercardIcon,
+    'google-pay': googlePayIcon,
+    'paypal': paypalIcon
 }

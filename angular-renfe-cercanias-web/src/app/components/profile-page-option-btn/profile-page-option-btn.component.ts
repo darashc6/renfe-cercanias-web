@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProfilePageOptionBtnComponent implements OnInit {
   @Input() icon: string = '';
   @Input() btnName: string = '';
+  @Input() isSelected: boolean = false;
 
   constructor() { }
 
