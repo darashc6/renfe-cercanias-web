@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Announcement } from 'src/app/models/Announcement';
 import { Station } from 'src/app/models/Station';
+import { AnnouncementsService } from 'src/app/services/announcements/announcements.service';
 
 @Component({
   selector: 'app-announcements-page',
@@ -10,41 +11,57 @@ import { Station } from 'src/app/models/Station';
 export class AnnouncementsPageComponent implements OnInit {
   stations: any[] = [
     {
-      id: 'cercanias-malaga',
-      name: 'Málaga'
+      id: 'all',
+      name: 'Todas las estaciones'
     },
     {
-      id: 'cercanias-sevilla',
-      name: 'Sevilla'
+      id: 'cercanias-bilbao',
+      name: 'Bilbao'
     },
     {
       id: 'cercanias-cadiz',
       name: 'Cádiz'
     },
-  ]
-  selectedStation?: Station;
-
-  announcements: Announcement[] = [
     {
-      title: 'General - Málaga',
-      date: '27/01/2022',
-      message: 'Renfe Informa: Incremento de servicios a partir del 01/02/2022. Consulte horarios en la APP, Web o Cartelería de estaciones.'
+      id: 'cercanias-malaga',
+      name: 'Málaga'
     },
     {
-      title: 'Torremolinos',
-      date: '10/01/2022',
-      message: 'Con motivo de unas obras de mejora y adecuación, Torremolios permanecerá temporalmente cerrada a partir del día 10 de enero de 2022.'
+      id: 'cercanias-santander',
+      name: 'Santander'
     },
     {
-      title: 'General - Málaga',
-      date: '01/12/2021',
-      message: 'A causa de un robo y posterior incendio en la estación de Benaládena, han quedado afectados  los servicios de Cercanías de la línea C-1 del Núcleo de Málaga.'
+      id: 'cercanias-san-sebastian',
+      name: 'San Sebástian'
+    },
+    {
+      id: 'cercanias-zaragoza',
+      name: 'Zaragoza'
     },
   ]
+  selectedStation?: any;
+  allAnouncements: Announcement[] = [];
+  selectedAnnouncements: Announcement[] = [];
 
-  constructor() { }
+
+  constructor(private announcementsService: AnnouncementsService) { }
 
   ngOnInit(): void {
+    this.getAnnouncements();
   }
 
+  onDropdownValueChanged() {
+    if (this.selectedStation.id === 'all') {
+      this.selectedAnnouncements = this.allAnouncements;
+    } else {
+      this.selectedAnnouncements = this.allAnouncements.filter(announcement => announcement.stationId === this.selectedStation.id);
+    }
+  }
+
+  getAnnouncements() {
+    this.announcementsService.getAnnouncements().subscribe(announcements => {
+      this.allAnouncements = announcements;
+      this.selectedAnnouncements = announcements;
+    })
+  }
 }

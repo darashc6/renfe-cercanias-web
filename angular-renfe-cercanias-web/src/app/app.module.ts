@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from "@angular/common/http";
 import { CarouselModule } from "primeng/carousel";
 import { IconModule } from '@visurel/iconify-angular';
 import { ButtonModule } from "primeng/button";
@@ -49,6 +50,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     IconModule,
     AppRoutingModule,
     HomePageModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
