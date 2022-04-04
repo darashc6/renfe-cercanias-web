@@ -81,3 +81,24 @@ body {
 .p-card-subtitle {
   color: black !important;
 }
+
+@keyframes custom-progress-spinner-color {
+  0%, 40%, 66%, 80%, 90%, 100% {
+    stroke: var(--color-primary);
+  }
+}
+
+@keyframes custom-progress-spinner-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}

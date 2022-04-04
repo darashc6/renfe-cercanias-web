@@ -8,15 +8,22 @@ import { NewsService } from 'src/app/services/news/news.service';
   styleUrls: ['./news-page.component.scss']
 })
 export class NewsPageComponent implements OnInit {
-  news: NewsInfo[] = [];
+  news?: NewsInfo[];
+  isLoading: boolean = true;
 
   constructor(private newsService: NewsService) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
+
     this.getNews();
   }
 
   getNews() {
-    this.newsService.getNews().subscribe(data => this.news = data);
+    this.newsService.getNews().subscribe(news => {
+      this.news = news;
+    });
   }
 }

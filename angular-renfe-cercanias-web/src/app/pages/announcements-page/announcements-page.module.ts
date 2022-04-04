@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from "primeng/dropdown";
 import { CardModule } from 'primeng/card';
+import { LoadingSpinnerModule } from 'src/app/shared/loading-spinner/loading-spinner.module';
 
 
 import { AnnouncementsPageComponent } from './announcements-page.component';
@@ -16,7 +17,8 @@ import { AnnouncementsPageComponent } from './announcements-page.component';
     CommonModule,
     DropdownModule,
     FormsModule,
-    CardModule
+    CardModule,
+    LoadingSpinnerModule
   ]
 })
 export class AnnouncementsPageModule { }

@@ -22,20 +22,28 @@
             </p-dropdown>
         </div>
 
-        <ng-template [ngIf]="selectedAnnouncements.length > 0">
-            <div id="announcements-cards" class="grid py-4 px-2">
-                <div class="col-12 sm:col-6 md:col-4 px-4" *ngFor="let announcement of selectedAnnouncements">
-                    <p-card header="{{ announcement.title }}" subheader="{{ announcement.date | date:'dd/MM/yyyy'}}">
-                        <p class="m-0 h-9rem">{{ announcement.message }}</p>
-                    </p-card>
-                </div>
+        <ng-template [ngIf]="isLoading || !selectedAnnouncements" [ngIfElse]="loadAnnouncements">
+            <div class="flex align-items-center justify-content-center my-4">
+                <app-loading-spinner></app-loading-spinner>
             </div>
         </ng-template>
 
-        <ng-template [ngIf]="selectedAnnouncements.length == 0">
-            <div id="no-announcements-message">
-                <p class="my-4 text-2xl font-bold text-center">Sin avisos</p>
-            </div>
+        <ng-template #loadAnnouncements>
+            <ng-template [ngIf]="selectedAnnouncements!.length > 0" [ngIfElse]="noAnnouncements">
+                <div id="announcements-cards" class="grid py-4 px-2">
+                    <div class="col-12 sm:col-6 md:col-4 px-4" *ngFor="let announcement of selectedAnnouncements">
+                        <p-card header="{{ announcement.title }}" subheader="{{ announcement.date | date:'dd/MM/yyyy'}}">
+                            <p class="m-0 h-9rem">{{ announcement.message }}</p>
+                        </p-card>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template #noAnnouncements>
+                <div id="no-announcements-message">
+                    <p class="my-4 text-2xl font-bold text-center">Sin avisos</p>
+                </div>
+            </ng-template>
         </ng-template>
     </div>
 </section>

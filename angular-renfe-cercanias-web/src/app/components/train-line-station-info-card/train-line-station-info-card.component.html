@@ -2,10 +2,10 @@
     <p-card header="{{ station.name }}">
         <ng-template pTemplate="content">
             <div id="caption-icons" class="pt-2 flex align-items-center">
-                <ic-icon icon="accesible" *ngIf="station.additionalInfo.includes('accesible')"></ic-icon>
-                <ic-icon icon="bus-stop" *ngIf="station.additionalInfo.includes('bus-stop')"></ic-icon>
+                <ic-icon icon="accesible" *ngIf="station.additionalInfo?.includes('accesible')"></ic-icon>
+                <ic-icon icon="bus-stop" *ngIf="station.additionalInfo?.includes('bus-stop')"></ic-icon>
                 <img src="../../../assets/Logotipo_de_Renfe_Operadora.svg" alt="renfe-logo" width="70" class="pb-1"
-                    *ngIf="station.additionalInfo.includes('renfe-ave')">
+                    *ngIf="station.additionalInfo?.includes('renfe-ave')">
             </div>
         </ng-template>
     </p-card>

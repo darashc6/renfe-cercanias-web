@@ -4,22 +4,30 @@
   </div>
 
   <div class="content py-4">
-    <div class="grid">
-      <div class="col-4 py-4 px-7" *ngFor="let newsInfo of news">
-        <p-card subheader="{{ newsInfo.date }}">
-          <ng-template pTemplate="header">
-            <img src="../../../assets/news-header-img-example.png" alt="Card Image" class="border-round-top" />
-          </ng-template>
-          <p class="h-8rem m-0 text-xl font-bold">
-            {{ newsInfo.title }}
-          </p>
-          <ng-template pTemplate="footer">
-            <div class="flex justify-content-center mb-2">
-              <a class="news-info-link" [routerLink]="['/noticias', newsInfo.id]">Ver más</a>
-            </div>
-          </ng-template>
-        </p-card>
+    <ng-template [ngIf]="isLoading || !news" [ngIfElse]="showNews">
+      <div class="flex align-items-center justify-content-center">
+        <app-loading-spinner></app-loading-spinner>
       </div>
-    </div>
+    </ng-template>
+
+    <ng-template #showNews>
+      <div class="grid">
+        <div class="col-12 sm:col-6 md:col-4 lg:col-3 py-4 px-3" *ngFor="let newsInfo of news">
+          <p-card subheader="{{ newsInfo.date | date: 'dd/MM/yyyy' }}" class="news-info-card">
+            <ng-template pTemplate="header">
+              <img src="{{ newsInfo.headerImg }}" alt="Card Image" class="border-round-top" height="220" />
+            </ng-template>
+            <p class="h-8rem m-0 text-xl font-bold">
+              {{ newsInfo.title }}
+            </p>
+            <ng-template pTemplate="footer">
+              <div class="flex justify-content-center mb-2">
+                <a class="news-info-link" [routerLink]="['/noticias', newsInfo._id]">Ver más</a>
+              </div>
+            </ng-template>
+          </p-card>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </section>

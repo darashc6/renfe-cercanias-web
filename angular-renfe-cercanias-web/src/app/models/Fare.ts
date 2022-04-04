@@ -1,13 +1,16 @@
 export interface Fare {
-    id: string;
-    title: string;
-    subtitle: string;
-    content: string[];
-    type: string;
+    fareId: string;
+    fareDescription: FareDescription;
     prices?: FarePrices[];
 }
 
+export interface FareDescription {
+    title: string;
+    subtitle: string;
+    content: string[];
+}
+
 export interface FarePrices {
-    zone: string;
+    n_zones: number;
     price: number;
 }

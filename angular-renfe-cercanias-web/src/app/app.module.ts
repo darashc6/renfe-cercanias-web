@@ -53,6 +53,6 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

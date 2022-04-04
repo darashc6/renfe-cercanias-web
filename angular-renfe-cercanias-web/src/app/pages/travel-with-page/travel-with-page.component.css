@@ -1,0 +1,48 @@
+#travel-with-page {
+  min-height: 75.5vh;
+  /* TODO - Fix bug */
+}
+
+#travel-with-page #header {
+  position: relative;
+}
+
+#travel-with-page #header #route-history {
+  position: absolute;
+  top: 0;
+}
+
+#travel-with-page #header #home-page-link {
+  color: var(--color-primary);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#travel-with-page #content .accordion-tab {
+  padding: 8px;
+}
+
+#travel-with-page #content #bycicle-accordion-content-list li:not(:last-child),
+#travel-with-page #content #pets-accordion-content-list li:not(:last-child) {
+  padding-bottom: 15px;
+}
+
+#travel-with-page #content #more-info-links {
+  list-style-type: none;
+  padding: 0;
+}
+
+#travel-with-page #content #more-info-links li {
+  font-size: 1.25rem;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+#travel-with-page #content #more-info-links li a {
+  color: var(--color-primary);
+}
+
+::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
+  font-weight: bold;
+  font-size: 1.5rem;
+}

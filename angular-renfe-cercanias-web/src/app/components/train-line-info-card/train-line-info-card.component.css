@@ -1,16 +1,30 @@
 #train-line-info-card #train-line {
-  padding: 0.5rem 0.7rem;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
   font-weight: 500;
   border-radius: 4px;
 }
 
-#train-line-info-card .light-blue {
+#train-line-info-card .selected {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+}
+
+#train-line-info-card .c1 {
   background-color: #4285f4;
 }
 
-#train-line-info-card .darker-green {
+#train-line-info-card .c2 {
   background-color: #34a853;
+}
+
+#train-line-info-card .c3 {
+  background-color: #d7001e;
 }
 
 ::ng-deep .p-card .p-card-content {

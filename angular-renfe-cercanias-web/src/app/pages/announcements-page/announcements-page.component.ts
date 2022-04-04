@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Announcement } from 'src/app/models/Announcement';
-import { Station } from 'src/app/models/Station';
 import { AnnouncementsService } from 'src/app/services/announcements/announcements.service';
 
 @Component({
@@ -40,13 +39,19 @@ export class AnnouncementsPageComponent implements OnInit {
     },
   ]
   selectedStation?: any;
-  allAnouncements: Announcement[] = [];
-  selectedAnnouncements: Announcement[] = [];
+  allAnouncements?: Announcement[];
+  selectedAnnouncements?: Announcement[];
+
+  isLoading: boolean = true;
 
 
   constructor(private announcementsService: AnnouncementsService) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
+
     this.getAnnouncements();
   }
 
@@ -54,7 +59,7 @@ export class AnnouncementsPageComponent implements OnInit {
     if (this.selectedStation.id === 'all') {
       this.selectedAnnouncements = this.allAnouncements;
     } else {
-      this.selectedAnnouncements = this.allAnouncements.filter(announcement => announcement.stationId === this.selectedStation.id);
+      this.selectedAnnouncements = this.allAnouncements?.filter(announcement => announcement.stationId === this.selectedStation.id);
     }
   }
 

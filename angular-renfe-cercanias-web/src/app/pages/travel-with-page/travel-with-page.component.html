@@ -1,14 +1,14 @@
 <section id="travel-with-page">
   <div id="header" class="bg-white py-6">
     <p id="route-history" class="ml-4 text-lg">
-      <a id="home-page-link" routerLink="/nucleos">Málaga</a> / Viajar con
+      <a id="home-page-link" routerLink="/{{ railNetworkId }}">Málaga</a> / Viajar con
     </p>
     <h1 id="page-title" class="text-3xl text-center m-0">Viajar con</h1>
   </div>
 
   <div id="content" class="py-2">
     <div class="grid">
-      <div class="col-9">
+      <div class="col-12 sm:col-9">
         <p-accordion [styleClass]="'px-5'">
           <p-accordionTab header="Bicicletas" class="accordion-tab" [selected]="true">
             <ng-template pTemplate="content">
@@ -60,21 +60,21 @@
           </p-accordionTab>
         </p-accordion>
       </div>
-      <div class="col-3">
+      <div class="col-12 sm:col-3 px-5">
         <p class="text-xl font-bold">Te puede interesar</p>
         <ul id="more-info-links">
           <li>
-            <a routerLink="/nucleos/lineas">
+            <a routerLink="/{{ railNetworkId }}/lineas">
               Estaciones y líneas
             </a>
           </li>
           <li>
-            <a routerLink="/nucleos/tarifas">
+            <a routerLink="/{{ railNetworkId }}/tarifas">
               Tarifas
             </a>
           </li>
           <li>
-            <a routerLink="/nucleos/atencion-cliente">
+            <a routerLink="/{{ railNetworkId }}/atencion-cliente">
               Atencion al Cliente
             </a>
           </li>

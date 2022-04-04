@@ -1,17 +1,33 @@
 #train-line-info-card {
   #train-line {
-    padding: 0.5rem 0.7rem;
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     color: white;
     font-weight: 500;
     border-radius: 4px;
   }
 
-  .light-blue {
+  .selected {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+  }
+
+  .c1 {
     background-color: #4285f4;
   }
 
-  .darker-green {
+  .c2 {
     background-color: #34a853;
+  }
+
+  .c3 {
+    background-color: rgb(215, 0, 30);
   }
 }
 

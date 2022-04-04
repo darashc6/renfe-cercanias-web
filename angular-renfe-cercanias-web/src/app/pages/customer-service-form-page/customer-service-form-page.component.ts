@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { RailNetwork } from 'src/app/models/RailNetwork';
+import { RailNetworkService } from 'src/app/services/rail-network/rail-network.service';
 
 @Component({
   selector: 'app-customer-service-form-page',
@@ -7,6 +10,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./customer-service-form-page.component.scss']
 })
 export class CustomerServiceFormPageComponent implements OnInit {
+  railNetworkId: string = '';
+  railNetwork?: RailNetwork;
+
   petitionTypes: string[] = [
     'INFORMACIÓN',
     'SUGERENCIA',
@@ -22,9 +28,15 @@ export class CustomerServiceFormPageComponent implements OnInit {
     commentControl: new FormControl('', [Validators.required])
   })
 
-  constructor() { }
+  constructor(private railNetworkService: RailNetworkService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => this.railNetworkId = params['rail-network-id']);
+    this.getRailNetwork();
+  }
+
+  getRailNetwork() {
+    this.railNetworkService.getRailNetwork(this.railNetworkId).subscribe(railNetwork => this.railNetwork = railNetwork);
   }
 
 }

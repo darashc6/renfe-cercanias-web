@@ -1,9 +1,9 @@
 <div *ngIf="fare">
-    <p-card header="{{ fare.title }}">
-        <p class="m-0 h-4rem text-lg">{{ fare.subtitle }}</p>
+    <p-card header="{{ fare.fareDescription.title }}">
+        <p class="m-0 h-4rem text-lg">{{ fare.fareDescription.subtitle }}</p>
         <ng-template pTemplate="footer">
             <div class="flex justify-content-end">
-                <a [routerLink]="['/nucleos/tarifas', fare.id]" class="no-underline">
+                <a routerLink="/{{railNetworkId}}/tarifas/{{fare.fareId}}" class="no-underline">    
                     <button pButton label="Más detalles" icon="pi pi-eye" iconPos="right" class="p-button-text"
                         styleClass="p-button-sm"></button>
                 </a>

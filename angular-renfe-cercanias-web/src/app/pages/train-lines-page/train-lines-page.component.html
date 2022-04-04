@@ -1,7 +1,7 @@
 <section id="train-lines-page">
     <div id="header" class="bg-white py-6">
         <p id="route-history" class="ml-4 text-lg">
-            <a class="page-link" routerLink="/nucleos">Málaga</a> / Estaciones y líneas
+            <a class="page-link" routerLink="/{{ railNetworkId }}">{{ railNetworkName }}</a> / Estaciones y líneas
         </p>
         <h1 id="page-title" class="text-3xl text-center m-0">Estaciones y líneas</h1>
     </div>
@@ -29,12 +29,16 @@
             <div class="col-12 grid mt-3">
                 <div class="col-3">
                     <p class="text-xl mt-0 mb-2 font-bold">Lineas</p>
-                    <app-train-line-info-card *ngFor="let trainLine of trainLines" [trainLine]="trainLine">
-                    </app-train-line-info-card>
+                    <div class="cursor-pointer my-3" *ngFor="let trainLine of trainLines"
+                        (click)="selectTrainLine(trainLine.trainLineId)">
+                        <app-train-line-info-card [trainLine]="trainLine"
+                            [isSelected]="trainLine.trainLineId == trainLineSelected?.trainLineId">
+                        </app-train-line-info-card>
+                    </div>
                 </div>
                 <div class="col-7 col-offset-1">
-                    <p class="text-xl mt-0 mb-2 font-bold">Linea C2</p>
-                    <p-timeline [value]="stationsToShow">
+                    <p class="text-xl mt-0 mb-2 font-bold">Linea {{ trainLineSelected?.lineName }}</p>
+                    <p-timeline [value]="trainLineSelected!.stations">
                         <ng-template pTemplate="content" let-station>
                             <app-train-line-station-info-card [station]="station"></app-train-line-station-info-card>
                         </ng-template>

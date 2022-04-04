@@ -1,7 +1,7 @@
 <section id="train-fares-page">
     <div id="header" class="bg-white py-6">
         <p id="route-history" class="ml-4 text-lg">
-            <a id="home-page-link" routerLink="/nucleos">Málaga</a> / Tarifas
+            <a id="home-page-link" routerLink="/{{ railNetworkId }}">Málaga</a> / Tarifas
         </p>
         <h1 id="page-title" class="text-3xl text-center m-0">Tarifas</h1>
     </div>
@@ -12,7 +12,8 @@
                 <ng-template pTemplate="content">
                     <div class="grid">
                         <div class="col-4 px-4 py-2" *ngFor="let fare of regularFares">
-                            <app-train-fare-info-card [fare]="fare"></app-train-fare-info-card>
+                            <app-train-fare-info-card [railNetworkId]="railNetworkId" [fare]="fare">
+                            </app-train-fare-info-card>
                         </div>
                     </div>
                 </ng-template>
@@ -21,7 +22,8 @@
                 <ng-template pTemplate="content">
                     <div class="grid">
                         <div class="col-4 px-4 py-2" *ngFor="let fare of discountFares">
-                            <app-train-fare-info-card [fare]="fare"></app-train-fare-info-card>
+                            <app-train-fare-info-card [railNetworkId]="railNetworkId" [fare]="fare">
+                            </app-train-fare-info-card>
                         </div>
                     </div>
                 </ng-template>

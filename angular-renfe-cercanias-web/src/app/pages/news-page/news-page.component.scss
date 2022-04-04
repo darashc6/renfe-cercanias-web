@@ -1,11 +1,22 @@
 #news-section {
+
   .header {
     background-color: white;
   }
 
-  .news-info-link {
-    color: var(--color-primary);
-    font-weight: bold;
-    cursor: pointer;
+  .content {
+    min-height: 60.7vh;
+  }
+
+  .news-info-card {
+    img {
+      object-fit: cover;
+    }
+
+    .news-info-link {
+      color: var(--color-primary);
+      font-weight: bold;
+      cursor: pointer;
+    }
   }
 }

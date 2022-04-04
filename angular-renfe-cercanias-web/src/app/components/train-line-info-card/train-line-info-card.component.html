@@ -1,14 +1,17 @@
-<div class="py-2" *ngIf="trainLine">
+<div *ngIf="trainLine">
     <p-card id="train-line-info-card">
         <ng-template pTemplate="content">
-            <div class="flex align-items-center justify-content-around">
-                <div id="train-line" class="{{ trainLine.cssColor }}">
-                    <p class="m-0">{{ trainLine.line }}</p>
+            <div class="flex align-items-center justify-content-between">
+                <div class="flex align-items-center">
+                    <div id="train-line" class="{{ trainLine.lineName.toLowerCase() }}">
+                        <p class="m-0">{{ trainLine.lineName }}</p>
+                    </div>
+                    <div class="ml-5" id="stations">
+                        <p class="m-0 font-bold text-sm">{{ trainLine.originStation }}</p>
+                        <p class="m-0 font-bold text-sm">{{ trainLine.destinationStation }}</p>
+                    </div>
                 </div>
-                <div id="stations">
-                    <p class="m-0 font-bold">{{ trainLine.originStation }}</p>
-                    <p class="m-0 font-bold">{{ trainLine.destinationStation }}</p>
-                </div>
+                <div [ngClass]="{selected: isSelected}" class="{{ trainLine.lineName.toLowerCase() }}"></div>
             </div>
         </ng-template>
     </p-card>

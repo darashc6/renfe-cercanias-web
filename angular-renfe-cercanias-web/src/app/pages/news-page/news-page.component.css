@@ -1,0 +1,17 @@
+#news-section .header {
+  background-color: white;
+}
+
+#news-section .content {
+  min-height: 60.7vh;
+}
+
+#news-section .news-info-card img {
+  object-fit: cover;
+}
+
+#news-section .news-info-card .news-info-link {
+  color: var(--color-primary);
+  font-weight: bold;
+  cursor: pointer;
+}

@@ -11,6 +11,7 @@ import { NewsService } from 'src/app/services/news/news.service';
 export class NewsInfoPageComponent implements OnInit {
   id: string = '';
   newsInfo?: NewsInfo;
+  isLoading: boolean = true;
 
   constructor(private route: ActivatedRoute, private newsService: NewsService) {
   }
@@ -20,10 +21,11 @@ export class NewsInfoPageComponent implements OnInit {
       this.id = params['id']
     })
 
-    console.log(this.id);
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
 
     this.getNewsInfo();
-    console.log(this.newsInfo);
   }
 
   getNewsInfo() {

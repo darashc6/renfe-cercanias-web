@@ -21,7 +21,8 @@
       padding: 8px;
     }
 
-    #bycicle-accordion-content-list {
+    #bycicle-accordion-content-list,
+    #pets-accordion-content-list {
       li:not(:last-child) {
         padding-bottom: 15px;
       }

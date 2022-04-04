@@ -47,7 +47,11 @@ const routes: Routes = [
     component: AccountRegistrationPageComponent
   },
   {
-    path: 'nucleos',
+    path: 'perfil',
+    component: ProfilePageComponent
+  },
+  {
+    path: ':rail-network-id',
     children: [
       {
         path: '',
@@ -69,7 +73,7 @@ const routes: Routes = [
             component: TrainFaresPageComponent
           },
           {
-            path: ':id',
+            path: ':fare-id',
             component: TrainFareDetailsPageComponent
           }
         ]
@@ -89,10 +93,6 @@ const routes: Routes = [
       },
     ]
   },
-  {
-    path: 'perfil',
-    component: ProfilePageComponent
-  }
 ]
 
 @NgModule({

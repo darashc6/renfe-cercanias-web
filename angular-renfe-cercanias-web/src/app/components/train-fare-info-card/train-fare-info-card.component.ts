@@ -7,6 +7,7 @@ import { Fare } from 'src/app/models/Fare';
   styleUrls: ['./train-fare-info-card.component.scss']
 })
 export class TrainFareInfoCardComponent implements OnInit {
+  @Input() railNetworkId: string = '';
   @Input() fare?: Fare;
 
   constructor() { }

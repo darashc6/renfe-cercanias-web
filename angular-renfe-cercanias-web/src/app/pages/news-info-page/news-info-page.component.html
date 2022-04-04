@@ -1,15 +1,23 @@
 <section id="news-info-page" class="px-4 py-2">
-    <p class="text-lg"><a routerLink="/noticias" class="news-page-link">Noticias</a> / {{ newsInfo?.title }}</p>
+    <ng-template [ngIf]="isLoading || !newsInfo" [ngIfElse]="showNewsInfo">
+        <div class="flex align-items-center justify-content-center mt-6">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+    </ng-template>
 
-    <div id="news-header-img" class="flex justify-content-center py-4">
-        <img src="../../../assets/news-header-img-example.png" alt="news-header-img" srcset="" class="w-4">
-    </div>
+    <ng-template #showNewsInfo>
+        <p class="text-lg"><a routerLink="/noticias" class="news-page-link">Noticias</a> / {{ newsInfo?.title }}</p>
 
-    <p id="news-date" class="text-xl">{{ newsInfo?.date }}</p>
+        <div id="news-header-img" class="flex justify-content-center py-4">
+            <img src="{{ newsInfo?.headerImg }}" alt="news-header-img" srcset="" class="w-4">
+        </div>
 
-    <p id="news-title" class="text-4xl font-bold my-4">{{ newsInfo?.title }}</p>
+        <p id="news-date" class="text-xl">{{ newsInfo?.date | date: 'dd/MM/yyyy' }}</p>
 
-    <div id="news-content" *ngIf="newsInfo">
-        <p *ngFor="let content of newsInfo.content" class="text-2xl my-6">{{ content }}</p>
-    </div>
+        <p id="news-title" class="text-4xl font-bold my-4">{{ newsInfo?.title }}</p>
+
+        <div id="news-content">
+            <p *ngFor="let content of newsInfo?.content" class="text-2xl my-6">{{ content }}</p>
+        </div>
+    </ng-template>
 </section>

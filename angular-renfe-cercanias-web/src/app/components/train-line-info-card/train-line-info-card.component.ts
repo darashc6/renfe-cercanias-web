@@ -8,6 +8,7 @@ import { TrainLine } from 'src/app/models/TrainLine';
 })
 export class TrainLineInfoCardComponent implements OnInit {
   @Input() trainLine?: TrainLine;
+  @Input() isSelected: boolean = false;
 
   constructor() { }
 

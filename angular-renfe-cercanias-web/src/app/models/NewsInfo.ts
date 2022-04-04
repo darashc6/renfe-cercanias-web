@@ -1,6 +1,7 @@
 export interface NewsInfo {
-    id: string;
-    date: string;
+    _id: string;
+    headerImg: string;
     title: string;
     content: string[];
+    date: string;
 }

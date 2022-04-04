@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FareService } from './fare.service';
+import { RailNetworkService } from './rail-network.service';
 
-describe('FareService', () => {
-  let service: FareService;
+describe('RailNetworkService', () => {
+  let service: RailNetworkService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FareService);
+    service = TestBed.inject(RailNetworkService);
   });
 
   it('should be created', () => {
