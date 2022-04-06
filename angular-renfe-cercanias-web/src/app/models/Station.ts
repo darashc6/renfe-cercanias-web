@@ -3,5 +3,5 @@ export interface Station {
     zone: number;
     additionalInfo?: string[];
     travelTimeToNextStation?: number;
-    connectedLines?: string[];
+    connectedLines: string[];
 }

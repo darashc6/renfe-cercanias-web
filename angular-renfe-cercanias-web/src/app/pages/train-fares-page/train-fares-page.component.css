@@ -27,7 +27,7 @@
 
 ::ng-deep .p-tabview .p-tabview-nav-content li,
 ::ng-deep .p-tabview .p-tabview-nav-content li.p-highlight {
-  width: 50%;
+  width: 50% !important;
 }
 
 ::ng-deep .p-tabview .p-tabview-nav-content li .p-tabview-nav-link,

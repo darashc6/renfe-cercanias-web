@@ -38,7 +38,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     FooterComponent,
     NewAppInfoItemComponent,
     NavigationBarComponent,
-    HomePageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,76 +1,86 @@
-<section id="customer-service-form-page" *ngIf="railNetwork">
-    <div id="header" class="bg-white py-6">
-        <p id="route-history" class="ml-4 text-lg"><a class="page-link" routerLink="/{{ railNetworkId }}">{{ railNetwork.name }}</a> / <a
-                class="page-link" routerLink="/{{ railNetworkId }}/atencion-cliente"> Atención al Cliente</a> /
-            Contactar con Cercanías</p>
-        <h1 id="page-title" class="text-3xl text-center m-0">Formulario</h1>
-    </div>
+<section id="customer-service-form-page">
+    <ng-template [ngIf]="isLoading || !railNetwork" [ngIfElse]="loadContent">
+        <div class="flex align-items-center justify-content-center mt-6">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+    </ng-template>
 
-    <div id="content" class="py-4">
-        <div class="grid">
-            <div class="col-offset-1 col-10">
-                <p-card header="Contactar con Cercanias"
-                    subheader="Utiliza este formulario para comunicar a Renfe cualquier duda o sugerencia que consideres.">
-                    <ng-template pTemplate="content">
-                        <form [formGroup]="customerServiceForm" id="customer-service-form" class="grid">
-                            <div class="col-12">
-                                <p-dropdown [options]="petitionTypes" placeholder="Seleccione petición"></p-dropdown>
-                            </div>
-                            <div class="col-4">
-                                <span class="p-float-label">
-                                    <input pInputText type="text" id="first_name" name="first_name"
-                                        formControlName="firstNameControl" pKeyFilter="alpha">
-                                    <label for="first_name">Nombre (*)</label>
-                                </span>
-                            </div>
-                            <div class="col-4">
-                                <span class="p-float-label">
-                                    <input pInputText type="text" id="first_surname" name="first_surname"
-                                        formControlName="firstSurnameControl" pKeyFilter="alpha">
-                                    <label for="first_surname"> Primer Apellido (*) </label>
-                                </span>
-                            </div>
-                            <div class="col-4">
-                                <span class="p-float-label">
-                                    <input pInputText type="text" id="second_surname" name="second_surname"
-                                        formControlName="secondSurnameControl" pKeyFilter="alpha">
-                                    <label for="second_surname">Segundo Apellido</label>
-                                </span>
-                            </div>
-                            <div class="col-8">
-                                <span class="p-float-label">
-                                    <input pInputText type="email" id="email" name="email"
-                                        formControlName="emailControl" pKeyFilter="email">
-                                    <label for="email">Correo electrónico (*)</label>
-                                </span>
-                            </div>
-                            <div class="col-4">
-                                <span class="p-float-label">
-                                    <input pInputText type="tel" id="phone_number" name="phone_number"
-                                        formControlName="phoneNumberControl" pKeyFilter="pnum" maxlength="9">
-                                    <label for="phone_number">Teléfono</label>
-                                </span>
-                            </div>
-                            <div class="col-12">
-                                <span class="p-float-label">
-                                    <textarea pInputTextarea id="comment" name="comment" rows="8" [autoResize]="true"
-                                        formControlName="commentControl"></textarea>
-                                    <label for="comment">Comentarios (**)</label>
-                                </span>
-                            </div>
-                            <div class="col-12 flex justify-content-center">
-                                <button pButton pRipple id="send-form-btn" type="submit" label="Enviar"
-                                    class="p-button-raised" [disabled]="!customerServiceForm.valid"></button>
-                            </div>
-                        </form>
-                    </ng-template>
-                </p-card>
-            </div>
-            <div class="col-offset-1 col-10">
-                <p class="text-xl my-2">(*) Estos datos son obligatorios</p>
-                <p class="text-xl my-2">(**) No introduzca en el espacio destinado a comentarios datos personales o
-                    comprometidos (ej. números de tarjetas, claves, etc.)</p>
+    <ng-template #loadContent>
+        <div id="header" class="bg-white py-6">
+            <p id="route-history" class="text-base sm:text-lg ml-4"><a class="page-link"
+                    routerLink="/{{ railNetworkId }}">{{
+                    railNetwork!.name }}</a> / <a class="page-link" routerLink="/{{ railNetworkId }}/atencion-cliente">
+                    Atención al Cliente</a> /
+                Contactar con Cercanías</p>
+            <h1 id="page-title" class="text-xl sm:text-3xl text-center m-0">Formulario</h1>
+        </div>
+
+        <div id="content" class="py-4">
+            <div class="grid">
+                <div class="col-offset-1 col-10">
+                    <p-card header="Contactar con Cercanias"
+                        subheader="Utiliza este formulario para comunicar a Renfe cualquier duda o sugerencia que consideres.">
+                        <ng-template pTemplate="content">
+                            <form [formGroup]="customerServiceForm" id="customer-service-form" class="grid">
+                                <div class="col-12">
+                                    <p-dropdown [options]="petitionTypes" placeholder="Seleccione petición">
+                                    </p-dropdown>
+                                </div>
+                                <div class="col-12 sm:col-6 md:col-4">
+                                    <span class="p-float-label">
+                                        <input pInputText type="text" id="first_name" name="first_name"
+                                            formControlName="firstNameControl" pKeyFilter="alpha">
+                                        <label for="first_name">Nombre (*)</label>
+                                    </span>
+                                </div>
+                                <div class="col-12 sm:col-6 md:col-4">
+                                    <span class="p-float-label">
+                                        <input pInputText type="text" id="first_surname" name="first_surname"
+                                            formControlName="firstSurnameControl" pKeyFilter="alpha">
+                                        <label for="first_surname"> Primer Apellido (*) </label>
+                                    </span>
+                                </div>
+                                <div class="col-12 md:col-4">
+                                    <span class="p-float-label">
+                                        <input pInputText type="text" id="second_surname" name="second_surname"
+                                            formControlName="secondSurnameControl" pKeyFilter="alpha">
+                                        <label for="second_surname">Segundo Apellido</label>
+                                    </span>
+                                </div>
+                                <div class="col-12 sm:col-8">
+                                    <span class="p-float-label">
+                                        <input pInputText type="email" id="email" name="email"
+                                            formControlName="emailControl" pKeyFilter="email">
+                                        <label for="email">Correo electrónico (*)</label>
+                                    </span>
+                                </div>
+                                <div class="col-12 sm:col-4">
+                                    <span class="p-float-label">
+                                        <input pInputText type="tel" id="phone_number" name="phone_number"
+                                            formControlName="phoneNumberControl" pKeyFilter="pnum" maxlength="9">
+                                        <label for="phone_number">Teléfono</label>
+                                    </span>
+                                </div>
+                                <div class="col-12">
+                                    <span class="p-float-label">
+                                        <textarea pInputTextarea id="comment" name="comment" rows="8"
+                                            [autoResize]="true" formControlName="commentControl"></textarea>
+                                        <label for="comment">Comentarios (**)</label>
+                                    </span>
+                                </div>
+                                <div class="col-12 flex justify-content-center">
+                                    <button pButton pRipple id="send-form-btn" type="submit" label="Enviar" class="p-button-raised" [disabled]="!customerServiceForm.valid"></button>
+                                </div>
+                            </form>
+                        </ng-template>
+                    </p-card>
+                </div>
+                <div class="col-offset-1 col-10">
+                    <p class="text-base sm:text-xl my-2">(*) Estos datos son obligatorios</p>
+                    <p class="text-base sm:text-xl my-2">(**) No introduzca en el espacio destinado a comentarios datos personales o
+                        comprometidos (ej. números de tarjetas, claves, etc.)</p>
+                </div>
             </div>
         </div>
-    </div>
+    </ng-template>
 </section>

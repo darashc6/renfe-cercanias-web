@@ -1,23 +1,23 @@
 <section id="travel-with-page">
   <div id="header" class="bg-white py-6">
-    <p id="route-history" class="ml-4 text-lg">
-      <a id="home-page-link" routerLink="/{{ railNetworkId }}">Málaga</a> / Viajar con
+    <p id="route-history" class="ml-4 text-base sm:text-lg">
+      <a id="home-page-link" routerLink="/{{ railNetworkId }}">{{ railNetworkName }}</a> / Viajar con
     </p>
-    <h1 id="page-title" class="text-3xl text-center m-0">Viajar con</h1>
+    <h1 id="page-title" class="text-xl sm:text-3xl text-center m-0">Viajar con</h1>
   </div>
 
   <div id="content" class="py-2">
     <div class="grid">
-      <div class="col-12 sm:col-9">
-        <p-accordion [styleClass]="'px-5'">
+      <div class="col-12 md:col-9">
+        <p-accordion [styleClass]="'px-4'">
           <p-accordionTab header="Bicicletas" class="accordion-tab" [selected]="true">
             <ng-template pTemplate="content">
-              <p class="text-xl">
+              <p class="text-base sm:text-xl">
                 Tu bicicleta <b>viaja gratis</b> contigo en todos nuestros
                 trenes de Cercanías. Solo tienes que tener en cuenta lo
                 siguiente:
               </p>
-              <ul class="text-xl" id="bycicle-accordion-content-list">
+              <ul class="text-base sm:text-xl" id="bycicle-accordion-content-list">
                 <li>
                   Puedes viajar con una bicicleta como máximo por persona.
                 </li>
@@ -42,11 +42,11 @@
           </p-accordionTab>
           <p-accordionTab header="Mascotas" class="accordion-tab">
             <ng-template pTemplate="content">
-              <p class="text-xl">
+              <p class="text-base sm:text-xl">
                 Tu mascota <b>viaja gratis</b> contigo en todos nuestros trenes
                 de Cercanías. Solo tienes que tener en cuenta lo siguiente:
               </p>
-              <ul class="text-xl" id="pets-accordion-content-list">
+              <ul class="text-base sm:text-xl" id="pets-accordion-content-list">
                 <li>
                   Se admiten animales domésticos (perros, gatos y aves) sin
                   límite de peso y sujetos con una correa.
@@ -60,25 +60,25 @@
           </p-accordionTab>
         </p-accordion>
       </div>
-      <div class="col-12 sm:col-3 px-5">
-        <p class="text-xl font-bold">Te puede interesar</p>
+      <div class="col-12 md:col-3 px-5">
+        <p class="text-base sm:text-xl font-bold">Te puede interesar</p>
         <ul id="more-info-links">
-          <li>
+          <li class="text-base sm:text-xl">
             <a routerLink="/{{ railNetworkId }}/lineas">
               Estaciones y líneas
             </a>
           </li>
-          <li>
+          <li class="text-base sm:text-xl">
             <a routerLink="/{{ railNetworkId }}/tarifas">
               Tarifas
             </a>
           </li>
-          <li>
+          <li class="text-base sm:text-xl">
             <a routerLink="/{{ railNetworkId }}/atencion-cliente">
               Atencion al Cliente
             </a>
           </li>
-          <li>
+          <li class="text-base sm:text-xl">
             <a routerLink="/avisos">
               Avisos
             </a>

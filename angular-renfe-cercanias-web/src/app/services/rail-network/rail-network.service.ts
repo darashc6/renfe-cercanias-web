@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { shareReplay } from "rxjs/operators";
+import { Observable } from 'rxjs';
 import { RailNetwork } from 'src/app/models/RailNetwork';
 
 @Injectable({
@@ -17,7 +16,7 @@ export class RailNetworkService {
   getRailNetwork(railNetworkId: string) {
     if (this.railNetworkIdSaved != railNetworkId) {
       this.railNetworkIdSaved = railNetworkId;
-      this.railNetwork = this.http.get<RailNetwork>(`${this.apiUrl}/${railNetworkId}`).pipe(shareReplay(1))
+      this.railNetwork = this.http.get<RailNetwork>(`${this.apiUrl}/${railNetworkId}`);
     }
 
     return this.railNetwork;

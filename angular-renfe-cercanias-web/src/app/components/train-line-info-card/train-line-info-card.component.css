@@ -1,21 +1,11 @@
-#train-line-info-card #train-line {
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 500;
-  border-radius: 4px;
-}
-
 #train-line-info-card .selected {
   width: 10px;
   height: 10px;
   border-radius: 100%;
 }
 
-#train-line-info-card .c1 {
+#train-line-info-card .c1,
+#train-line-info-card .c1a {
   background-color: #4285f4;
 }
 
@@ -25,6 +15,18 @@
 
 #train-line-info-card .c3 {
   background-color: #d7001e;
+}
+
+#train-line-info-card .c4 {
+  background-color: #7d2582;
+}
+
+#train-line-info-card .c5 {
+  background-color: #0f3287;
+}
+
+#train-line-info-card .c6 {
+  background-color: #f59628;
 }
 
 ::ng-deep .p-card .p-card-content {

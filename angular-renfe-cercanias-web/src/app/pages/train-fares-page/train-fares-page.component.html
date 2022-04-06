@@ -1,33 +1,41 @@
 <section id="train-fares-page">
-    <div id="header" class="bg-white py-6">
-        <p id="route-history" class="ml-4 text-lg">
-            <a id="home-page-link" routerLink="/{{ railNetworkId }}">Málaga</a> / Tarifas
-        </p>
-        <h1 id="page-title" class="text-3xl text-center m-0">Tarifas</h1>
-    </div>
+    <ng-template [ngIf]="isLoading || !railNetwork || !discountFares" [ngIfElse]="loadContent">
+        <div class="flex align-items-center justify-content-center mt-6">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+    </ng-template>
 
-    <div id="content" class="pb-2">
-        <p-tabView>
-            <p-tabPanel header="Billetes y abonos">
-                <ng-template pTemplate="content">
-                    <div class="grid">
-                        <div class="col-4 px-4 py-2" *ngFor="let fare of regularFares">
-                            <app-train-fare-info-card [railNetworkId]="railNetworkId" [fare]="fare">
-                            </app-train-fare-info-card>
+    <ng-template #loadContent>
+        <div id="header" class="bg-white py-6">
+            <p id="route-history" class="ml-4 text-lg">
+                <a id="home-page-link" routerLink="/{{ railNetworkId }}">{{ railNetwork!.name }}</a> / Tarifas
+            </p>
+            <h1 id="page-title" class="text-3xl text-center m-0">Tarifas</h1>
+        </div>
+
+        <div id="content" class="pb-2">
+            <p-tabView [(activeIndex)]="activeIndex" (activeIndexChange)="onTabChange()">
+                <p-tabPanel header="Billetes y abonos">
+                    <ng-template pTemplate="content">
+                        <div class="grid">
+                            <div class="col-12 md:col-6 lg:col-4 px-4 py-2" *ngFor="let fare of railNetwork!.fares">
+                                <app-train-fare-info-card [railNetworkId]="railNetworkId" [fare]="fare">
+                                </app-train-fare-info-card>
+                            </div>
                         </div>
-                    </div>
-                </ng-template>
-            </p-tabPanel>
-            <p-tabPanel header="Descuentos">
-                <ng-template pTemplate="content">
-                    <div class="grid">
-                        <div class="col-4 px-4 py-2" *ngFor="let fare of discountFares">
-                            <app-train-fare-info-card [railNetworkId]="railNetworkId" [fare]="fare">
-                            </app-train-fare-info-card>
+                    </ng-template>
+                </p-tabPanel>
+                <p-tabPanel header="Descuentos">
+                    <ng-template pTemplate="content">
+                        <div class="grid">
+                            <div class="col-12 md:col-6 lg:col-4 px-4 py-2" *ngFor="let fare of discountFares">
+                                <app-train-fare-info-card [railNetworkId]="railNetworkId" [fare]="fare">
+                                </app-train-fare-info-card>
+                            </div>
                         </div>
-                    </div>
-                </ng-template>
-            </p-tabPanel>
-        </p-tabView>
-    </div>
+                    </ng-template>
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+    </ng-template>
 </section>

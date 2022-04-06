@@ -1,0 +1,26 @@
+#station-info-page {
+  min-height: 75.5vh;
+}
+
+#station-info-page #header {
+  position: relative;
+}
+
+#station-info-page #header h1 {
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 45px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(180deg, white 0%, rgba(255, 255, 255, 0.2) 55%, rgba(255, 255, 255, 0) 85%);
+}
+
+#station-info-page .cercanias-img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+}
+
+#station-info-page ::ng-deep .p-button-label {
+  color: var(--color-primary);
+}

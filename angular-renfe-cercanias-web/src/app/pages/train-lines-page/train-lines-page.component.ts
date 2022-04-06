@@ -14,11 +14,16 @@ export class TrainLinesPageComponent implements OnInit {
   railNetworkName: string = '';
   trainLines: TrainLine[] = [];
   trainLineSelected?: TrainLine;
+  isLoading: boolean = true;
 
   constructor(private route: ActivatedRoute, private railNetworkService: RailNetworkService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => this.railNetworkId = params['rail-network-id']);
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
 
     this.getTrainLines();
   }

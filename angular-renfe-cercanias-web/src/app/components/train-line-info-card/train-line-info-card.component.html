@@ -3,10 +3,8 @@
         <ng-template pTemplate="content">
             <div class="flex align-items-center justify-content-between">
                 <div class="flex align-items-center">
-                    <div id="train-line" class="{{ trainLine.lineName.toLowerCase() }}">
-                        <p class="m-0">{{ trainLine.lineName }}</p>
-                    </div>
-                    <div class="ml-5" id="stations">
+                    <app-train-line-name-card [lineName]="trainLine.lineName"></app-train-line-name-card>
+                    <div class="ml-3" id="stations">
                         <p class="m-0 font-bold text-sm">{{ trainLine.originStation }}</p>
                         <p class="m-0 font-bold text-sm">{{ trainLine.destinationStation }}</p>
                     </div>

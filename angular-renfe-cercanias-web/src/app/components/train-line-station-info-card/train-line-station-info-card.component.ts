@@ -12,6 +12,7 @@ export class TrainLineStationInfoCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.station);
   }
 
 }

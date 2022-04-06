@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
+import { LoadingSpinnerModule } from 'src/app/shared/loading-spinner/loading-spinner.module';
 
 import { CustomerServicePageComponent } from './customer-service-page.component';
 
@@ -18,7 +19,8 @@ import { CustomerServicePageComponent } from './customer-service-page.component'
     RouterModule,
     CardModule,
     ButtonModule,
-    RippleModule
+    RippleModule,
+    LoadingSpinnerModule
   ]
 })
 export class CustomerServicePageModule { }

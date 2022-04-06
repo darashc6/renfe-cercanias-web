@@ -26,6 +26,11 @@ export class HomePageComponent implements OnInit {
 
   stations: any[] = [
     {
+      name: 'Asturias',
+      description: 'Disfrutaras de una interesante colección de vehículos de vapor.',
+      imgName: 'asturias'
+    },
+    {
       name: 'Bilbao',
       description: 'Te acercamos a la oferta cultural bilbaína, sin agobios, sin atascos.',
       imgName: 'bilbao'
@@ -41,6 +46,11 @@ export class HomePageComponent implements OnInit {
       imgName: 'malaga'
     },
     {
+      name: 'Murcia/Alicante',
+      description: 'Descubre su patrimonio cultural con Cercanías Murcia/Alicante.',
+      imgName: 'murcia-alicante'
+    },
+    {
       name: 'Santander',
       description: 'Recorre el mejor tramo de Calzada Romana conocida en Cantabria.',
       imgName: 'santander'
@@ -51,8 +61,18 @@ export class HomePageComponent implements OnInit {
       imgName: 'san-sebastian'
     },
     {
+      name: 'Sevilla',
+      description: 'Descubre Sevilla y su provincia en Cercanías.',
+      imgName: 'sevilla'
+    },
+    {
+      name: 'Valencia',
+      description: 'Compra en tu estación la entrada para visitar la Ciudad de las Artes.',
+      imgName: 'valencia'
+    },
+    {
       name: 'Zaragoza',
-      description: 'Descubre Zaragoza y su provincia en Cercanías.',
+      description: 'Descubre uno de los santurarios marianos más importantes del mundo católico.',
       imgName: 'zaragoza'
     }
   ]

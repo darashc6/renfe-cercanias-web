@@ -12,6 +12,7 @@ import { RailNetworkService } from 'src/app/services/rail-network/rail-network.s
 export class CustomerServiceFormPageComponent implements OnInit {
   railNetworkId: string = '';
   railNetwork?: RailNetwork;
+  isLoading: boolean = true;
 
   petitionTypes: string[] = [
     'INFORMACIÓN',
@@ -32,6 +33,11 @@ export class CustomerServiceFormPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => this.railNetworkId = params['rail-network-id']);
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
+
     this.getRailNetwork();
   }
 

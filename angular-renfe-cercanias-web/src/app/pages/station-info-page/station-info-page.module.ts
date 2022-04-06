@@ -4,6 +4,7 @@ import { StationInfoPageComponent } from './station-info-page.component';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
+import { LoadingSpinnerModule } from 'src/app/shared/loading-spinner/loading-spinner.module';
 
 
 
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     CardModule,
     ButtonModule,
-    RouterModule
+    RouterModule,
+    LoadingSpinnerModule
   ]
 })
 export class StationInfoPageModule { }

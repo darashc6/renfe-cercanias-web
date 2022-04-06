@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { DropdownModule } from 'primeng/dropdown';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoadingSpinnerModule } from 'src/app/shared/loading-spinner/loading-spinner.module';
 
 import { CustomerServiceFormPageComponent } from './customer-service-form-page.component';
 
@@ -28,7 +29,8 @@ import { CustomerServiceFormPageComponent } from './customer-service-form-page.c
     RippleModule,
     ReactiveFormsModule,
     KeyFilterModule,
-    DropdownModule
+    DropdownModule,
+    LoadingSpinnerModule
   ]
 })
 export class CustomerServiceFormPageModule { }

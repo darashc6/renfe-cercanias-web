@@ -23,9 +23,8 @@
 }
 
 #customer-service-form-page #content #customer-service-form #send-form-btn {
-  width: 15%;
+  width: 120px;
   background-color: var(--color-primary);
-  font-size: 1.2rem;
 }
 
 ::ng-deep .p-inputtext:enabled:focus {

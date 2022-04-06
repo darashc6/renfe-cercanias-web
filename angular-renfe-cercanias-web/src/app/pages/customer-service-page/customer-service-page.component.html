@@ -1,74 +1,87 @@
-<section id="customer-service-page" *ngIf="railNetwork">
-    <div id="header" class="bg-white py-6">
-        <p id="route-history" class="ml-4 text-lg">
-            <a id="home-page-link" routerLink="/{{ railNetwork.railNetworkId }}">{{ railNetwork.name }}</a> / Atencion
-            al Cliente
-        </p>
-        <h1 id="page-title" class="text-xl sm:text-3xl text-center m-0">Atencion al Cliente</h1>
-    </div>
-    <div id="content" class="p-4">
-        <div class="grid">
-            <div class="col-12 px-2 sm:col-8 sm:px-6 grid">
-                <div class="col-12">
-                    <p-card header="Contactar con Cercanías">
-                        <p class="text-xl m-0">Haznos llegar cualquier sugerencia, queja o información sobre nuestros
-                            servicios de Cercanías en
-                            {{ railNetwork.name }} a través de este formulario.</p>
-                        <ng-template pTemplate="footer">
-                            <div class="flex justify-content-end">
-                                <a routerLink="/{{ railNetwork.railNetworkId }}/atencion-cliente/contactar-con-cercanias"
-                                    class="no-underline">
-                                    <button pButton pRipple label="¡Danos tu opinión!"
-                                        id="customer-service-form-btn"></button>
-                                </a>
-                            </div>
-                        </ng-template>
-                    </p-card>
+<section id="customer-service-page">
+    <ng-template [ngIf]="isLoading || !railNetwork" [ngIfElse]="loadContent">
+        <div class="flex align-items-center justify-content-center mt-6">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+    </ng-template>
+
+    <ng-template #loadContent>
+        <div id="header" class="bg-white py-6">
+            <p id="route-history" class="ml-4 text-base sm:text-lg">
+                <a id="home-page-link" routerLink="/{{ railNetwork!.railNetworkId }}">{{ railNetwork!.name }}</a> /
+                Atencion
+                al Cliente
+            </p>
+            <h1 id="page-title" class="text-xl sm:text-3xl text-center m-0">Atencion al Cliente</h1>
+        </div>
+        <div id="content" class="p-4">
+            <div class="grid">
+                <div class="col-12 px-2 sm:col-8 sm:px-6 grid">
+                    <div class="col-12">
+                        <p-card header="Contactar con Cercanías">
+                            <p class="text-base sm:text-xl m-0">Haznos llegar cualquier sugerencia, queja o información
+                                sobre nuestros
+                                servicios de Cercanías en
+                                {{ railNetwork!.name }} a través de este formulario.</p>
+                            <ng-template pTemplate="footer">
+                                <div class="flex justify-content-end">
+                                    <a routerLink="/{{ railNetwork!.railNetworkId }}/atencion-cliente/contactar-con-cercanias"
+                                        class="no-underline">
+                                        <button pButton pRipple label="¡Danos tu opinión!"
+                                            id="customer-service-form-btn"></button>
+                                    </a>
+                                </div>
+                            </ng-template>
+                        </p-card>
+                    </div>
+                    <div class="col-12">
+                        <p-card header="Teléfonos de contacto">
+                            <p class="text-base sm:text-xl m-0">Contacta con nosotros via telefónica en los siguentes
+                                números:</p>
+                            <ul class="text-base sm:text-xl" id="customer-service-phone-numbers-list">
+                                <li *ngFor="let contactInfo of railNetwork!.contact"><b>{{ contactInfo.contactGroup
+                                        }}</b>:
+                                    {{ contactInfo.phoneNumber }}</li>
+                            </ul>
+                        </p-card>
+                    </div>
+                    <div class="col-12">
+                        <p-card header="Contacto">
+                            <p class="text-base sm:text-xl mt-0">
+                                Si lo prefieres, puedes escribirnos a:
+                            </p>
+                            <p class="text-base sm:text-xl m-0"><b>Renfe Cercanías {{ railNetwork!.name }}</b></p>
+                            <p class="text-base sm:text-xl m-0" *ngFor="let addressInfo of railNetwork!.address">{{
+                                addressInfo }}</p>
+                        </p-card>
+                    </div>
                 </div>
-                <div class="col-12">
-                    <p-card header="Teléfonos de contacto">
-                        <p class="text-xl m-0">Contacta con nosotros via telefónica en los siguentes números:</p>
-                        <ul class="text-xl" id="customer-service-phone-numbers-list">
-                            <li *ngFor="let contactInfo of railNetwork.contact"><b>{{ contactInfo.contactGroup }}</b>:
-                                {{ contactInfo.phoneNumber }}</li>
-                        </ul>
-                    </p-card>
+                <div class="col-offset-0 sm:col-offset-1 col-12 sm:col-3">
+                    <p class="text-xl font-bold m-0">Te puede interesar</p>
+                    <ul id="more-info-links">
+                        <li class="text-base sm:text-xl">
+                            <a routerLink="/{{ railNetworkId }}/viajar-con">
+                                Viajar con
+                            </a>
+                        </li>
+                        <li class="text-base sm:text-xl">
+                            <a routerLink="/{{ railNetworkId }}/lineas">
+                                Estaciones y líneas
+                            </a>
+                        </li>
+                        <li class="text-base sm:text-xl">
+                            <a routerLink="/{{ railNetworkId }}/tarifas">
+                                Tarifas
+                            </a>
+                        </li>
+                        <li class="text-base sm:text-xl">
+                            <a routerLink="/avisos">
+                                Avisos
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-12">
-                    <p-card header="Contacto">
-                        <p class="text-xl mt-0">
-                            Si lo prefieres, puedes escribirnos a:
-                        </p>
-                        <p class="text-xl m-0"><b>Renfe Cercanías {{ railNetwork.name }}</b></p>
-                        <p class="text-xl m-0" *ngFor="let addressInfo of railNetwork.address">{{ addressInfo }}</p>
-                    </p-card>
-                </div>
-            </div>
-            <div class="col-offset-0 sm:col-offset-1 col-12 sm:col-3">
-                <p class="text-xl font-bold m-0">Te puede interesar</p>
-                <ul id="more-info-links">
-                    <li>
-                        <a routerLink="/{{ railNetworkId }}/viajar-con">
-                            Viajar con
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/{{ railNetworkId }}/lineas">
-                            Estaciones y líneas
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/{{ railNetworkId }}/tarifas">
-                            Tarifas
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/avisos">
-                            Avisos
-                        </a>
-                    </li>
-                </ul>
             </div>
         </div>
-    </div>
+    </ng-template>
 </section>

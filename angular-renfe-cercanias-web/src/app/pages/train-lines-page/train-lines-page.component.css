@@ -1,3 +1,7 @@
+#train-lines-page {
+  min-height: 75.5vh;
+}
+
 #train-lines-page #header {
   position: relative;
 }

@@ -14,6 +14,10 @@ export class AnnouncementsPageComponent implements OnInit {
       name: 'Todas las estaciones'
     },
     {
+      id: 'cercanias-asturias',
+      name: 'Asturias'
+    },
+    {
       id: 'cercanias-bilbao',
       name: 'Bilbao'
     },
@@ -26,12 +30,24 @@ export class AnnouncementsPageComponent implements OnInit {
       name: 'Málaga'
     },
     {
+      id: 'murcia-alicante',
+      name: 'Murcia/Alicante'
+    },
+    {
       id: 'cercanias-santander',
       name: 'Santander'
     },
     {
       id: 'cercanias-san-sebastian',
       name: 'San Sebástian'
+    },
+    {
+      id: 'cercanias-sevilla',
+      name: 'Sevilla'
+    },
+    {
+      id: 'cercanias-valencia',
+      name: 'valencia'
     },
     {
       id: 'cercanias-zaragoza',

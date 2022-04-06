@@ -1,54 +1,68 @@
 <section id="train-lines-page">
-    <div id="header" class="bg-white py-6">
-        <p id="route-history" class="ml-4 text-lg">
-            <a class="page-link" routerLink="/{{ railNetworkId }}">{{ railNetworkName }}</a> / Estaciones y líneas
-        </p>
-        <h1 id="page-title" class="text-3xl text-center m-0">Estaciones y líneas</h1>
-    </div>
 
-    <div id="content" class="py-4 px-5">
-        <div class="grid">
-            <div class="col-8 col-offset-2">
-                <div id="caption-card" class="bg-white pt-4 pb-2 px-6 border-round">
-                    <div class="grid">
-                        <div class="col-4 flex align-items-center justify-content-center">
-                            <ic-icon icon="accesible" class="text-3xl"></ic-icon>
-                            <p class="text-xl mt-0 mb-2 ml-3">Accesible</p>
-                        </div>
-                        <div class="col-4 flex align-items-center justify-content-center">
-                            <ic-icon icon="bus-stop" class="text-3xl"></ic-icon>
-                            <p class="text-xl mt-0 mb-2 ml-3">Autobuses</p>
-                        </div>
-                        <div class="col-4 flex align-items-center justify-content-center">
-                            <img src="../../../assets/Logotipo_de_Renfe_Operadora.svg" alt="renfe-logo" width="40">
-                            <p class="text-xl my-0 ml-3">AVE-Reg.</p>
+    <ng-template [ngIf]="isLoading || trainLines.length == 0" [ngIfElse]="loadContent">
+        <div class="flex align-items-center justify-content-center mt-6">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+    </ng-template>
+
+    <ng-template #loadContent>
+        <div id="header" class="bg-white py-6">
+            <p id="route-history" class="text-base sm:text-lg ml-4">
+                <a class="page-link" routerLink="/{{ railNetworkId }}">{{ railNetworkName }}</a> / Estaciones y líneas
+            </p>
+            <h1 id="page-title" class="text-xl sm:text-3xl text-center m-0">Estaciones y líneas</h1>
+        </div>
+
+        <div id="content" class="py-4 px-5">
+            <div class="grid">
+                <div class="col-12 col-offset-0 md:col-8 md:col-offset-2">
+                    <div id="caption-card" class="bg-white px-2 border-round">
+                        <div class="grid py-2">
+                            <div
+                                class="col-12 sm:col-4 flex align-items-center justify-content-start sm:justify-content-center">
+                                <ic-icon icon="accesible" class="icon-3xl"></ic-icon>
+                                <p class="text-base sm:text-xl ml-3 my-0">Accesible</p>
+                            </div>
+                            <div
+                                class="col-12 sm:col-4 flex align-items-center justify-content-start sm:justify-content-center">
+                                <ic-icon icon="bus-stop" class="icon-3xl"></ic-icon>
+                                <p class="text-base sm:text-xl ml-3 my-0">Autobuses</p>
+                            </div>
+                            <div
+                                class="col-12 sm:col-4 flex align-items-center justify-content-start sm:justify-content-center">
+                                <img src="../../../assets/Logotipo_de_Renfe_Operadora.svg" alt="renfe-logo" width="40">
+                                <p class="text-base sm:text-xl ml-3 my-0">AVE-Reg.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 grid mt-3">
-                <div class="col-3">
-                    <p class="text-xl mt-0 mb-2 font-bold">Lineas</p>
-                    <div class="cursor-pointer my-3" *ngFor="let trainLine of trainLines"
-                        (click)="selectTrainLine(trainLine.trainLineId)">
-                        <app-train-line-info-card [trainLine]="trainLine"
-                            [isSelected]="trainLine.trainLineId == trainLineSelected?.trainLineId">
-                        </app-train-line-info-card>
+                <div class="col-12 grid mt-3">
+                    <div class="col-12 md:col-3">
+                        <p class="text-xl mt-0 mb-2 font-bold">Lineas</p>
+                        <div class="cursor-pointer my-3" *ngFor="let trainLine of trainLines"
+                            (click)="selectTrainLine(trainLine.trainLineId)">
+                            <app-train-line-info-card [trainLine]="trainLine"
+                                [isSelected]="trainLine.trainLineId == trainLineSelected?.trainLineId">
+                            </app-train-line-info-card>
+                        </div>
                     </div>
-                </div>
-                <div class="col-7 col-offset-1">
-                    <p class="text-xl mt-0 mb-2 font-bold">Linea {{ trainLineSelected?.lineName }}</p>
-                    <p-timeline [value]="trainLineSelected!.stations">
-                        <ng-template pTemplate="content" let-station>
-                            <app-train-line-station-info-card [station]="station"></app-train-line-station-info-card>
-                        </ng-template>
-                        <ng-template pTemplate="opposite" let-station>
-                            <p class="m-0" *ngIf="station.travelTimeToNextStation">{{ station.travelTimeToNextStation }}
-                                mins</p>
-                        </ng-template>
-                    </p-timeline>
+                    <div class="col-12 col-offset-0 md:col-offset-1 md:col-7">
+                        <p class="text-xl mt-0 mb-2 font-bold">Linea {{ trainLineSelected?.lineName }}</p>
+                        <p-timeline [value]="trainLineSelected!.stations">
+                            <ng-template pTemplate="content" let-station>
+                                <app-train-line-station-info-card [station]="station">
+                                </app-train-line-station-info-card>
+                            </ng-template>
+                            <ng-template pTemplate="opposite" let-station>
+                                <p class="m-0" *ngIf="station.travelTimeToNextStation">{{
+                                    station.travelTimeToNextStation }}
+                                    mins</p>
+                            </ng-template>
+                        </p-timeline>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </ng-template>
 </section>

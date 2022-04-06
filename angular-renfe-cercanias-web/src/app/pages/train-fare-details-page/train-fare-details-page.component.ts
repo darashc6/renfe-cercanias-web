@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Fare } from 'src/app/models/Fare';
+import { RailNetwork } from 'src/app/models/RailNetwork';
 import { DiscountFaresService } from 'src/app/services/discount-fares/discount-fares.service';
 import { RailNetworkService } from 'src/app/services/rail-network/rail-network.service';
 
@@ -12,12 +13,18 @@ import { RailNetworkService } from 'src/app/services/rail-network/rail-network.s
 export class TrainFareDetailsPageComponent implements OnInit {
   fareId: string = '';
   railNetworkId: string = '';
-  railNetworkName: string = '';
+  railNetwork?: RailNetwork;
   fare?: Fare;
+  isLoading: boolean = true;
 
   constructor(private route: ActivatedRoute, private railNetworkService: RailNetworkService, private discountFaresService: DiscountFaresService) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 250);
+
+
     this.route.params.subscribe(params => {
       this.railNetworkId = params['rail-network-id'];
       this.fareId = params['fare-id'];
@@ -28,11 +35,14 @@ export class TrainFareDetailsPageComponent implements OnInit {
 
   getFare() {
     this.railNetworkService.getRailNetwork(this.railNetworkId).subscribe(railNetwork => {
-      this.railNetworkName = railNetwork.name;
-      this.fare = railNetwork.fares.find(fare => fare.fareId == this.fareId);
+      this.railNetwork = railNetwork;
+
+      if (this.railNetwork) {
+        this.fare = this.railNetwork.fares.find(fare => fare.fareId == this.fareId);
 
       if (!this.fare) {
         this.discountFaresService.getDiscountFare(this.fareId).subscribe(discountFare => this.fare = discountFare);
+      }
       }
     });
   }

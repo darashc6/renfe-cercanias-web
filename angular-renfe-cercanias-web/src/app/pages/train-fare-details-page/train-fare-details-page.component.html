@@ -1,74 +1,83 @@
-<section id="train-fare-details-page" *ngIf="fare">
-    <div id="header" class="bg-white py-6">
-        <p id="route-history" class="ml-4 text-lg">
-            <a class="page-link" routerLink="/{{ railNetworkId }}">{{ railNetworkName }}</a> / <a class="page-link"
-                routerLink="/{{ railNetworkId }}/tarifas">Tarifas</a> / {{ fare.fareDescription.title }}
-        </p>
-        <h1 id="page-title" class="text-3xl text-center m-0">{{ fare.fareDescription.title }}</h1>
-    </div>
+<section id="train-fare-details-page">
+    <ng-template [ngIf]="isLoading || !fare || !railNetwork" [ngIfElse]="loadContent">
+        <div class="flex align-items-center justify-content-center mt-6">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+    </ng-template>
 
-    <div id="content" class="py-2">
-        <div class="grid">
-            <div class="col-9">
-                <p-accordion [styleClass]="'px-5'">
-                    <p-accordionTab header="¿Que te ofrece?" class="accordion-tab" [selected]="true">
-                        <ng-template pTemplate="content">
-                            <ul class="text-xl mt-0" id="fare-content-list">
-                                <li *ngFor="let text of fare.fareDescription.content">{{ text }}</li>
-                            </ul>
-                        </ng-template>
-                    </p-accordionTab>
-                    <p-accordionTab header="Nuestras tarifas" class="accordion-tab"
-                        *ngIf="fare.prices && fare.prices.length > 0">
-                        <ng-template pTemplate="content">
-                            <ul class="text-xl mt-0" id="fare-prices-list">
-                                <ng-template [ngIf]="fare.prices[0].price == fare.prices[1].price"
-                                    [ngIfElse]="differentPrices">
-                                    <li *ngFor="let priceInfo of fare.prices | slice:1; let i = index">
-                                        <ng-template [ngIf]="i == 0" [ngIfElse]="notFirst">
-                                            1/2 zonas - {{ priceInfo.price | number: '0.2-2' }} &euro;
-                                        </ng-template>
-                                        <ng-template #notFirst>
+    <ng-template #loadContent>
+        <div id="header" class="bg-white py-6">
+            <p id="route-history" class="ml-4 text-base sm:text-lg">
+                <a class="page-link" routerLink="/{{ railNetworkId }}">{{ railNetwork!.name }}</a> / <a class="page-link"
+                    routerLink="/{{ railNetworkId }}/tarifas">Tarifas</a> / {{ fare!.fareDescription.title }}
+            </p>
+            <h1 id="page-title" class="text-xl sm:text-3xl text-center m-0">{{ fare!.fareDescription.title }}</h1>
+        </div>
+
+        <div id="content" class="py-2">
+            <div class="grid">
+                <div class="col-12 md:col-9">
+                    <p-accordion [styleClass]="'px-4'">
+                        <p-accordionTab header="¿Que te ofrece?" class="accordion-tab" [selected]="true">
+                            <ng-template pTemplate="content">
+                                <ul class="text-base sm:text-xl mt-0" id="fare-content-list">
+                                    <li *ngFor="let text of fare!.fareDescription.content">{{ text }}</li>
+                                </ul>
+                            </ng-template>
+                        </p-accordionTab>
+                        <p-accordionTab header="Nuestras tarifas" class="accordion-tab"
+                            *ngIf="fare!.prices && fare!.prices.length > 0">
+                            <ng-template pTemplate="content">
+                                <ul class="text-base sm:text-xl mt-0" id="fare-prices-list">
+                                    <ng-template [ngIf]="fare!.prices[0].price == fare!.prices[1].price"
+                                        [ngIfElse]="differentPrices">
+                                        <li *ngFor="let priceInfo of fare!.prices | slice:1; let i = index">
+                                            <ng-template [ngIf]="i == 0" [ngIfElse]="notFirst">
+                                                1/2 zonas - {{ priceInfo.price | number: '0.2-2' }} &euro;
+                                            </ng-template>
+                                            <ng-template #notFirst>
+                                                {{ priceInfo.n_zones }} zonas - {{ priceInfo.price | number: '0.2-2' }}
+                                                &euro;
+                                            </ng-template>
+                                        </li>
+                                    </ng-template>
+                                    <ng-template #differentPrices>
+                                        <li *ngFor="let priceInfo of fare!.prices">
                                             {{ priceInfo.n_zones }} zonas - {{ priceInfo.price | number: '0.2-2' }}
                                             &euro;
-                                        </ng-template>
-                                    </li>
-                                </ng-template>
-                                <ng-template #differentPrices>
-                                    <li *ngFor="let priceInfo of fare.prices">
-                                        {{ priceInfo.n_zones }} zonas - {{ priceInfo.price | number: '0.2-2' }} &euro;
-                                    </li>
-                                </ng-template>
-                            </ul>
-                        </ng-template>
-                    </p-accordionTab>
-                </p-accordion>
-            </div>
-            <div class="col-3">
-                <p class="text-xl font-bold">Te puede interesar</p>
-                <ul id="more-info-links">
-                    <li>
-                        <a routerLink="/{{ railNetworkId }}/viajar-con">
-                            Viajar con
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/{{ railNetworkId }}/lineas">
-                            Estaciones y líneas
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/{{ railNetworkId }}/atencion-cliente">
-                            Atencion al Cliente
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/avisos">
-                            Avisos
-                        </a>
-                    </li>
-                </ul>
+                                        </li>
+                                    </ng-template>
+                                </ul>
+                            </ng-template>
+                        </p-accordionTab>
+                    </p-accordion>
+                </div>
+                <div class="col-12 md:col-3 px-5">
+                    <p class="text-base sm:text-xl font-bold">Te puede interesar</p>
+                    <ul id="more-info-links">
+                        <li class="text-base sm:text-xl">
+                            <a routerLink="/{{ railNetworkId }}/viajar-con">
+                                Viajar con
+                            </a>
+                        </li>
+                        <li class="text-base sm:text-xl">
+                            <a routerLink="/{{ railNetworkId }}/lineas">
+                                Estaciones y líneas
+                            </a>
+                        </li>
+                        <li class="text-base sm:text-xl">
+                            <a routerLink="/{{ railNetworkId }}/atencion-cliente">
+                                Atencion al Cliente
+                            </a>
+                        </li>
+                        <li class="text-base sm:text-xl">
+                            <a routerLink="/avisos">
+                                Avisos
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
+    </ng-template>
 </section>

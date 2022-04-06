@@ -11,13 +11,18 @@ import { RailNetworkService } from 'src/app/services/rail-network/rail-network.s
 export class CustomerServicePageComponent implements OnInit {
   railNetworkId: string = '';
   railNetwork?: RailNetwork
+  isLoading: boolean = true;
 
   constructor(private route: ActivatedRoute, private railNetworkService: RailNetworkService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => this.railNetworkId = params['rail-network-id'])
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
+
     this.getRailNetwork();
-    console.log(this.railNetwork)
   }
 
   getRailNetwork() {
