@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Announcement } from 'src/app/models/Announcement';
 import { AnnouncementsService } from 'src/app/services/announcements/announcements.service';
 
@@ -30,7 +31,7 @@ export class AnnouncementsPageComponent implements OnInit {
       name: 'Málaga'
     },
     {
-      id: 'murcia-alicante',
+      id: 'cercanias-murcia-alicante',
       name: 'Murcia/Alicante'
     },
     {
@@ -47,7 +48,7 @@ export class AnnouncementsPageComponent implements OnInit {
     },
     {
       id: 'cercanias-valencia',
-      name: 'valencia'
+      name: 'Valencia'
     },
     {
       id: 'cercanias-zaragoza',
@@ -61,9 +62,11 @@ export class AnnouncementsPageComponent implements OnInit {
   isLoading: boolean = true;
 
 
-  constructor(private announcementsService: AnnouncementsService) { }
+  constructor(private announcementsService: AnnouncementsService, private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Avisos');
+
     setTimeout(() => {
       this.isLoading = false;
     }, 500);

@@ -36,8 +36,4 @@ export class FooterComponent implements OnInit {
     this.currentYear = new Date().getFullYear();
   }
 
-  openLink(link: string) {
-    window.open(link, '_blank');
-  }
-
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { NewsInfo } from 'src/app/models/NewsInfo';
 import { NewsService } from 'src/app/services/news/news.service';
@@ -13,7 +14,7 @@ export class NewsInfoPageComponent implements OnInit {
   newsInfo?: NewsInfo;
   isLoading: boolean = true;
 
-  constructor(private route: ActivatedRoute, private newsService: NewsService) {
+  constructor(private route: ActivatedRoute, private newsService: NewsService, private titleService: Title) {
   }
 
   ngOnInit(): void {
@@ -29,7 +30,10 @@ export class NewsInfoPageComponent implements OnInit {
   }
 
   getNewsInfo() {
-    this.newsService.getNewsInfo(this.id).subscribe(newsInfo => this.newsInfo = newsInfo);
+    this.newsService.getNewsInfo(this.id).subscribe(newsInfo => {
+      this.newsInfo = newsInfo
+      this.titleService.setTitle(this.newsInfo.title);
+    });
   }
 
 }

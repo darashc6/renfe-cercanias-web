@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
 import { CarouselModule } from "primeng/carousel";
@@ -7,6 +7,8 @@ import { IconModule } from '@visurel/iconify-angular';
 import { ButtonModule } from "primeng/button";
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from "primeng/inputtext";
+import { DialogModule } from "primeng/dialog";
+import { SidebarModule } from "primeng/sidebar";
 
 import { HomePageModule } from './pages/home-page/home-page.module';
 import { NewsPageModule } from './pages/news-page/news-page.module';
@@ -50,9 +52,13 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     IconModule,
     AppRoutingModule,
     HomePageModule,
-    HttpClientModule
+    HttpClientModule,
+    DialogModule,
+    SidebarModule
   ],
-  providers: [],
+  providers: [
+    Title
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

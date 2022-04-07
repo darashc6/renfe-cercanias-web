@@ -42,16 +42,21 @@ export class StationInfoPageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private railNetworkService: RailNetworkService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => this.railNetworkId = `/${params['rail-network-id']}`);
+    this.route.params.subscribe(params => {
+      this.isLoading = true;
+
+      this.railNetworkId = `/${params['rail-network-id']}`
+      this.getRailNetwork();
+    });
+  }
+
+  getRailNetwork() {
+    this.railNetwork = undefined;
 
     setTimeout(() => {
       this.isLoading = false;
     }, 500);
 
-    this.getRailNetwork();
-  }
-
-  getRailNetwork() {
     this.railNetworkService.getRailNetwork(this.railNetworkId).subscribe(railNetwork => this.railNetwork = railNetwork);
   }
 }

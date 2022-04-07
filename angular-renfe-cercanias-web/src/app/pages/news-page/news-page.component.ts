@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { NewsInfo } from 'src/app/models/NewsInfo';
 import { NewsService } from 'src/app/services/news/news.service';
 
@@ -11,9 +12,11 @@ export class NewsPageComponent implements OnInit {
   news?: NewsInfo[];
   isLoading: boolean = true;
 
-  constructor(private newsService: NewsService) { }
+  constructor(private newsService: NewsService, private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Noticias');
+
     setTimeout(() => {
       this.isLoading = false;
     }, 500);

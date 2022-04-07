@@ -1,18 +1,14 @@
 <nav id="navigation-bar">
-  <ul class="list-none grid py-3 m-0 px-0 justify-content-around">
-    <li id="station-list" class="col-2">
-      <a class="navbar-item" routerLink="/nucleos">Núcleos</a>
+  <ul class="hidden sm:flex list-none grid py-3 m-0 px-0 justify-content-around">
+    <li id="station-list" class="col-2" (click)="openDialog()">
+      <a class="navbar-item">Núcleos</a>
     </li>
     <li class="col-2">
       <a class="navbar-item" routerLink="/noticias">Noticias</a>
     </li>
     <li class="col-2">
       <a routerLink="/">
-        <img
-          src="../../../assets/cercanias-logo.png"
-          width="45"
-          alt="cercanias-logo"
-        />
+        <img src="../../../assets/cercanias-logo.png" width="45" alt="cercanias-logo" />
       </a>
     </li>
     <li class="col-2">
@@ -22,4 +18,44 @@
       <a class="navbar-item" routerLink="/cuenta">Cuenta</a>
     </li>
   </ul>
+
+  <ul class="flex sm:hidden py-3 m-0 px-6 list-none justify-content-between align-items-center">
+    <li>
+      <a routerLink="/">
+        <img src="../../../assets/cercanias-logo.png" width="45" alt="cercanias-logo" />
+      </a>
+    </li>
+    <button pButton pRipple icon="pi pi-bars" class="sidebar-btn" (click)="openSidebar()"></button>
+  </ul>
+
+  <p-sidebar [(visible)]="sidebarOpen">
+    <ul class="p-0 flex flex-column justify-content-center align-items-center">
+      <li id="station-list" (click)="openDialog(); closeSidebar()">
+        <a class="navbar-item">Núcleos</a>
+      </li>
+      <li (click)="closeSidebar()">
+        <a class="navbar-item" routerLink="/noticias">Noticias</a>
+      </li>
+      <li (click)="closeSidebar()">
+        <a class="navbar-item" routerLink="/avisos">Avisos</a>
+      </li>
+      <li (click)="closeSidebar()">
+        <a class="navbar-item" routerLink="/cuenta">Cuenta</a>
+      </li>
+    </ul>
+  </p-sidebar>
 </nav>
+
+<p-dialog header="Núcleos" [(visible)]="dialogOpen" [modal]="true" [style]="{width: '65vw'}" [draggable]="false"
+  [resizable]="false" [dismissableMask]="true" class="stations-list-dialog">
+  <div class="grid">
+    <div class="col-12 sm:col-6 md:col-4 p-2" *ngFor="let station of stations">
+      <a routerLink="/{{ station.id }}" (click)="closeDialog()">
+        <div class="cursor-pointer flex align-items-center justify-content-start station-item px-3">
+          <img src="../../../assets/cercanias-logo.png" width="28" alt="" srcset="">
+          <p class="ml-3 my-3">{{ station.name }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</p-dialog>

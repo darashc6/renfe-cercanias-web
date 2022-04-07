@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: "full",
-    component: HomePageComponent
+    component: HomePageComponent,
   },
   {
     path: 'noticias',

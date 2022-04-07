@@ -1,27 +1,15 @@
 #navigation-bar {
-  background: linear-gradient(
-    90deg,
-    var(--color-primary) 40%,
-    rgba(255, 60, 60, 0) 50%,
-    var(--color-primary) 60%
-  );
+  background-color: var(--color-primary);
 
   li {
     font-size: 1.4em;
     color: white;
     font-weight: 500;
+    padding: 10px 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  #station-list::after {
-    content: "\02EC";
-    color: white;
-    font-size: 2rem;
-    margin-left: 6px;
-    margin-top: -25px;
   }
 
   li {
@@ -52,5 +40,26 @@
       transform: scaleX(1);
       transform-origin: left;
     }
+  }
+
+  .sidebar-btn {
+    background-color: white;
+  }
+}
+
+.stations-list-dialog {
+  .station-item:hover {
+    background-color: var(--color-white-hover);
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+::ng-deep {
+  .p-sidebar {
+    background-color: var(--color-primary);
   }
 }
