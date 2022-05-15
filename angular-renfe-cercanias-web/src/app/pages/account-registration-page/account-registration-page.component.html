@@ -6,6 +6,7 @@
       id="account-registration-form"
       class="mt-4"
       [formGroup]="accountRegistrationForm"
+      (ngSubmit)="onSubmit(accountRegistrationForm)"
     >
       <p-card header="1. Datos Personales" [styleClass]="'my-4'">
         <ng-template pTemplate="content">
@@ -18,7 +19,7 @@
                   type="text"
                   id="first_name"
                   name="first_name"
-                  formControlName="firstNameControl"
+                  formControlName="firstName"
                 />
                 <label for="first_name">Nombre*</label>
               </span>
@@ -31,7 +32,7 @@
                   type="text"
                   id="first_surname"
                   name="first_surname"
-                  formControlName="firstSurnameControl"
+                  formControlName="firstSurname"
                 />
                 <label for="first_surname">Primer Apellido*</label>
               </span>
@@ -43,7 +44,7 @@
                   type="text"
                   id="second_surname"
                   name="second_surname"
-                  formControlName="secondSurnameControl"
+                  formControlName="secondSurname"
                 />
                 <label for="second_surname">Segundo Apellido</label>
               </span>
@@ -56,7 +57,7 @@
                   type="tel"
                   id="phone_number"
                   name="phone_number"
-                  formControlName="phoneNumberControl"
+                  formControlName="phoneNumber"
                 />
                 <label for="phone_number">Telefono Móvil*</label>
               </span>
@@ -69,7 +70,7 @@
                   type="text"
                   id="nationality"
                   name="nationality"
-                  formControlName="nationalityControl"
+                  formControlName="nationality"
                 />
                 <label for="nationality">Nacionalidad*</label>
               </span>
@@ -82,21 +83,14 @@
                   type="text"
                   id="id_number"
                   name="id_number"
-                  formControlName="idNumberControl"
+                  formControlName="idNumber"
                 />
                 <label for="id_number">DNI*</label>
               </span>
             </div>
             <div class="col-4">
               <span class="p-float-label">
-                <input
-                  required
-                  pInputText
-                  type="text"
-                  id="birth-date"
-                  name="birth-date"
-                  formControlName="birthDateControl"
-                />
+                <p-calendar [required]="true" inputId="birth-date" name="birth-date" [dateFormat]="'dd/mm/yy'" formControlName="birthDate" [maxDate]="maxBirthDate"></p-calendar>
                 <label for="birth-date">Fecha de nacimiento*</label>
               </span>
             </div>
@@ -108,7 +102,7 @@
                   type="email"
                   id="email"
                   name="email"
-                  formControlName="emailControl"
+                  formControlName="email"
                 />
                 <label for="email">Email*</label>
               </span>
@@ -121,7 +115,7 @@
                   type="password"
                   id="password"
                   name="password"
-                  formControlName="passwordControl"
+                  formControlName="password"
                 />
                 <label for="password">Password*</label>
               </span>
@@ -141,7 +135,7 @@
                   type="text"
                   id="address_name"
                   name="address_name"
-                  formControlName="addressNameControl"
+                  formControlName="addressName"
                 />
                 <label for="address_name">Nombre de la calle*</label>
               </span>
@@ -153,7 +147,7 @@
                   type="number"
                   id="address_number"
                   name="address_number"
-                  formControlName="addressNumberControl"
+                  formControlName="addressNumber"
                 />
                 <label for="address_number">Numero*</label>
               </span>
@@ -165,7 +159,7 @@
                   type="text"
                   id="address_extras"
                   name="address_extras"
-                  formControlName="addressExtrasControl"
+                  formControlName="addressExtras"
                 />
                 <label for="address_extras"
                   >Edificio, Piso, Portal, Bloque, Puerta, etc..</label
@@ -180,7 +174,7 @@
                   type="text"
                   id="province"
                   name="province"
-                  formControlName="provinceControl"
+                  formControlName="province"
                 />
                 <label for="province">Provincia*</label>
               </span>
@@ -193,7 +187,7 @@
                   type="text"
                   id="municipality"
                   name="municipality"
-                  formControlName="municipalityControl"
+                  formControlName="municipality"
                 />
                 <label for="municipality">Localidad*</label>
               </span>
@@ -207,7 +201,7 @@
                   maxlength="5"
                   id="postal_code"
                   name="postal_code"
-                  formControlName="postalCodeControl"
+                  formControlName="postalCode"
                 />
                 <label for="postal_code">Código Postal*</label>
               </span>
@@ -216,40 +210,13 @@
         </ng-template>
       </p-card>
 
-      <p-card header="3. Vincular tarjeta '+Renfe' (Opcional)">
-        <ng-template pTemplate="content">
-          <div class="grid">
-            <div class="col-8">
-              <span class="p-float-label">
-                <input
-                  pInputText
-                  type="text"
-                  id="card_holder_name"
-                  name="card_holder_name"
-                  formControlName="cardHolderNameControl"
-                />
-                <label for="card_holder_name">Nombre titular</label>
-              </span>
-            </div>
-            <div class="col-4">
-              <span class="p-float-label">
-                <input
-                  pInputText
-                  type="number"
-                  maxlength="11"
-                  id="card_number"
-                  name="card_number"
-                  formControlName="cardNumberControl"
-                />
-                <label for="card_number">Numero</label>
-              </span>
-            </div>
-          </div>
-        </ng-template>
-      </p-card>
-
       <div class="flex justify-content-center">
-        <button
+        <ng-template [ngIf]="isLoadingRegistrationSubmission" [ngIfElse]="showRegistrationBtn">
+          <app-loading-spinner></app-loading-spinner>
+        </ng-template>
+
+        <ng-template #showRegistrationBtn>
+          <button
           pButton
           pRipple
           type="submit"
@@ -257,7 +224,9 @@
           class="p-button-raised bg-color-primary mt-4"
           [disabled]="!accountRegistrationForm.valid"
         ></button>
+        </ng-template>
       </div>
     </form>
+    <p-toast></p-toast>
   </div>
 </section>

@@ -5,6 +5,7 @@ import { AccountRegistrationPageComponent } from './pages/account-registration-p
 import { AnnouncementsPageComponent } from './pages/announcements-page/announcements-page.component';
 import { CustomerServiceFormPageComponent } from './pages/customer-service-form-page/customer-service-form-page.component';
 import { CustomerServicePageComponent } from './pages/customer-service-page/customer-service-page.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NewsInfoPageComponent } from './pages/news-info-page/news-info-page.component';
 import { NewsPageComponent } from './pages/news-page/news-page.component';
@@ -14,6 +15,8 @@ import { TrainFareDetailsPageComponent } from './pages/train-fare-details-page/t
 import { TrainFaresPageComponent } from './pages/train-fares-page/train-fares-page.component';
 import { TrainLinesPageComponent } from './pages/train-lines-page/train-lines-page.component';
 import { TravelWithPageComponent } from './pages/travel-with-page/travel-with-page.component';
+import { BuyTicketPageComponent } from './pages/buy-ticket-page/buy-ticket-page.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -40,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: 'cuenta',
-    component: AccountPageComponent
+    component: AccountPageComponent,
   },
   {
     path: 'registro',
@@ -48,10 +51,11 @@ const routes: Routes = [
   },
   {
     path: 'perfil',
-    component: ProfilePageComponent
+    component: ProfilePageComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path: ':rail-network-id',
+    path: 'nucleos/:rail-network-id',
     children: [
       {
         path: '',
@@ -93,6 +97,14 @@ const routes: Routes = [
       },
     ]
   },
+  {
+    path: 'comprar-billete',
+    component: BuyTicketPageComponent
+  },
+  {
+    path: '**',
+    component: ErrorPageComponent
+  }
 ]
 
 @NgModule({

@@ -22,6 +22,7 @@ import visaIcon from "@iconify/icons-logos/visa";
 import mastercardIcon from "@iconify/icons-logos/mastercard";
 import googlePayIcon from "@iconify/icons-logos/google-pay-icon";
 import paypalIcon from "@iconify/icons-logos/paypal";
+import roundLogout from "@iconify/icons-ic/round-logout";
 
 export const appIcons = {
     'customer-service': headsetIcon,
@@ -47,5 +48,6 @@ export const appIcons = {
     'visa': visaIcon,
     'mastercard': mastercardIcon,
     'google-pay': googlePayIcon,
-    'paypal': paypalIcon
+    'paypal': paypalIcon,
+    'logout': roundLogout
 }

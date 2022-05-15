@@ -1,0 +1,84 @@
+<section id="buy-ticket-page">
+    <div id="content" class="py-4">
+        <div class="grid">
+            <div class="col-3 col-offset-1" id="buy-ticket-form">
+                <p-card>
+                    <ng-template pTemplate="content">
+                        <div class="grid">
+                            <div class="col-12">
+                                <p-dropdown [options]="stations" [(ngModel)]="selectedStation" optionLabel="name"
+                                    [filter]="true" filterBy="name" (onChange)="onDropdownValueChanged()">
+                                    <ng-template pTemplate="selectedItem" *ngIf="selectedStation">
+                                        <div class="station-item station-item-value flex align-items-center"
+                                            *ngIf="selectedStation">
+                                            <img src="../../../assets/cercanias-logo.png" alt="cercanias-logo">
+                                            <div class="ml-3 font-bold">{{ selectedStation.name }}</div>
+                                        </div>
+                                    </ng-template>
+                                    <ng-template let-station pTemplate="item">
+                                        <div class="station-item flex align-items-center">
+                                            <img src="../../../assets/cercanias-logo.png" alt="cercanias-logo">
+                                            <div class="ml-3">{{ station.name }}</div>
+                                        </div>
+                                    </ng-template>
+                                </p-dropdown>
+                            </div>
+                            <div class="col-12">
+                                <span class="p-float-label">
+                                    <input pInputText type="text" id="origin" name="origin" class="w-full">
+                                    <label for="origin">Origen</label>
+                                </span>
+                            </div>
+                            <div class="col-12">
+                                <span class="p-float-label">
+                                    <input pInputText type="text" id="origin" name="destination" class="w-full">
+                                    <label for="destination">Destino</label>
+                                </span>
+                            </div>
+                            <div class="col-12">
+                                <span class="p-float-label w-full">
+                                    <p-calendar inputId="date-selected" [dateFormat]="'dd/mm/yy'"
+                                        inputStyleClass="w-full" [minDate]="minDate" [maxDate]="maxDate">
+                                    </p-calendar>
+                                    <label for="date-selected">Fecha</label>
+                                </span>
+                            </div>
+                            <div class="col-12 flex justify-content-center">
+                                <button pButton pRipple label="ACTUALIZAR"
+                                    class="p-button-raised bg-color-primary w-10rem mt-2"></button>
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-card>
+            </div>
+            <div class="col-offset-1 col-6">
+                <h1>Seleccionar tarifa</h1>
+                <div id="ticket-fares" class="grid">
+                    <div class="col-6">
+                        <app-ticket-fare-info-card [groupName]="'fare'" [selectedFare]="selectedFare">
+                        </app-ticket-fare-info-card>
+                    </div>
+                    <div class="col-6">
+                        <app-ticket-fare-info-card [groupName]="'fare'" [selectedFare]="selectedFare">
+                        </app-ticket-fare-info-card>
+                    </div>
+                </div>
+                <h1>Seleccionar método de pago</h1>
+                <div class="grid">
+                    <div class="col-6">
+                        <app-payment-method-btn [icon]="'visa'" [btnName]="'Visa'"></app-payment-method-btn>
+                    </div>
+                    <div class="col-6">
+                        <app-payment-method-btn [icon]="'mastercard'" [btnName]="'MasterCard'"></app-payment-method-btn>
+                    </div>
+                    <div class="col-6">
+                        <app-payment-method-btn [icon]="'google-pay'" [btnName]="'Google Pay'"></app-payment-method-btn>
+                    </div>
+                    <div class="col-6">
+                        <app-payment-method-btn [icon]="'paypal'" [btnName]="'Paypal'"></app-payment-method-btn>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

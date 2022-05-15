@@ -5,7 +5,7 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
 import { LoadingSpinnerModule } from 'src/app/shared/loading-spinner/loading-spinner.module';
-
+import { ErrorSectionModule } from 'src/app/shared/error-section/error-section.module';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { LoadingSpinnerModule } from 'src/app/shared/loading-spinner/loading-spi
     CardModule,
     ButtonModule,
     RouterModule,
-    LoadingSpinnerModule
+    LoadingSpinnerModule,
+    ErrorSectionModule
   ]
 })
 export class StationInfoPageModule { }

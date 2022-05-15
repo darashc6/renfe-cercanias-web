@@ -8,7 +8,7 @@
     <ng-template #loadContent>
         <div id="header" class="bg-white py-6">
             <p id="route-history" class="ml-4 text-base sm:text-lg">
-                <a id="home-page-link" routerLink="/{{ railNetwork!.railNetworkId }}">{{ railNetwork!.name }}</a> /
+                <a id="home-page-link" [routerLink]='["/nucleos", railNetworkId]'>{{ railNetwork!.name }}</a> /
                 Atencion
                 al Cliente
             </p>
@@ -25,7 +25,7 @@
                                 {{ railNetwork!.name }} a través de este formulario.</p>
                             <ng-template pTemplate="footer">
                                 <div class="flex justify-content-end">
-                                    <a routerLink="/{{ railNetwork!.railNetworkId }}/atencion-cliente/contactar-con-cercanias"
+                                    <a [routerLink]='["/nucleos", railNetworkId, "atencion-cliente", "contactar-con-cercanias"]'
                                         class="no-underline">
                                         <button pButton pRipple label="¡Danos tu opinión!"
                                             id="customer-service-form-btn"></button>
@@ -60,17 +60,17 @@
                     <p class="text-xl font-bold m-0">Te puede interesar</p>
                     <ul id="more-info-links">
                         <li class="text-base sm:text-xl">
-                            <a routerLink="/{{ railNetworkId }}/viajar-con">
+                            <a [routerLink]='["/nucleos", railNetworkId, "viajar-con"]'>
                                 Viajar con
                             </a>
                         </li>
                         <li class="text-base sm:text-xl">
-                            <a routerLink="/{{ railNetworkId }}/lineas">
+                            <a [routerLink]='["/nucleos", railNetworkId, "lineas"]'>
                                 Estaciones y líneas
                             </a>
                         </li>
                         <li class="text-base sm:text-xl">
-                            <a routerLink="/{{ railNetworkId }}/tarifas">
+                            <a [routerLink]='["/nucleos", railNetworkId, "tarifas"]'>
                                 Tarifas
                             </a>
                         </li>

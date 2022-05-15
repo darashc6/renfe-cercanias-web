@@ -32,32 +32,19 @@
         <div id="profile-page-btns" class="mt-5">
           <div class="grid grid-nogutter">
             <div class="col-12" (click)="selectOption('edit-profile')">
-              <app-profile-page-option-btn
-                [icon]="'edit-profile'"
-                [btnName]="'Editar perfil'"
-                [isSelected]="selectedOption == 'edit-profile'"
-              ></app-profile-page-option-btn>
+              <app-profile-page-option-btn [icon]="'edit-profile'" [btnName]="'Editar perfil'"
+                [isSelected]="selectedOption == 'edit-profile'"></app-profile-page-option-btn>
             </div>
             <div class="col-12" (click)="selectOption('user-tickets')">
-              <app-profile-page-option-btn
-                [icon]="'user-tickets'"
-                [btnName]="'Mis billetes'"
-                [isSelected]="selectedOption == 'user-tickets'"
-              ></app-profile-page-option-btn>
+              <app-profile-page-option-btn [icon]="'user-tickets'" [btnName]="'Mis billetes'"
+                [isSelected]="selectedOption == 'user-tickets'"></app-profile-page-option-btn>
             </div>
             <div class="col-12" (click)="selectOption('recharge-card')">
-              <app-profile-page-option-btn
-                [icon]="'recharge-card'"
-                [btnName]="'Recargar tarjeta'"
-                [isSelected]="selectedOption == 'recharge-card'"
-              ></app-profile-page-option-btn>
+              <app-profile-page-option-btn [icon]="'recharge-card'" [btnName]="'Recargar tarjeta'"
+                [isSelected]="selectedOption == 'recharge-card'"></app-profile-page-option-btn>
             </div>
-            <div class="col-12" (click)="selectOption('default-station')">
-              <app-profile-page-option-btn
-                [icon]="'default-station'"
-                [btnName]="'Núcleo principal'"
-                [isSelected]="selectedOption == 'default-station'"
-              ></app-profile-page-option-btn>
+            <div class="col-12" (click)="signOut()">
+              <app-profile-page-option-btn [icon]="'logout'" [btnName]="'Cerrar sesión'"></app-profile-page-option-btn>
             </div>
           </div>
         </div>
@@ -67,128 +54,57 @@
           <div id="edit-profile">
             <h1 class="mt-0 text-3xl">Editar Perfil</h1>
             <p-divider></p-divider>
-            <form
-              id="edit-profile-form"
-              class="mt-4"
-              [formGroup]="editProfileForm"
-            >
+            <form id="edit-profile-form" class="mt-4" [formGroup]="editProfileForm" (ngSubmit)="saveUserChanges(editProfileForm)">
               <p-card header="1. Datos Personales" [styleClass]="'my-4'">
                 <ng-template pTemplate="content">
                   <div class="grid">
                     <div class="col-4">
                       <span class="p-float-label">
-                        <input
-                          required
-                          pInputText
-                          type="text"
-                          id="first_name"
-                          name="first_name"
-                          formControlName="firstNameControl"
-                        />
+                        <input required pInputText type="text" id="first_name" name="first_name"
+                          formControlName="firstName" />
                         <label for="first_name">Nombre*</label>
                       </span>
                     </div>
                     <div class="col-4">
                       <span class="p-float-label">
-                        <input
-                          required
-                          pInputText
-                          type="text"
-                          id="first_surname"
-                          name="first_surname"
-                          formControlName="firstSurnameControl"
-                        />
+                        <input required pInputText type="text" id="first_surname" name="first_surname"
+                          formControlName="firstSurname" />
                         <label for="first_surname">Primer Apellido*</label>
                       </span>
                     </div>
                     <div class="col-4">
                       <span class="p-float-label">
-                        <input
-                          pInputText
-                          type="text"
-                          id="second_surname"
-                          name="second_surname"
-                          formControlName="secondSurnameControl"
-                        />
+                        <input pInputText type="text" id="second_surname" name="second_surname"
+                          formControlName="secondSurname" />
                         <label for="second_surname">Segundo Apellido</label>
                       </span>
                     </div>
                     <div class="col-4">
                       <span class="p-float-label">
-                        <input
-                          required
-                          pInputText
-                          type="tel"
-                          id="phone_number"
-                          name="phone_number"
-                          formControlName="phoneNumberControl"
-                        />
+                        <input required pInputText type="tel" id="phone_number" name="phone_number"
+                          formControlName="phoneNumber" />
                         <label for="phone_number">Telefono Móvil*</label>
                       </span>
                     </div>
                     <div class="col-4">
                       <span class="p-float-label">
-                        <input
-                          required
-                          pInputText
-                          type="text"
-                          id="nationality"
-                          name="nationality"
-                          formControlName="nationalityControl"
-                        />
+                        <input required pInputText type="text" id="nationality" name="nationality"
+                          formControlName="nationality" />
                         <label for="nationality">Nacionalidad*</label>
                       </span>
                     </div>
                     <div class="col-4">
                       <span class="p-float-label">
-                        <input
-                          required
-                          pInputText
-                          type="text"
-                          id="id_number"
-                          name="id_number"
-                          formControlName="idNumberControl"
-                        />
+                        <input required pInputText type="text" id="id_number" name="id_number"
+                          formControlName="idNumber" />
                         <label for="id_number">DNI*</label>
                       </span>
                     </div>
                     <div class="col-4">
                       <span class="p-float-label">
-                        <input
-                          required
-                          pInputText
-                          type="text"
-                          id="birth-date"
-                          name="birth-date"
-                          formControlName="birthDateControl"
-                        />
+                        <p-calendar [required]="true" inputId="birth-date" name="birth-date" [dateFormat]="'dd/mm/yy'" [maxDate]="maxBirthDate" 
+                        formControlName="birthDate"></p-calendar>
                         <label for="birth-date">Fecha de nacimiento*</label>
-                      </span>
-                    </div>
-                    <div class="col-4">
-                      <span class="p-float-label">
-                        <input
-                          required
-                          pInputText
-                          type="email"
-                          id="email"
-                          name="email"
-                          formControlName="emailControl"
-                        />
-                        <label for="email">Email*</label>
-                      </span>
-                    </div>
-                    <div class="col-4">
-                      <span class="p-float-label">
-                        <input
-                          required
-                          pInputText
-                          type="password"
-                          id="password"
-                          name="password"
-                          formControlName="passwordControl"
-                        />
-                        <label for="password">Password*</label>
                       </span>
                     </div>
                   </div>
@@ -200,80 +116,43 @@
                   <div class="grid">
                     <div class="col-8">
                       <span class="p-float-label">
-                        <input
-                          required
-                          pInputText
-                          type="text"
-                          id="address_name"
-                          name="address_name"
-                          formControlName="addressNameControl"
-                        />
+                        <input required pInputText type="text" id="address_name" name="address_name"
+                          formControlName="addressName" />
                         <label for="address_name">Nombre de la calle*</label>
                       </span>
                     </div>
                     <div class="col-4">
                       <span class="p-float-label">
-                        <input
-                          pInputText
-                          type="number"
-                          id="address_number"
-                          name="address_number"
-                          formControlName="addressNumberControl"
-                        />
+                        <input pInputText type="number" id="address_number" name="address_number"
+                          formControlName="addressNumber" />
                         <label for="address_number">Numero*</label>
                       </span>
                     </div>
                     <div class="col-8">
                       <span class="p-float-label">
-                        <input
-                          pInputText
-                          type="text"
-                          id="address_extras"
-                          name="address_extras"
-                          formControlName="addressExtrasControl"
-                        />
-                        <label for="address_extras"
-                          >Edificio, Piso, Portal, Bloque, Puerta, etc..</label
-                        >
+                        <input pInputText type="text" id="address_extras" name="address_extras"
+                          formControlName="addressExtras" />
+                        <label for="address_extras">Edificio, Piso, Portal, Bloque, Puerta, etc..</label>
                       </span>
                     </div>
                     <div class="col-4">
                       <span class="p-float-label">
-                        <input
-                          pInputText
-                          required
-                          type="text"
-                          id="province"
-                          name="province"
-                          formControlName="provinceControl"
-                        />
+                        <input pInputText required type="text" id="province" name="province"
+                          formControlName="province" />
                         <label for="province">Provincia*</label>
                       </span>
                     </div>
                     <div class="col-4">
                       <span class="p-float-label">
-                        <input
-                          pInputText
-                          required
-                          type="text"
-                          id="municipality"
-                          name="municipality"
-                          formControlName="municipalityControl"
-                        />
+                        <input pInputText required type="text" id="municipality" name="municipality"
+                          formControlName="municipality" />
                         <label for="municipality">Localidad*</label>
                       </span>
                     </div>
                     <div class="col-4">
                       <span class="p-float-label">
-                        <input
-                          pInputText
-                          required
-                          type="number"
-                          maxlength="5"
-                          id="postal_code"
-                          name="postal_code"
-                          formControlName="postalCodeControl"
-                        />
+                        <input pInputText required type="number" maxlength="5" id="postal_code" name="postal_code"
+                          formControlName="postalCode" />
                         <label for="postal_code">Código Postal*</label>
                       </span>
                     </div>
@@ -281,50 +160,14 @@
                 </ng-template>
               </p-card>
 
-              <p-card header="3. Vincular tarjeta '+Renfe' (Opcional)">
-                <ng-template pTemplate="content">
-                  <div class="grid">
-                    <div class="col-8">
-                      <span class="p-float-label">
-                        <input
-                          pInputText
-                          type="text"
-                          id="card_holder_name"
-                          name="card_holder_name"
-                          formControlName="cardHolderNameControl"
-                        />
-                        <label for="card_holder_name">Nombre titular</label>
-                      </span>
-                    </div>
-                    <div class="col-4">
-                      <span class="p-float-label">
-                        <input
-                          pInputText
-                          type="number"
-                          maxlength="11"
-                          id="card_number"
-                          name="card_number"
-                          formControlName="cardNumberControl"
-                        />
-                        <label for="card_number">Numero</label>
-                      </span>
-                    </div>
-                  </div>
-                </ng-template>
-              </p-card>
-
               <div class="flex justify-content-center">
-                <button
-                  pButton
-                  pRipple
-                  type="submit"
-                  label="GUARDAR CAMBIOS"
-                  class="p-button-raised bg-color-primary mt-4"
-                  [disabled]="!editProfileForm.valid"
-                ></button>
+                <button pButton pRipple type="submit" label="GUARDAR CAMBIOS"
+                  class="p-button-raised bg-color-primary mt-4" [disabled]="!editProfileForm.valid"></button>
               </div>
             </form>
           </div>
+
+          <p-toast></p-toast>
         </ng-template>
         <ng-template [ngIf]="selectedOption == 'user-tickets'">
           <div id="user-tickets">
@@ -355,104 +198,48 @@
                   </div>
                   <div class="col-6">
                     <span class="p-float-label">
-                      <input
-                        pInputText
-                        type="text"
-                        id="destination"
-                        name="destination"
-                      />
+                      <input pInputText type="text" id="destination" name="destination" />
                       <label for="destination">Destino</label>
                     </span>
                   </div>
                 </div>
                 <div class="col-12 flex justify-content-center">
-                  <button
-                    pButton
-                    pRipple
-                    label="VER TARIFAS"
-                    class="p-button-raised bg-color-primary w-10rem mt-2"
-                  ></button>
+                  <button pButton pRipple label="VER TARIFAS"
+                    class="p-button-raised bg-color-primary w-10rem mt-2"></button>
                 </div>
               </ng-template>
             </p-card>
             <div id="ticket-fares" class="grid py-4">
               <div class="col-6">
-                <app-ticket-fare-info-card
-                  [groupName]="'fares'"
-                  [selectedFare]="selectedFare"
-                ></app-ticket-fare-info-card>
+                <app-ticket-fare-info-card [groupName]="'fares'" [selectedFare]="selectedFare">
+                </app-ticket-fare-info-card>
               </div>
               <div class="col-6">
-                <app-ticket-fare-info-card
-                  [groupName]="'fares'"
-                  [selectedFare]="selectedFare"
-                ></app-ticket-fare-info-card>
+                <app-ticket-fare-info-card [groupName]="'fares'" [selectedFare]="selectedFare">
+                </app-ticket-fare-info-card>
               </div>
               <div class="col-6">
-                <app-ticket-fare-info-card
-                  [groupName]="'fares'"
-                  [selectedFare]="selectedFare"
-                ></app-ticket-fare-info-card>
+                <app-ticket-fare-info-card [groupName]="'fares'" [selectedFare]="selectedFare">
+                </app-ticket-fare-info-card>
               </div>
               <div class="col-6">
-                <app-ticket-fare-info-card
-                  [groupName]="'fares'"
-                  [selectedFare]="selectedFare"
-                ></app-ticket-fare-info-card>
+                <app-ticket-fare-info-card [groupName]="'fares'" [selectedFare]="selectedFare">
+                </app-ticket-fare-info-card>
               </div>
             </div>
             <h1>Seleccionar método de pago</h1>
             <div class="grid">
               <div class="col-6">
-                <app-payment-method-btn
-                  [icon]="'visa'"
-                  [btnName]="'Visa'"
-                ></app-payment-method-btn>
+                <app-payment-method-btn [icon]="'visa'" [btnName]="'Visa'"></app-payment-method-btn>
               </div>
               <div class="col-6">
-                <app-payment-method-btn
-                  [icon]="'mastercard'"
-                  [btnName]="'MasterCard'"
-                ></app-payment-method-btn>
+                <app-payment-method-btn [icon]="'mastercard'" [btnName]="'MasterCard'"></app-payment-method-btn>
               </div>
               <div class="col-6">
-                <app-payment-method-btn
-                  [icon]="'google-pay'"
-                  [btnName]="'Google Pay'"
-                ></app-payment-method-btn>
+                <app-payment-method-btn [icon]="'google-pay'" [btnName]="'Google Pay'"></app-payment-method-btn>
               </div>
               <div class="col-6">
-                <app-payment-method-btn
-                  [icon]="'paypal'"
-                  [btnName]="'Paypal'"
-                ></app-payment-method-btn>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template [ngIf]="selectedOption == 'default-station'">
-          <div id="default-station">
-            <h1 class="mt-0 text-3xl">Núcleo principal</h1>
-            <p-divider></p-divider>
-            <div class="grid">
-              <div
-                class="col-4"
-                *ngFor="let station of stations"
-                (click)="selectDefaultStation(station)"
-              >
-                <app-default-station-radio-btn
-                  [name]="station"
-                  [groupName]="'station'"
-                  [selectedStation]="selectedStation"
-                ></app-default-station-radio-btn>
-              </div>
-              <div class="col-12 flex justify-content-center">
-                <button
-                  pButton
-                  pRipple
-                  label="GUARDAR"
-                  class="p-button-raised w-10rem bg-color-primary"
-                ></button>
+                <app-payment-method-btn [icon]="'paypal'" [btnName]="'Paypal'"></app-payment-method-btn>
               </div>
             </div>
           </div>

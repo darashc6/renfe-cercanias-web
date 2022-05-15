@@ -1,40 +1,46 @@
 <section id="station-info-page">
-  <ng-template [ngIf]="isLoading || !railNetwork" [ngIfElse]="loadContent">
+  <ng-template [ngIf]="isLoading" [ngIfElse]="loadContent">
     <div class="flex align-items-center justify-content-center mt-6">
       <app-loading-spinner></app-loading-spinner>
     </div>
   </ng-template>
 
   <ng-template #loadContent>
-    <div id="header" class="bg-white">
-      <img src="../../../assets/{{ railNetworkId }}-img.png" alt="cercanias-station-img" class="cercanias-img" />
-      <h1 id="station-name" class="text-3xl text-center m-0 py-5">
-        Cercanias {{ railNetwork!.name }}
-      </h1>
-    </div>
+    <ng-template [ngIf]="!railNetwork" [ngIfElse]="loadData">
+      <app-error-section></app-error-section>
+    </ng-template>
 
-    <div id="content" class="py-3">
-      <p class="text-3xl my-1 text-center">¿Que necesitas?</p>
-      <div class="grid justify-content-center">
-        <div class="col-12 grid justify-content-center">
-          <div class="col-12 sm:col-6 md:col-4 lg:col-3 py-4 px-3" *ngFor="let info of stationInfo">
-            <p-card header="{{ info.title }}">
-              <ng-template pTemplate="header">
-                <img src="{{ info.headerImg }}" alt="header-img" class="border-round-top" />
-              </ng-template>
-              <p class="m-0 text-sm h-5rem">{{ info.subtitle }}</p>
-              <ng-template pTemplate="footer">
-                <div class="flex justify-content-end">
-                  <a [routerLink]="[railNetworkId,info.nextPageUrl]" class="no-underline">
-                    <button pButton label="Mas detalles" icon="pi pi-eye" class="p-button-text" styleClass="p-button-sm"
-                      iconPos="right"></button>
-                  </a>
-                </div>
-              </ng-template>
-            </p-card>
+    <ng-template #loadData>
+      <div id="header" class="bg-white">
+        <img src="../../../assets/{{ railNetworkId }}-img.png" alt="cercanias-station-img" class="cercanias-img" />
+        <h1 id="station-name" class="text-3xl text-center m-0 py-5">
+          Cercanias {{ railNetwork!.name }}
+        </h1>
+      </div>
+
+      <div id="content" class="py-3">
+        <p class="text-3xl my-1 text-center">¿Que necesitas?</p>
+        <div class="grid justify-content-center">
+          <div class="col-12 grid justify-content-center">
+            <div class="col-12 sm:col-6 md:col-4 lg:col-3 py-4 px-3" *ngFor="let info of stationInfo">
+              <p-card header="{{ info.title }}">
+                <ng-template pTemplate="header">
+                  <img src="{{ info.headerImg }}" alt="header-img" class="border-round-top" />
+                </ng-template>
+                <p class="m-0 text-sm h-5rem">{{ info.subtitle }}</p>
+                <ng-template pTemplate="footer">
+                  <div class="flex justify-content-end">
+                    <a [routerLink]="[info.nextPageUrl]" class="no-underline">
+                      <button pButton label="Mas detalles" icon="pi pi-eye" class="p-button-text"
+                        styleClass="p-button-sm" iconPos="right"></button>
+                    </a>
+                  </div>
+                </ng-template>
+              </p-card>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-template>
   </ng-template>
 </section>

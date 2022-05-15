@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/models/User';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-account-registration-page',
@@ -8,28 +10,62 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AccountRegistrationPageComponent implements OnInit {
   accountRegistrationForm: FormGroup = new FormGroup({
-    firstNameControl: new FormControl('', [Validators.required]),
-    firstSurnameControl: new FormControl('', [Validators.required]),
-    secondSurnameControl: new FormControl(''),
-    phoneNumberControl: new FormControl('', [Validators.required]),
-    nationalityControl: new FormControl('', [Validators.required]),
-    idNumberControl: new FormControl('', [Validators.required]),
-    birthDateControl: new FormControl('', [Validators.required]),
-    emailControl: new FormControl('', [Validators.required]),
-    passwordControl: new FormControl('', [Validators.required]),
-    addressNameControl: new FormControl('', [Validators.required]),
-    addressNumberControl: new FormControl('', [Validators.required]),
-    addressExtrasControl: new FormControl(''),
-    provinceControl: new FormControl('', [Validators.required]),
-    municipalityControl: new FormControl('', [Validators.required]),
-    postalCodeControl: new FormControl('', [Validators.required]),
-    cardHolderNameControl: new FormControl(''),
-    cardNumberControl: new FormControl('')
+    firstName: new FormControl('', [Validators.required]),
+    firstSurname: new FormControl('', [Validators.required]),
+    secondSurname: new FormControl(''),
+    phoneNumber: new FormControl('', [Validators.required]),
+    nationality: new FormControl('', [Validators.required]),
+    idNumber: new FormControl('', [Validators.required]),
+    birthDate: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
+    addressName: new FormControl('', [Validators.required]),
+    addressNumber: new FormControl('', [Validators.required]),
+    addressExtras: new FormControl(''),
+    province: new FormControl('', [Validators.required]),
+    municipality: new FormControl('', [Validators.required]),
+    postalCode: new FormControl('', [Validators.required]),
+    cardHolderName: new FormControl(''),
+    cardNumber: new FormControl('')
   });
+  maxBirthDate: Date = new Date();
+  isLoadingRegistrationSubmission: boolean = false;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(formData: FormGroup) {
+    this.isLoadingRegistrationSubmission = true;
+
+    const { firstName, firstSurname, secondSurname, phoneNumber, nationality, idNumber, birthDate, email, password, addressName, addressNumber, addressExtras, province, municipality, postalCode } = formData.value;
+
+    let userData: User = {
+      firstName,
+      firstSurname,
+      phoneNumber,
+      nationality,
+      idNumber,
+      birthDate: birthDate.toLocaleDateString('en-GB'),
+      email,
+      password,
+      address: {
+        addressName, addressNumber, province, municipality, postalCode
+      }
+    }
+
+    if (secondSurname.length > 0) {
+      userData['secondSurname'] = secondSurname
+    }
+
+    if (addressExtras.length > 0) {
+      userData['address']['addressExtras'] = addressExtras;
+    }
+
+    this.authService.signUp(userData);
+
+    this.isLoadingRegistrationSubmission = false;
   }
 
 }

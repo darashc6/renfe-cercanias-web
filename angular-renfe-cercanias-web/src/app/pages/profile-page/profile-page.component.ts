@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/models/User';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -8,49 +10,66 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfilePageComponent implements OnInit {
   editProfileForm: FormGroup = new FormGroup({
-    firstNameControl: new FormControl('', [Validators.required]),
-    firstSurnameControl: new FormControl('', [Validators.required]),
-    secondSurnameControl: new FormControl(''),
-    phoneNumberControl: new FormControl('', [Validators.required]),
-    nationalityControl: new FormControl('', [Validators.required]),
-    idNumberControl: new FormControl('', [Validators.required]),
-    birthDateControl: new FormControl('', [Validators.required]),
-    emailControl: new FormControl('', [Validators.required]),
-    passwordControl: new FormControl('', [Validators.required]),
-    addressNameControl: new FormControl('', [Validators.required]),
-    addressNumberControl: new FormControl('', [Validators.required]),
-    addressExtrasControl: new FormControl(''),
-    provinceControl: new FormControl('', [Validators.required]),
-    municipalityControl: new FormControl('', [Validators.required]),
-    postalCodeControl: new FormControl('', [Validators.required]),
-    cardHolderNameControl: new FormControl(''),
-    cardNumberControl: new FormControl('')
+    firstName: new FormControl(this.authService.userLoggedIn?.firstName, [Validators.required]),
+    firstSurname: new FormControl(this.authService.userLoggedIn?.firstSurname, [Validators.required]),
+    secondSurname: new FormControl(this.authService.userLoggedIn?.secondSurname || ''),
+    phoneNumber: new FormControl(this.authService.userLoggedIn?.phoneNumber, [Validators.required]),
+    nationality: new FormControl(this.authService.userLoggedIn?.nationality, [Validators.required]),
+    idNumber: new FormControl(this.authService.userLoggedIn?.idNumber, [Validators.required]),
+    birthDate: new FormControl(this.authService.userLoggedIn?.birthDate, [Validators.required]),
+    addressName: new FormControl(this.authService.userLoggedIn?.address.addressName, [Validators.required]),
+    addressNumber: new FormControl(this.authService.userLoggedIn?.address.addressNumber, [Validators.required]),
+    addressExtras: new FormControl(this.authService.userLoggedIn?.address.addressExtras || ''),
+    province: new FormControl(this.authService.userLoggedIn?.address.province, [Validators.required]),
+    municipality: new FormControl(this.authService.userLoggedIn?.address.municipality, [Validators.required]),
+    postalCode: new FormControl(this.authService.userLoggedIn?.address.postalCode, [Validators.required]),
   });
 
-  stations: string[] = [
-    'Bilbao',
-    'Cádiz',
-    'Málaga',
-    'Santander',
-    'San Sebastián',
-    'Zaragoza',
-  ]
-  selectedStation: string = 'Málaga'
+  maxBirthDate: Date = new Date();
 
   selectedFare: string = '';
 
   selectedOption: string = 'edit-profile'
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-  }
-
-  selectDefaultStation(stationSelected: string) {
-    this.selectedStation = stationSelected;
+    console.log(this.authService.userLoggedIn);
   }
 
   selectOption(optionSelected: string) {
     this.selectedOption = optionSelected;
+  }
+
+  saveUserChanges(formData: FormGroup) {
+    const { firstName, firstSurname, secondSurname, phoneNumber, nationality, idNumber, birthDate, addressName, addressNumber, addressExtras, province, municipality, postalCode } = formData.value;
+
+    let userData: User = {
+      firstName,
+      firstSurname,
+      phoneNumber,
+      nationality,
+      idNumber,
+      birthDate: birthDate.toLocaleDateString('en-GB'),
+      email: this.authService.userLoggedIn!.email,
+      password: this.authService.userLoggedIn!.password,
+      address: {
+        addressName, addressNumber, province, municipality, postalCode
+      }
+    }
+
+    if (secondSurname.length > 0) {
+      userData['secondSurname'] = secondSurname
+    }
+
+    if (addressExtras.length > 0) {
+      userData['address']['addressExtras'] = addressExtras;
+    }
+
+    this.authService.updateUser(userData);
+  }
+
+  signOut() {
+    this.authService.signOut();
   }
 }

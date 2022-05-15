@@ -8,7 +8,7 @@
     <ng-template #loadContent>
         <div id="header" class="bg-white py-6">
             <p id="route-history" class="ml-4 text-lg">
-                <a id="home-page-link" routerLink="/{{ railNetworkId }}">{{ railNetwork!.name }}</a> / Tarifas
+                <a id="home-page-link" [routerLink]='["/nucleos", railNetworkId]'>{{ railNetwork!.name }}</a> / Tarifas
             </p>
             <h1 id="page-title" class="text-3xl text-center m-0">Tarifas</h1>
         </div>

@@ -8,8 +8,9 @@
     <ng-template #loadContent>
         <div id="header" class="bg-white py-6">
             <p id="route-history" class="ml-4 text-base sm:text-lg">
-                <a class="page-link" routerLink="/{{ railNetworkId }}">{{ railNetwork!.name }}</a> / <a class="page-link"
-                    routerLink="/{{ railNetworkId }}/tarifas">Tarifas</a> / {{ fare!.fareDescription.title }}
+                <a class="page-link" [routerLink]='["/nucleos", railNetworkId]'>{{ railNetwork!.name }}</a> / <a
+                    class="page-link" [routerLink]='["/nucleos", railNetworkId, "tarifas"]'>Tarifas</a> / {{
+                fare!.fareDescription.title }}
             </p>
             <h1 id="page-title" class="text-xl sm:text-3xl text-center m-0">{{ fare!.fareDescription.title }}</h1>
         </div>
@@ -56,17 +57,17 @@
                     <p class="text-base sm:text-xl font-bold">Te puede interesar</p>
                     <ul id="more-info-links">
                         <li class="text-base sm:text-xl">
-                            <a routerLink="/{{ railNetworkId }}/viajar-con">
+                            <a [routerLink]='["/nucleos", railNetworkId, "viajar-con"]'>
                                 Viajar con
                             </a>
                         </li>
                         <li class="text-base sm:text-xl">
-                            <a routerLink="/{{ railNetworkId }}/lineas">
+                            <a [routerLink]='["/nucleos", railNetworkId, "lineas"]'>
                                 Estaciones y líneas
                             </a>
                         </li>
                         <li class="text-base sm:text-xl">
-                            <a routerLink="/{{ railNetworkId }}/atencion-cliente">
+                            <a [routerLink]='["/nucleos", railNetworkId, "atencion-cliente"]'>
                                 Atencion al Cliente
                             </a>
                         </li>

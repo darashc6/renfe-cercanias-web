@@ -97,10 +97,60 @@ export class HomePageComponent implements OnInit {
     },
   ]
 
+  stationsDropdown: any[] = [
+    {
+      id: 'cercanias-asturias',
+      name: 'Asturias'
+    },
+    {
+      id: 'cercanias-bilbao',
+      name: 'Bilbao'
+    },
+    {
+      id: 'cercanias-cadiz',
+      name: 'Cádiz'
+    },
+    {
+      id: 'cercanias-malaga',
+      name: 'Málaga'
+    },
+    {
+      id: 'cercanias-murcia-alicante',
+      name: 'Murcia/Alicante'
+    },
+    {
+      id: 'cercanias-santander',
+      name: 'Santander'
+    },
+    {
+      id: 'cercanias-san-sebastian',
+      name: 'San Sebástian'
+    },
+    {
+      id: 'cercanias-sevilla',
+      name: 'Sevilla'
+    },
+    {
+      id: 'cercanias-valencia',
+      name: 'Valencia'
+    },
+    {
+      id: 'cercanias-zaragoza',
+      name: 'Zaragoza'
+    },
+  ]
+  selectedStation?: any;
+  minDate: Date = new Date();
+  maxDate: Date = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
+
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
     this.titleService.setTitle('Inicio');
   }
 
+  onDropdownValueChanged() {
+    // TODO - Load stations when value has been changed
+    console.log(this.selectedStation);
+  }
 }

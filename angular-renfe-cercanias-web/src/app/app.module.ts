@@ -9,6 +9,15 @@ import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from "primeng/inputtext";
 import { DialogModule } from "primeng/dialog";
 import { SidebarModule } from "primeng/sidebar";
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
+import { CardModule } from 'primeng/card';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
+import { environment } from 'src/environments/environment';
+import { MessageService } from 'primeng/api';
 
 import { HomePageModule } from './pages/home-page/home-page.module';
 import { NewsPageModule } from './pages/news-page/news-page.module';
@@ -24,7 +33,8 @@ import { TrainLinesPageModule } from './pages/train-lines-page/train-lines-page.
 import { AccountPageModule } from './pages/account-page/account-page.module';
 import { AccountRegistrationPageModule } from './pages/account-registration-page/account-registration-page.module';
 import { ProfilePageModule } from './pages/profile-page/profile-page.module';
-
+import { ErrorPageModule } from './pages/error-page/error-page.module';
+import { BuyTicketPageModule } from './pages/buy-ticket-page/buy-ticket-page.module';
 
 
 import { AppComponent } from './app.component';
@@ -33,6 +43,7 @@ import { NewAppInfoItemComponent } from './components/new-app-info-item/new-app-
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +51,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     FooterComponent,
     NewAppInfoItemComponent,
     NavigationBarComponent,
-    HomePageComponent
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,10 +65,19 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     HomePageModule,
     HttpClientModule,
     DialogModule,
-    SidebarModule
+    SidebarModule,
+    CalendarModule,
+    DropdownModule,
+    FormsModule,
+    CardModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'renfe-cercanias'),
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [
-    Title
+    Title,
+    AuthService,
+    MessageService
   ],
   bootstrap: [AppComponent],
 })

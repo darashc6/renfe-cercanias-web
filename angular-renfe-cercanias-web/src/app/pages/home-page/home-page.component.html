@@ -1,5 +1,56 @@
 <!-- Search form section -->
-<app-search-train-timings-section></app-search-train-timings-section>
+<section id="buy-ticket-section">
+  <div class="grid py-4">
+    <div class="col-4 col-offset-4" id="buy-ticket-form">
+      <p-card>
+        <ng-template pTemplate="content">
+          <div class="grid">
+            <div class="col-12">
+              <p-dropdown [options]="stations" [(ngModel)]="selectedStation" optionLabel="name" [filter]="true"
+                filterBy="name" (onChange)="onDropdownValueChanged()">
+                <ng-template pTemplate="selectedItem" *ngIf="selectedStation">
+                  <div class="station-item station-item-value flex align-items-center" *ngIf="selectedStation">
+                    <img src="../../../assets/cercanias-logo.png" alt="cercanias-logo">
+                    <div class="ml-3 font-bold">{{ selectedStation.name }}</div>
+                  </div>
+                </ng-template>
+                <ng-template let-station pTemplate="item">
+                  <div class="station-item flex align-items-center">
+                    <img src="../../../assets/cercanias-logo.png" alt="cercanias-logo">
+                    <div class="ml-3">{{ station.name }}</div>
+                  </div>
+                </ng-template>
+              </p-dropdown>
+            </div>
+            <div class="col-12">
+              <span class="p-float-label">
+                <input pInputText type="text" id="origin" name="origin" class="w-full">
+                <label for="origin">Origen</label>
+              </span>
+            </div>
+            <div class="col-12">
+              <span class="p-float-label">
+                <input pInputText type="text" id="origin" name="destination" class="w-full">
+                <label for="destination">Destino</label>
+              </span>
+            </div>
+            <div class="col-12">
+              <span class="p-float-label w-full">
+                <p-calendar inputId="date-selected" [dateFormat]="'dd/mm/yy'" inputStyleClass="w-full"
+                  [minDate]="minDate" [maxDate]="maxDate">
+                </p-calendar>
+                <label for="date-selected">Fecha</label>
+              </span>
+            </div>
+            <div class="col-12 flex justify-content-center">
+              <button pButton pRipple label="COMPRAR BILLETE" class="p-button-raised bg-color-primary w-15rem mt-2"></button>
+            </div>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</section>
 
 <!-- Intro Section -->
 <section id="intro-section">
@@ -10,11 +61,8 @@
 
     <div class="grid justify-content-evenly">
       <div class="col-3" *ngFor="let introInfo of introInfos">
-        <app-intro-ilustration-info
-          [infoTitle]="introInfo.title"
-          [infoSubtitle]="introInfo.subtitle"
-          [infoImgSrc]="introInfo.imgSrc"
-        ></app-intro-ilustration-info>
+        <app-intro-ilustration-info [infoTitle]="introInfo.title" [infoSubtitle]="introInfo.subtitle"
+          [infoImgSrc]="introInfo.imgSrc"></app-intro-ilustration-info>
       </div>
     </div>
   </div>
@@ -44,18 +92,8 @@
 
       <div class="grid">
         <div class="col-10 col-offset-1 flex justify-content-evenly">
-          <img
-            src="../../../assets/android-badge-en 1.png"
-            width="200"
-            alt=""
-            srcset=""
-          />
-          <img
-            src="../../../assets/ios-badge-en 1.png"
-            width="200"
-            alt=""
-            srcset=""
-          />
+          <img src="../../../assets/android-badge-en 1.png" width="200" alt="" srcset="" />
+          <img src="../../../assets/ios-badge-en 1.png" width="200" alt="" srcset="" />
         </div>
       </div>
     </div>
@@ -68,22 +106,12 @@
     <h2 class="text-center mb-2 mt-0 text-4xl">Núcleos de Cercanías</h2>
   </div>
 
-  <p-carousel
-    [value]="stations"
-    [showIndicators]="false"
-    [numVisible]="3"
-    [numScroll]="1"
-    [autoplayInterval]="5000"
-    [circular]="true"
-  >
+  <p-carousel [value]="stations" [showIndicators]="false" [numVisible]="3" [numScroll]="1" [autoplayInterval]="5000"
+    [circular]="true">
     <ng-template let-station pTemplate="item">
       <div class="station-item">
         <div class="station-item-content">
-          <img
-            class="border-round"
-            src="../../../assets/cercanias-{{ station.imgName }}-img.png"
-            width="375"
-          />
+          <img class="border-round" src="../../../assets/cercanias-{{ station.imgName }}-img.png" width="375" />
           <h5 class="text-4xl my-3">{{ station.name }}</h5>
           <p class="text-2xl mt-0 station-description">
             {{ station.description }}

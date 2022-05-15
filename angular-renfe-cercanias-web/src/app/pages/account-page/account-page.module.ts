@@ -6,6 +6,9 @@ import { IconModule } from '@visurel/iconify-angular';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { LoadingSpinnerModule } from 'src/app/shared/loading-spinner/loading-spinner.module';
 
 import { AccountPageComponent } from './account-page.component';
 
@@ -22,7 +25,10 @@ import { AccountPageComponent } from './account-page.component';
     InputTextModule,
     ButtonModule,
     RippleModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    ToastModule,
+    LoadingSpinnerModule
   ]
 })
 export class AccountPageModule { }

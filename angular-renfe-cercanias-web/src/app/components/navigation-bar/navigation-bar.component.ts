@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class NavigationBarComponent implements OnInit {
   dialogOpen: boolean = false;
   sidebarOpen: boolean = false;
+  accountTabName: string = 'Cuenta';
+  accountTabLink: string = '/cuenta';
 
   stations: any[] = [
     {
@@ -52,9 +55,22 @@ export class NavigationBarComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.checkLoginState();
+  }
+
+  checkLoginState() {
+    this.authService._isUserLoggedIn.subscribe((res) => {
+      if (res) {
+        this.accountTabName = 'Perfil';
+        this.accountTabLink = '/perfil';
+      } else {
+        this.accountTabName = 'Cuenta';
+        this.accountTabLink = '/cuenta';
+      }
+    })
   }
 
   openDialog() {

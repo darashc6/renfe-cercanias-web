@@ -8,8 +8,8 @@
     <ng-template #loadContent>
         <div id="header" class="bg-white py-6">
             <p id="route-history" class="text-base sm:text-lg ml-4"><a class="page-link"
-                    routerLink="/{{ railNetworkId }}">{{
-                    railNetwork!.name }}</a> / <a class="page-link" routerLink="/{{ railNetworkId }}/atencion-cliente">
+                [routerLink]='["/nucleos", railNetworkId]'>{{
+                    railNetwork!.name }}</a> / <a class="page-link" [routerLink]='["/nucleos", railNetworkId, "atencion-cliente"]'>
                     Atención al Cliente</a> /
                 Contactar con Cercanías</p>
             <h1 id="page-title" class="text-xl sm:text-3xl text-center m-0">Formulario</h1>
