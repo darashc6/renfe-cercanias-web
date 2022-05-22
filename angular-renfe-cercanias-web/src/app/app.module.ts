@@ -18,6 +18,7 @@ import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
 import { environment } from 'src/environments/environment';
 import { MessageService } from 'primeng/api';
+import { NgxPayPalModule, PayPalScriptService } from 'ngx-paypal';
 
 import { HomePageModule } from './pages/home-page/home-page.module';
 import { NewsPageModule } from './pages/news-page/news-page.module';
@@ -72,12 +73,14 @@ import { AuthService } from './services/auth.service';
     CardModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'renfe-cercanias'),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    NgxPayPalModule
   ],
   providers: [
     Title,
     AuthService,
-    MessageService
+    MessageService,
+    PayPalScriptService
   ],
   bootstrap: [AppComponent],
 })

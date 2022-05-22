@@ -6,79 +6,68 @@
                     <ng-template pTemplate="content">
                         <div class="grid">
                             <div class="col-12">
-                                <p-dropdown [options]="stations" [(ngModel)]="selectedStation" optionLabel="name"
-                                    [filter]="true" filterBy="name" (onChange)="onDropdownValueChanged()">
-                                    <ng-template pTemplate="selectedItem" *ngIf="selectedStation">
-                                        <div class="station-item station-item-value flex align-items-center"
-                                            *ngIf="selectedStation">
-                                            <img src="../../../assets/cercanias-logo.png" alt="cercanias-logo">
-                                            <div class="ml-3 font-bold">{{ selectedStation.name }}</div>
-                                        </div>
-                                    </ng-template>
-                                    <ng-template let-station pTemplate="item">
-                                        <div class="station-item flex align-items-center">
-                                            <img src="../../../assets/cercanias-logo.png" alt="cercanias-logo">
-                                            <div class="ml-3">{{ station.name }}</div>
-                                        </div>
-                                    </ng-template>
+                                <p-dropdown [options]="railNetworks" [(ngModel)]="selectedRailNetwork"
+                                    optionLabel="name" [filter]="true" filterBy="name"
+                                    (onChange)="onRailNetworkDropdownValueChanged()">
                                 </p-dropdown>
                             </div>
                             <div class="col-12">
-                                <span class="p-float-label">
-                                    <input pInputText type="text" id="origin" name="origin" class="w-full">
-                                    <label for="origin">Origen</label>
-                                </span>
+                                <p-dropdown [disabled]="trainLinesToShow.length == 0" [options]="trainLinesToShow"
+                                    [(ngModel)]="selectedTrainLine" optionLabel="lineName" placeholder="Línea"
+                                    (onChange)="onTrainLineDropdownValueChanged()">
+                                </p-dropdown>
                             </div>
                             <div class="col-12">
-                                <span class="p-float-label">
-                                    <input pInputText type="text" id="origin" name="destination" class="w-full">
-                                    <label for="destination">Destino</label>
-                                </span>
+                                <p-dropdown [disabled]="originStationsToShow.length == 0" [options]="originStationsToShow"
+                                    [(ngModel)]="selectedOriginStation" optionLabel="name" placeholder="Origen"
+                                    [filter]="true" filterBy="name" (onChange)="onOriginStationDropdownValueChanged()">
+                                </p-dropdown>
                             </div>
                             <div class="col-12">
-                                <span class="p-float-label w-full">
-                                    <p-calendar inputId="date-selected" [dateFormat]="'dd/mm/yy'"
-                                        inputStyleClass="w-full" [minDate]="minDate" [maxDate]="maxDate">
-                                    </p-calendar>
-                                    <label for="date-selected">Fecha</label>
-                                </span>
-                            </div>
-                            <div class="col-12 flex justify-content-center">
-                                <button pButton pRipple label="ACTUALIZAR"
-                                    class="p-button-raised bg-color-primary w-10rem mt-2"></button>
+                                <p-dropdown [disabled]="destinationStationToShow.length == 0 || !selectedOriginStation"
+                                    [options]="destinationStationToShow" [(ngModel)]="selectedDestinationStation"
+                                    optionLabel="name" placeholder="Destino" [filter]="true" filterBy="name" (onChange)="onDestinationStationDropdownValueChanged()">
+                                </p-dropdown>
                             </div>
                         </div>
                     </ng-template>
                 </p-card>
             </div>
-            <div class="col-offset-1 col-6">
-                <h1>Seleccionar tarifa</h1>
-                <div id="ticket-fares" class="grid">
-                    <div class="col-6">
-                        <app-ticket-fare-info-card [groupName]="'fare'" [selectedFare]="selectedFare">
-                        </app-ticket-fare-info-card>
+            <ng-template [ngIf]="isFormFilledCorrectly()" [ngIfElse]="fillFormMessage">
+                <div class="col-offset-1 col-6">
+                    <h1>Seleccionar tarifa</h1>
+                    <div id="ticket-fares" class="grid">
+                        <div class="col-6" *ngFor="let fare of fares">
+                            <app-ticket-fare-info-card [groupName]="'fare'" [selectedFare]="selectedFare" [fare]="fare"
+                                [nZones]="nZones" (onSelectedFare)="setSelectedFare($event)">
+                            </app-ticket-fare-info-card>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <app-ticket-fare-info-card [groupName]="'fare'" [selectedFare]="selectedFare">
-                        </app-ticket-fare-info-card>
-                    </div>
-                </div>
-                <h1>Seleccionar método de pago</h1>
-                <div class="grid">
-                    <div class="col-6">
-                        <app-payment-method-btn [icon]="'visa'" [btnName]="'Visa'"></app-payment-method-btn>
-                    </div>
-                    <div class="col-6">
-                        <app-payment-method-btn [icon]="'mastercard'" [btnName]="'MasterCard'"></app-payment-method-btn>
-                    </div>
-                    <div class="col-6">
-                        <app-payment-method-btn [icon]="'google-pay'" [btnName]="'Google Pay'"></app-payment-method-btn>
-                    </div>
-                    <div class="col-6">
-                        <app-payment-method-btn [icon]="'paypal'" [btnName]="'Paypal'"></app-payment-method-btn>
+                    <h1>Seleccionar método de pago</h1>
+                    <div class="grid">
+                        <div class="col-12">
+                            <ngx-paypal [config]="paypalConfig"></ngx-paypal>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </ng-template>
+
+            <ng-template #fillFormMessage>
+                <div class="col-offset-1 col-6">
+                    <h3 class="text-center">Por favor, rellene los campos necesarios</h3>
+                </div>
+            </ng-template>
         </div>
+        <p-dialog header="Billete comprado" [(visible)]="displayPaymentSuccessfulModal" [modal]="true"
+            [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+            <p class="m-0">¡Billete comprado con exito!</p>
+            
+            <ng-template pTemplate="footer">
+                <a [routerLink]="['/']">
+                    <p-button icon="pi pi-check" (onClick)="onPaymentSuccessfulModalClose()" label="OK"
+                    styleClass="p-button-text"></p-button>
+                </a>
+            </ng-template>
+        </p-dialog>
     </div>
 </section>

@@ -1,0 +1,15 @@
+::ng-deep #ticket-fares .p-card .p-card-body {
+  padding-top: 0;
+}
+
+::ng-deep #ticket-fares .p-card .p-card-content {
+  padding: 0;
+}
+
+::ng-deep #ticket-fares .p-radiobutton .p-radiobutton-box.p-highlight {
+  border-color: var(--color-primary);
+}
+
+::ng-deep #ticket-fares .p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+  background-color: var(--color-primary);
+}

@@ -1,39 +1,23 @@
-<p-card>
-  <ng-template pTemplate="header">
-    <div class="flex align-items-center justify-content-between px-3">
-      <h3>Abono mensual limitado</h3>
-      <p-radioButton
-        name="{{ groupName }}"
-        value="'Hola'"
-        [(ngModel)]="selectedFare"
-      ></p-radioButton>
-    </div>
-  </ng-template>
-  <ng-template pTemplate="content">
-    <ul class="m-0">
-      <li>
-        <p class="m-0">
-          Dos viajes al día durante un mes, independientemente del sentido del
-          viaje.
-        </p>
-      </li>
-      <li>
-        <p class="m-0">
-          Siempre en el mismo trayecto que hayas elegido en el momento de la
-          compra del abono..
-        </p>
-      </li>
-      <li>
-        <p class="m-0">Es unipersonal, personalizado e intransferible.</p>
-      </li>
-      <li>
-        <p class="m-0">Validez: Todos los días durante un mes.</p>
-      </li>
-    </ul>
-  </ng-template>
-  <ng-template pTemplate="footer">
-    <div class="flex justify-content-end">
-      <p class="font-bold">Price: 60.85€</p>
-    </div>
-  </ng-template>
-</p-card>
+<div id="ticket-fares" *ngIf="fare">
+  <p-card>
+    <ng-template pTemplate="header">
+      <div class="flex align-items-center justify-content-between px-3">
+        <h3>{{ fare.fareDescription.title }}</h3>
+        <p-radioButton [inputId]="fare.fareId" name="{{ groupName }}" [value]="fare" [(ngModel)]="selectedFare" (onClick)="onRadioButtonClick()">
+        </p-radioButton>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <ul class="m-0">
+        <li *ngFor="let content of fare.fareDescription.content" class="py-1">
+          <p class="m-0">{{ content }}</p>
+        </li>
+      </ul>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="flex justify-content-end">
+        <p class="font-bold">Price: {{ farePrice | number: '1.2-2' }} €</p>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

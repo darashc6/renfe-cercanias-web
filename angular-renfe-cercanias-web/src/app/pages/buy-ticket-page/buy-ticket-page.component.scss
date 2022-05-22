@@ -6,6 +6,10 @@
       width: 25px;
     }
   }
+  
+  a {
+    text-decoration: none;
+  }
 }
 
 ::ng-deep {
@@ -27,6 +31,10 @@
         background-color: rgba(255, 60, 60, 0.12);
       }
     }
+  }
+
+  .p-button.p-button-text, .p-button.p-button-text:enabled:hover {
+    color: var(--color-primary);
   }
 
   .p-calendar {

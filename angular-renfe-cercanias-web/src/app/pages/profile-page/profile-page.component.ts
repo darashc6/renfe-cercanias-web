@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Fare } from 'src/app/models/Fare';
 import { User } from 'src/app/models/User';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -27,7 +28,7 @@ export class ProfilePageComponent implements OnInit {
 
   maxBirthDate: Date = new Date();
 
-  selectedFare: string = '';
+  selectedFare?: Fare;
 
   selectedOption: string = 'edit-profile'
 
