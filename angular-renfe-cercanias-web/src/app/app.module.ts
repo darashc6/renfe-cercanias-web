@@ -45,6 +45,7 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AuthService } from './services/auth.service';
+import { configVars } from 'src/environments/config_vars';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,7 @@ import { AuthService } from './services/auth.service';
     DropdownModule,
     FormsModule,
     CardModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'renfe-cercanias'),
+    AngularFireModule.initializeApp(configVars.firebaseConfig, 'renfe-cercanias'),
     AngularFireAuthModule,
     AngularFirestoreModule,
     NgxPayPalModule

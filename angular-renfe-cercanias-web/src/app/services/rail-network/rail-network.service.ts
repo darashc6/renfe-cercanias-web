@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RailNetwork } from 'src/app/models/RailNetwork';
-import { environment } from 'src/environments/environment';
+import { configVars } from 'src/environments/config_vars';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RailNetworkService {
-  private apiUrl: string = `${environment.apiUrl}/rail-networks`;
+  private apiUrl: string = `${configVars.apiUrl}/rail-networks`;
   private railNetworkIdSaved: string = '';
   private railNetwork: Observable<RailNetwork> = new Observable();
 

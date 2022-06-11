@@ -6,7 +6,7 @@ import { configVars } from "./config_vars";
 export const environment = {
   production: false,
   firebaseConfig: configVars.firebaseConfig,
-  apiUrl: "https://cercanias-web-api.herokuapp.com"
+  apiUrl: configVars
 };
 
 /*
