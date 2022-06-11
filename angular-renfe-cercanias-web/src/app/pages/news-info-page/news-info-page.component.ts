@@ -30,10 +30,13 @@ export class NewsInfoPageComponent implements OnInit {
   }
 
   getNewsInfo() {
-    this.newsService.getNewsInfo(this.id).subscribe(newsInfo => {
-      this.newsInfo = newsInfo
-      this.titleService.setTitle(this.newsInfo.title);
-    });
+    this.newsService.getNewsInfo(this.id).subscribe(
+      newsInfo => {
+        this.newsInfo = newsInfo
+        this.titleService.setTitle(this.newsInfo.title);
+      },
+      err => this.titleService.setTitle('Error - 404')
+    );
   }
 
 }

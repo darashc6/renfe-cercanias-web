@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -15,9 +16,10 @@ export class AccountPageComponent implements OnInit {
   })
   isLoadingLoginSubmission: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Cuenta');
   }
 
   onSubmit(formData: FormGroup) {

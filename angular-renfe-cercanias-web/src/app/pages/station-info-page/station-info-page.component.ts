@@ -54,7 +54,7 @@ export class StationInfoPageComponent implements OnInit {
   getRailNetwork() {
     setTimeout(() => {
       this.isLoading = false;
-    }, 500);
+    }, 1000);
 
     this.railNetworkService.getRailNetwork(this.railNetworkId).subscribe(
       res => {

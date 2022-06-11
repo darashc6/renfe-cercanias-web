@@ -13,6 +13,7 @@ import { TicketFareInfoCardModule } from 'src/app/shared/ticket-fare-info-card/t
 import { PaymentMethodBtnModule } from 'src/app/shared/payment-method-btn/payment-method-btn.module';
 import { ToastModule } from 'primeng/toast';
 import { CalendarModule } from 'primeng/calendar';
+import { RouterModule } from '@angular/router';
 
 import { ProfilePageComponent } from './profile-page.component';
 import { UserTicketCardComponent } from 'src/app/components/user-ticket-card/user-ticket-card.component';
@@ -41,7 +42,8 @@ import { ProfilePageOptionBtnComponent } from 'src/app/components/profile-page-o
     TicketFareInfoCardModule,
     PaymentMethodBtnModule,
     ToastModule,
-    CalendarModule
+    CalendarModule,
+    RouterModule
   ]
 })
 export class ProfilePageModule { }

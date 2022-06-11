@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { User } from 'src/app/models/User';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -31,9 +32,10 @@ export class AccountRegistrationPageComponent implements OnInit {
   maxBirthDate: Date = new Date();
   isLoadingRegistrationSubmission: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Registro');
   }
 
   onSubmit(formData: FormGroup) {
@@ -52,7 +54,8 @@ export class AccountRegistrationPageComponent implements OnInit {
       password,
       address: {
         addressName, addressNumber, province, municipality, postalCode
-      }
+      },
+      tickets: []
     }
 
     if (secondSurname.length > 0) {

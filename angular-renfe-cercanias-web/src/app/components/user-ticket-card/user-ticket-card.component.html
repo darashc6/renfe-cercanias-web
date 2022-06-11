@@ -1,32 +1,23 @@
-<div id="user-ticket-card" class="bg-color-primary border-round">
+<div id="user-ticket-card" class="bg-color-primary border-round" *ngIf="ticket">
   <div class="grid ml-0">
     <div class="col-3 p-0 flex align-items-center justify-content-center bg-white border-round-left">
       <div class="flex flex-column align-items-center">
-        <img
-          src="../../../assets/cercanias-logo.png"
-          alt="cercanias-logo"
-          width="60"
-        />
-        <p class="text-2xl text-center my-3 font-bold px-2">Cercanias Málaga</p>
+        <img src="../../../assets/cercanias-logo.png" alt="cercanias-logo" width="50" />
+        <p class="text-base md:text-2xl text-center my-3 font-bold px-2">Cercanias {{ ticket.railNetworkName }}</p>
       </div>
     </div>
-    <div class="col-6 pl-6 py-4">
-      <p class="text-white m-0 font-medium text-base">Origen: Fuengirola</p>
-      <p class="text-white m-0 font-medium text-base">Destino: Montemar Alto</p>
-      <p class="text-white m-0 font-medium text-base">Tipo: ida</p>
+    <div class="col-8 pl-6 py-4">
+      <p class="text-white m-0 font-medium text-sm md:text-base">Origen: {{ ticket.originStation }}</p>
+      <p class="text-white m-0 font-medium text-sm md:text-base">Destino: {{ ticket.destinationStation }}</p>
+      <p class="text-white m-0 font-medium text-sm md:text-base">Tipo: {{ ticket.type }}</p>
       <p-divider class="divider"></p-divider>
-      <p class="text-white m-0 font-medium text-base">Importe: € 1.65</p>
-      <p class="text-white m-0 font-medium text-base">
-        Fecha compra: 09/03/2022 12:46
+      <p class="text-white m-0 font-medium text-sm md:text-base">Importe: € {{ ticket.price | number: '0.2-2' }}</p>
+      <p class="text-white m-0 font-medium text-sm md:text-base" *ngIf="ticket.dateBought">
+        Fecha compra: {{ ticket.dateBought | date: 'dd/MM/y, hh:mm a' }}
       </p>
-      <p class="text-white m-0 font-medium text-base">
-        Fin validez: 10/03/2022 12:46
+      <p class="text-white m-0 font-medium text-sm md:text-base" *ngIf="dateExpiry">
+        Validez hasta: {{ dateExpiry | date: 'dd/MM/y, hh:mm a' }}
       </p>
-    </div>
-    <div
-      class="col-offset-1 col-2 flex justify-content-center align-items-center"
-    >
-      <i class="pi pi-download download-btn"></i>
     </div>
   </div>
 </div>

@@ -3,7 +3,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Message, MessageService } from 'primeng/api';
-import { Observable, of, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
+import { Ticket } from '../models/Ticket';
 import { User } from '../models/User';
 
 @Injectable({
@@ -146,7 +147,7 @@ export class AuthService {
 
   // Returns true when user is logged in
   get isLoggedIn(): boolean {
-    return this.isUserLoggedIn && this.userLoggedIn !== undefined;
+    return this.isUserLoggedIn;
   }
 
   updateUser(updatedUser: User) {
@@ -160,5 +161,22 @@ export class AuthService {
           this.messageService.add({ severity: 'success', summary: 'Usuario actualizado', detail: 'Usuario actualizado correctamente', life: 2500 });
         })
       });
+  }
+
+  async addNewTicket(newTicket: Ticket): Promise<any> {
+    console.log(this.userLoggedIn!.tickets);
+
+    return this.afAuth.currentUser
+      .then((firebaseUser) => {
+        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${firebaseUser?.uid}`);
+
+        this.userLoggedIn!.tickets.push(newTicket);
+
+        userRef.set(this.userLoggedIn, {
+          merge: true
+        }).then(() => {
+          console.log('Done!');
+        })
+      })
   }
 }

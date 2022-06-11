@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Fare } from 'src/app/models/Fare';
+import { Ticket } from 'src/app/models/Ticket';
 import { User } from 'src/app/models/User';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -25,17 +27,19 @@ export class ProfilePageComponent implements OnInit {
     municipality: new FormControl(this.authService.userLoggedIn?.address.municipality, [Validators.required]),
     postalCode: new FormControl(this.authService.userLoggedIn?.address.postalCode, [Validators.required]),
   });
+  userTickets: Ticket[] = [];
 
   maxBirthDate: Date = new Date();
 
   selectedFare?: Fare;
 
-  selectedOption: string = 'edit-profile'
+  selectedOption: string = 'edit-profile';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private titleService: Title) { }
 
   ngOnInit(): void {
-    console.log(this.authService.userLoggedIn);
+    this.userTickets = this.authService.userLoggedIn!.tickets.sort((ticket) => -ticket.dateBought);
+    this.titleService.setTitle('Perfil');
   }
 
   selectOption(optionSelected: string) {
@@ -51,12 +55,13 @@ export class ProfilePageComponent implements OnInit {
       phoneNumber,
       nationality,
       idNumber,
-      birthDate: birthDate.toLocaleDateString('en-GB'),
+      birthDate: birthDate.toLocaleString('en-GB'),
       email: this.authService.userLoggedIn!.email,
       password: this.authService.userLoggedIn!.password,
       address: {
         addressName, addressNumber, province, municipality, postalCode
-      }
+      },
+      tickets: this.authService.userLoggedIn!.tickets
     }
 
     if (secondSurname.length > 0) {

@@ -1,7 +1,7 @@
 <section id="account-page">
     <div id="content" class="py-4">
         <div class="grid">
-            <div class="col-5 col-offset-1">
+            <div class="col-10 md:col-5 col-offset-1">
                 <p-card [styleClass]="'h-26rem'">
                     <ng-template pTemplate="content">
                         <div class="grid px-4">
@@ -34,10 +34,10 @@
                                         <ng-template [ngIf]="isLoadingLoginSubmission" [ngIfElse]="showLoginBtn">
                                             <app-loading-spinner></app-loading-spinner>
                                         </ng-template>
-                                        
+
                                         <ng-template #showLoginBtn>
                                             <button pButton pRipple type="submit" label="Entrar"
-                                            class="p-button-raised bg-color-primary w-6rem mt-2"></button>
+                                                class="p-button-raised bg-color-primary w-6rem mt-2"></button>
                                         </ng-template>
                                     </div>
                                 </form>
@@ -46,8 +46,8 @@
                     </ng-template>
                 </p-card>
             </div>
-            <div class="col-5">
-                <p-card [styleClass]="'h-26rem'">
+            <div class="col-10 col-offset-1 md:col-5 md:col-offset-0">
+                <p-card>
                     <ng-template pTemplate="content">
                         <div class="px-4">
                             <h1 class="m-0 text-4xl">¿No tienes cuenta?</h1>

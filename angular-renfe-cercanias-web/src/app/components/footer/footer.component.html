@@ -1,10 +1,12 @@
 <footer id="footer" class="grid py-2">
   <div class="col-12 flex-order-2 md:col-6 lg:flex-order-1 lg:col-4 flex align-items-center justify-content-center">
     <div *ngFor="let icon of icons">
-      <a href="{{ icon.link }}" target="_blank">
-        <ic-icon class="social-media-icon" icon="{{ icon.logo }}">
-        </ic-icon>
-      </a>
+      <div class="mx-4">
+        <a href="{{ icon.link }}" target="_blank">
+          <ic-icon class="social-media-icon" icon="{{ icon.logo }}">
+          </ic-icon>
+        </a>
+      </div>
     </div>
   </div>
   <div

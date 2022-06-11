@@ -1,3 +1,7 @@
+#news-section {
+  min-height: 80.5vh;
+}
+
 #news-section .header {
   background-color: white;
 }

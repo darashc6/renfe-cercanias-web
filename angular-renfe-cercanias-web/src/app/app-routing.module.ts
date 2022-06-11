@@ -17,6 +17,7 @@ import { TrainLinesPageComponent } from './pages/train-lines-page/train-lines-pa
 import { TravelWithPageComponent } from './pages/travel-with-page/travel-with-page.component';
 import { BuyTicketPageComponent } from './pages/buy-ticket-page/buy-ticket-page.component';
 import { AuthGuard } from './guard/auth.guard';
+import { AccountGuard } from './guard/account.guard';
 
 const routes: Routes = [
   {
@@ -44,6 +45,7 @@ const routes: Routes = [
   {
     path: 'cuenta',
     component: AccountPageComponent,
+    canActivate: [AccountGuard]
   },
   {
     path: 'registro',

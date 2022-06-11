@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Fare } from 'src/app/models/Fare';
 import { RailNetwork } from 'src/app/models/RailNetwork';
@@ -17,7 +18,7 @@ export class TrainFareDetailsPageComponent implements OnInit {
   fare?: Fare;
   isLoading: boolean = true;
 
-  constructor(private route: ActivatedRoute, private railNetworkService: RailNetworkService, private discountFaresService: DiscountFaresService) { }
+  constructor(private route: ActivatedRoute, private railNetworkService: RailNetworkService, private discountFaresService: DiscountFaresService, private titleService: Title) { }
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -40,9 +41,16 @@ export class TrainFareDetailsPageComponent implements OnInit {
       if (this.railNetwork) {
         this.fare = this.railNetwork.fares.find(fare => fare.fareId == this.fareId);
 
-      if (!this.fare) {
-        this.discountFaresService.getDiscountFare(this.fareId).subscribe(discountFare => this.fare = discountFare);
-      }
+
+
+        if (!this.fare) {
+          this.discountFaresService.getDiscountFare(this.fareId).subscribe(discountFare => {
+            this.fare = discountFare;
+            this.titleService.setTitle(`Cercanías ${this.railNetwork!.name} - ${this.fare!.fareDescription.title}`);
+          });
+        }
+
+        this.titleService.setTitle(`Cercanías ${this.railNetwork.name} - ${this.fare!.fareDescription.title}`);
       }
     });
   }

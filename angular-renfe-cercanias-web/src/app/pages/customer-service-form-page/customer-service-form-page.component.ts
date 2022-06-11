@@ -6,6 +6,7 @@ import { RailNetworkService } from 'src/app/services/rail-network/rail-network.s
 import { CustomerServiceFormData } from 'src/app/models/CustomerServiceFormData';
 import { CustomerServiceFormService } from 'src/app/services/customer-service-form/customer-service-form.service';
 import { MessageService } from 'primeng/api';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-customer-service-form-page',
@@ -35,7 +36,7 @@ export class CustomerServiceFormPageComponent implements OnInit {
     comment: new FormControl('', [Validators.required])
   })
 
-  constructor(private railNetworkService: RailNetworkService, private route: ActivatedRoute, private customerServiceFormService: CustomerServiceFormService, private messageService: MessageService) { }
+  constructor(private railNetworkService: RailNetworkService, private route: ActivatedRoute, private customerServiceFormService: CustomerServiceFormService, private messageService: MessageService, private titleService: Title) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => this.railNetworkId = params['rail-network-id']);
@@ -48,7 +49,10 @@ export class CustomerServiceFormPageComponent implements OnInit {
   }
 
   getRailNetwork() {
-    this.railNetworkService.getRailNetwork(this.railNetworkId).subscribe(railNetwork => this.railNetwork = railNetwork);
+    this.railNetworkService.getRailNetwork(this.railNetworkId).subscribe(railNetwork => {
+      this.railNetwork = railNetwork;
+      this.titleService.setTitle(`Cercanías ${this.railNetwork!.name} - Contactar`);
+    });
   }
 
   onSubmit(formData: FormGroup) {

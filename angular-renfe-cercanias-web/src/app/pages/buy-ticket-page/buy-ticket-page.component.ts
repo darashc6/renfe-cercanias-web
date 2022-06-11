@@ -1,10 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Fare } from 'src/app/models/Fare';
 import { Station } from 'src/app/models/Station';
 import { TrainLine } from 'src/app/models/TrainLine';
 import { RailNetworkService } from 'src/app/services/rail-network/rail-network.service';
 import { Title } from "@angular/platform-browser";
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
+import { AuthService } from 'src/app/services/auth.service';
+import { Ticket } from 'src/app/models/Ticket';
 
 @Component({
   selector: 'app-buy-ticket-page',
@@ -16,7 +18,8 @@ export class BuyTicketPageComponent implements OnInit {
   selectedFare?: Fare;
   minDate: Date = new Date();
   maxDate: Date = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
-  displayPaymentSuccessfulModal: boolean = true;
+  displayPaymentSuccessfulModal: boolean = false;
+  isUserLoggedIn: boolean = false;
 
   railNetworks: any[] = [
     {
@@ -77,9 +80,10 @@ export class BuyTicketPageComponent implements OnInit {
   selectedOriginStation?: Station;
   selectedDestinationStation?: Station;
 
-  constructor(private railNetworkService: RailNetworkService, private titleService: Title) { }
+  constructor(private railNetworkService: RailNetworkService, private authService: AuthService, private titleService: Title) { }
 
   ngOnInit(): void {
+    this.isUserLoggedIn = this.authService.isLoggedIn;
     this.initConfig();
     this.titleService.setTitle('Comprar billete');
     this.getRailNetworkInfo();
@@ -106,7 +110,19 @@ export class BuyTicketPageComponent implements OnInit {
         ]
       },
       onApprove: (data, actions) => {
-        this.displayPaymentSuccessfulModal = true;
+        let newTicket: Ticket = {
+          originStation: this.selectedOriginStation!.name,
+          destinationStation: this.selectedDestinationStation!.name,
+          railNetworkName: this.selectedRailNetwork!.name,
+          type: this.selectedFare!.fareDescription.title,
+          price: this.selectedFare!.prices!.find((farePrice) => farePrice.n_zones === this.nZones)!.price,
+          dateBought: new Date().getTime()
+        }
+
+        this.authService.addNewTicket(newTicket)
+          .then(() => {
+            this.displayPaymentSuccessfulModal = true;
+          });
       },
       onError: (err) => {
         console.log(err);
@@ -125,6 +141,7 @@ export class BuyTicketPageComponent implements OnInit {
       this.destinationStationToShow = [];
       this.selectedOriginStation = undefined;
       this.selectedDestinationStation = undefined;
+      this.selectedFare = undefined;
 
       this.trainLinesToShow = data.trainLines;
       this.fares = data.fares.filter((fare) => fare.fareId === 'billete-sencillo' || fare.fareId === 'billete-ida-vuelta');
@@ -136,6 +153,7 @@ export class BuyTicketPageComponent implements OnInit {
 
     this.selectedOriginStation = undefined;
     this.selectedDestinationStation = undefined;
+    this.selectedFare = undefined;
   }
 
   onOriginStationDropdownValueChanged() {

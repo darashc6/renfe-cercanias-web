@@ -1,7 +1,7 @@
 <section id="buy-ticket-page">
     <div id="content" class="py-4">
         <div class="grid">
-            <div class="col-3 col-offset-1" id="buy-ticket-form">
+            <div class="col-10 md:col-3 col-offset-1" id="buy-ticket-form">
                 <p-card>
                     <ng-template pTemplate="content">
                         <div class="grid">
@@ -18,15 +18,17 @@
                                 </p-dropdown>
                             </div>
                             <div class="col-12">
-                                <p-dropdown [disabled]="originStationsToShow.length == 0" [options]="originStationsToShow"
-                                    [(ngModel)]="selectedOriginStation" optionLabel="name" placeholder="Origen"
-                                    [filter]="true" filterBy="name" (onChange)="onOriginStationDropdownValueChanged()">
+                                <p-dropdown [disabled]="originStationsToShow.length == 0"
+                                    [options]="originStationsToShow" [(ngModel)]="selectedOriginStation"
+                                    optionLabel="name" placeholder="Origen" [filter]="true" filterBy="name"
+                                    (onChange)="onOriginStationDropdownValueChanged()">
                                 </p-dropdown>
                             </div>
                             <div class="col-12">
                                 <p-dropdown [disabled]="destinationStationToShow.length == 0 || !selectedOriginStation"
                                     [options]="destinationStationToShow" [(ngModel)]="selectedDestinationStation"
-                                    optionLabel="name" placeholder="Destino" [filter]="true" filterBy="name" (onChange)="onDestinationStationDropdownValueChanged()">
+                                    optionLabel="name" placeholder="Destino" [filter]="true" filterBy="name"
+                                    (onChange)="onDestinationStationDropdownValueChanged()">
                                 </p-dropdown>
                             </div>
                         </div>
@@ -34,26 +36,41 @@
                 </p-card>
             </div>
             <ng-template [ngIf]="isFormFilledCorrectly()" [ngIfElse]="fillFormMessage">
-                <div class="col-offset-1 col-6">
+                <div class="col-offset-1 col-10 md:col-6">
                     <h1>Seleccionar tarifa</h1>
                     <div id="ticket-fares" class="grid">
-                        <div class="col-6" *ngFor="let fare of fares">
+                        <div class="col-12 lg:col-6" *ngFor="let fare of fares">
                             <app-ticket-fare-info-card [groupName]="'fare'" [selectedFare]="selectedFare" [fare]="fare"
                                 [nZones]="nZones" (onSelectedFare)="setSelectedFare($event)">
                             </app-ticket-fare-info-card>
                         </div>
                     </div>
-                    <h1>Seleccionar método de pago</h1>
-                    <div class="grid">
-                        <div class="col-12">
-                            <ngx-paypal [config]="paypalConfig"></ngx-paypal>
+
+                    <ng-template [ngIf]="isUserLoggedIn" [ngIfElse]="authMandatoryMessage">
+                        <h1>Seleccionar método de pago</h1>
+                        <div class="grid">
+                            <div class="col-12">
+                                <ngx-paypal [config]="paypalConfig"></ngx-paypal>
+                            </div>
                         </div>
-                    </div>
+                    </ng-template>
+
+                    <ng-template #authMandatoryMessage>
+                        <div class="col-12">
+                            <h2 class="text-center">Debes iniciar sesión para poder realizar la compra del billete</h2>
+                            <div class="flex align-items-center justify-content-center">
+                                <a [routerLink]='["/cuenta"]' class="no-underline">
+                                    <button pButton pRipple label="INICIAR SESIÓN"
+                                        class="p-button-raised bg-color-primary w-10rem"></button>
+                                </a>
+                            </div>
+                        </div>
+                    </ng-template>
                 </div>
             </ng-template>
 
             <ng-template #fillFormMessage>
-                <div class="col-offset-1 col-6">
+                <div class="col-offset-1 col-10 md:col-6">
                     <h3 class="text-center">Por favor, rellene los campos necesarios</h3>
                 </div>
             </ng-template>
@@ -61,11 +78,11 @@
         <p-dialog header="Billete comprado" [(visible)]="displayPaymentSuccessfulModal" [modal]="true"
             [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
             <p class="m-0">¡Billete comprado con exito!</p>
-            
+
             <ng-template pTemplate="footer">
                 <a [routerLink]="['/']">
                     <p-button icon="pi pi-check" (onClick)="onPaymentSuccessfulModalClose()" label="OK"
-                    styleClass="p-button-text"></p-button>
+                        styleClass="p-button-text"></p-button>
                 </a>
             </ng-template>
         </p-dialog>

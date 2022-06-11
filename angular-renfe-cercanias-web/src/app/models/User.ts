@@ -1,3 +1,5 @@
+import { Ticket } from "./Ticket";
+
 export interface User {
     firstName: string;
     firstSurname: string;
@@ -9,6 +11,7 @@ export interface User {
     email: string;
     password: string;
     address: Address;
+    tickets: Ticket[];
 }
 
 interface Address {

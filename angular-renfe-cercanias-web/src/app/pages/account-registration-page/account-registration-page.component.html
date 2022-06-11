@@ -2,121 +2,67 @@
   <div id="content" class="py-4 px-6">
     <h1 class="m-0 text-4xl">Registro</h1>
     <p class="text-xl my-2">¡Registra y disfruta de todas las ventajas!</p>
-    <form
-      id="account-registration-form"
-      class="mt-4"
-      [formGroup]="accountRegistrationForm"
-      (ngSubmit)="onSubmit(accountRegistrationForm)"
-    >
+    <form id="account-registration-form" class="mt-4" [formGroup]="accountRegistrationForm"
+      (ngSubmit)="onSubmit(accountRegistrationForm)">
       <p-card header="1. Datos Personales" [styleClass]="'my-4'">
         <ng-template pTemplate="content">
           <div class="grid">
-            <div class="col-4">
+            <div class="col-12 sm:col-6 md:col-4">
               <span class="p-float-label">
-                <input
-                  required
-                  pInputText
-                  type="text"
-                  id="first_name"
-                  name="first_name"
-                  formControlName="firstName"
-                />
+                <input required pInputText type="text" id="first_name" name="first_name" formControlName="firstName" />
                 <label for="first_name">Nombre*</label>
               </span>
             </div>
-            <div class="col-4">
+            <div class="col-12 sm:col-6 md:col-4">
               <span class="p-float-label">
-                <input
-                  required
-                  pInputText
-                  type="text"
-                  id="first_surname"
-                  name="first_surname"
-                  formControlName="firstSurname"
-                />
+                <input required pInputText type="text" id="first_surname" name="first_surname"
+                  formControlName="firstSurname" />
                 <label for="first_surname">Primer Apellido*</label>
               </span>
             </div>
-            <div class="col-4">
+            <div class="col-12 sm:col-6 md:col-4">
               <span class="p-float-label">
-                <input
-                  pInputText
-                  type="text"
-                  id="second_surname"
-                  name="second_surname"
-                  formControlName="secondSurname"
-                />
+                <input pInputText type="text" id="second_surname" name="second_surname"
+                  formControlName="secondSurname" />
                 <label for="second_surname">Segundo Apellido</label>
               </span>
             </div>
-            <div class="col-4">
+            <div class="col-12 sm:col-6 md:col-4">
               <span class="p-float-label">
-                <input
-                  required
-                  pInputText
-                  type="tel"
-                  id="phone_number"
-                  name="phone_number"
-                  formControlName="phoneNumber"
-                />
+                <input required pInputText type="tel" id="phone_number" name="phone_number"
+                  formControlName="phoneNumber" />
                 <label for="phone_number">Telefono Móvil*</label>
               </span>
             </div>
-            <div class="col-4">
+            <div class="col-12 sm:col-6 md:col-4">
               <span class="p-float-label">
-                <input
-                  required
-                  pInputText
-                  type="text"
-                  id="nationality"
-                  name="nationality"
-                  formControlName="nationality"
-                />
+                <input required pInputText type="text" id="nationality" name="nationality"
+                  formControlName="nationality" />
                 <label for="nationality">Nacionalidad*</label>
               </span>
             </div>
-            <div class="col-4">
+            <div class="col-12 sm:col-6 md:col-4">
               <span class="p-float-label">
-                <input
-                  required
-                  pInputText
-                  type="text"
-                  id="id_number"
-                  name="id_number"
-                  formControlName="idNumber"
-                />
+                <input required pInputText type="text" id="id_number" name="id_number" formControlName="idNumber" />
                 <label for="id_number">DNI*</label>
               </span>
             </div>
-            <div class="col-4">
+            <div class="col-12 sm:col-6 md:col-4">
               <span class="p-float-label">
-                <p-calendar [required]="true" inputId="birth-date" name="birth-date" [dateFormat]="'dd/mm/yy'" formControlName="birthDate" [maxDate]="maxBirthDate"></p-calendar>
+                <p-calendar [required]="true" inputId="birth-date" name="birth-date" [dateFormat]="'dd/mm/yy'"
+                  formControlName="birthDate" [maxDate]="maxBirthDate"></p-calendar>
                 <label for="birth-date">Fecha de nacimiento*</label>
               </span>
             </div>
-            <div class="col-4">
+            <div class="col-12 sm:col-6 md:col-4">
               <span class="p-float-label">
-                <input
-                  required
-                  pInputText
-                  type="email"
-                  id="email"
-                  name="email"
-                  formControlName="email"
-                />
+                <input required pInputText type="email" id="email" name="email" formControlName="email" />
                 <label for="email">Email*</label>
               </span>
             </div>
-            <div class="col-4">
+            <div class="col-12 sm:col-6 md:col-4">
               <span class="p-float-label">
-                <input
-                  required
-                  pInputText
-                  type="password"
-                  id="password"
-                  name="password"
-                  formControlName="password"
-                />
+                <input required pInputText type="password" id="password" name="password" formControlName="password" />
                 <label for="password">Password*</label>
               </span>
             </div>
@@ -127,82 +73,44 @@
       <p-card header="2. Dirección Postal" [styleClass]="'my-4'">
         <ng-template pTemplate="content">
           <div class="grid">
-            <div class="col-8">
+            <div class="col-12 sm:col-8">
               <span class="p-float-label">
-                <input
-                  required
-                  pInputText
-                  type="text"
-                  id="address_name"
-                  name="address_name"
-                  formControlName="addressName"
-                />
+                <input required pInputText type="text" id="address_name" name="address_name"
+                  formControlName="addressName" />
                 <label for="address_name">Nombre de la calle*</label>
               </span>
             </div>
-            <div class="col-4">
+            <div class="col-12 sm:col-4">
               <span class="p-float-label">
-                <input
-                  pInputText
-                  type="number"
-                  id="address_number"
-                  name="address_number"
-                  formControlName="addressNumber"
-                />
+                <input pInputText type="number" id="address_number" name="address_number"
+                  formControlName="addressNumber" />
                 <label for="address_number">Numero*</label>
               </span>
             </div>
-            <div class="col-8">
+            <div class="col-12 sm:col-8">
               <span class="p-float-label">
-                <input
-                  pInputText
-                  type="text"
-                  id="address_extras"
-                  name="address_extras"
-                  formControlName="addressExtras"
-                />
-                <label for="address_extras"
-                  >Edificio, Piso, Portal, Bloque, Puerta, etc..</label
-                >
+                <input pInputText type="text" id="address_extras" name="address_extras"
+                  formControlName="addressExtras" />
+                <label for="address_extras">Edificio, Piso, Portal, Bloque, Puerta, etc..</label>
               </span>
             </div>
-            <div class="col-4">
+            <div class="col-12 sm:col-4">
               <span class="p-float-label">
-                <input
-                  pInputText
-                  required
-                  type="text"
-                  id="province"
-                  name="province"
-                  formControlName="province"
-                />
+                <input pInputText required type="text" id="province" name="province" formControlName="province" />
                 <label for="province">Provincia*</label>
               </span>
             </div>
-            <div class="col-4">
+            <div class="col-12 sm:col-6 md:col-4">
               <span class="p-float-label">
-                <input
-                  pInputText
-                  required
-                  type="text"
-                  id="municipality"
-                  name="municipality"
-                  formControlName="municipality"
-                />
+                <input pInputText required type="text" id="municipality" name="municipality"
+                  formControlName="municipality" />
                 <label for="municipality">Localidad*</label>
               </span>
             </div>
-            <div class="col-4">
+            <div class="col-12 sm:col-6 md:col-4">
               <span class="p-float-label">
-                <input
-                  pInputText
-                  required
-                  type="number"
-                  maxlength="5"
-                  id="postal_code"
-                  name="postal_code"
-                  formControlName="postalCode"
-                />
+                <input pInputText required type="number" maxlength="5" id="postal_code" name="postal_code"
+                  formControlName="postalCode" />
                 <label for="postal_code">Código Postal*</label>
               </span>
             </div>
@@ -216,14 +124,8 @@
         </ng-template>
 
         <ng-template #showRegistrationBtn>
-          <button
-          pButton
-          pRipple
-          type="submit"
-          label="COMPLETAR REGISTRO"
-          class="p-button-raised bg-color-primary mt-4"
-          [disabled]="!accountRegistrationForm.valid"
-        ></button>
+          <button pButton pRipple type="submit" label="COMPLETAR REGISTRO" class="p-button-raised bg-color-primary mt-4"
+            [disabled]="!accountRegistrationForm.valid"></button>
         </ng-template>
       </div>
     </form>

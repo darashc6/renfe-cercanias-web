@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Station } from 'src/app/models/Station';
 import { TrainLine } from 'src/app/models/TrainLine';
@@ -16,7 +17,7 @@ export class TrainLinesPageComponent implements OnInit {
   trainLineSelected?: TrainLine;
   isLoading: boolean = true;
 
-  constructor(private route: ActivatedRoute, private railNetworkService: RailNetworkService) { }
+  constructor(private route: ActivatedRoute, private railNetworkService: RailNetworkService, private titleService: Title) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => this.railNetworkId = params['rail-network-id']);
@@ -33,6 +34,8 @@ export class TrainLinesPageComponent implements OnInit {
       this.railNetworkName = railNetwork.name;
       this.trainLines = railNetwork.trainLines;
       this.trainLineSelected = this.trainLines[0];
+
+      this.titleService.setTitle(`Cercanías ${this.railNetworkName} - Estaciones y líneas`);
     });
   }
 

@@ -1,16 +1,14 @@
 #footer {
-    background-color: white;
+  background-color: white;
 
-    .social-media-icon {
-        cursor: pointer;
-        color: var(--color-primary);
-        font-size: 1.7em;
-        display: flex;
-        align-items: center;
-        margin: 0 20px;
-    }
+  .social-media-icon {
+    color: var(--color-primary);
+    font-size: 1.7em;
+    display: flex;
+    align-items: center;
+  }
 
-    .social-media-icon:hover {
-        color: var(--color-primary-hover);
-    }
+  .social-media-icon:hover {
+    color: var(--color-primary-hover);
+  }
 }
